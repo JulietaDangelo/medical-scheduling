@@ -21,3 +21,5 @@ TO medical_scheduling_appuser;
 GRANT USAGE, SELECT
 ON ALL SEQUENCES IN SCHEMA public
 TO medical_scheduling_appuser;
+--
+-- comment
