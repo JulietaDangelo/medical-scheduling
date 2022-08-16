@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import javax.sql.DataSource;
+import java.math.BigDecimal;
 
 public class JDBCPatient implements PatientDAO {
 
@@ -44,6 +45,13 @@ public class JDBCPatient implements PatientDAO {
         jdbcTemplate.update(sql, patient.getEmail(), patient.getGender(), patient.getAge(), id);
 
     }
+
+    @Override
+    public void savePatientUser(int patientId, String userName, String firstName, String lastName, int age, String gender, String email) {
+        jdbcTemplate.update("INSERT INTO doctor(patient_id, user_name, first_name, last_name, age, gender, email) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?)", patientId, userName, firstName, lastName, age, gender, email);
+    }
+
 
     private Patient mapRowToPatient (SqlRowSet rowSet) {
 

@@ -12,4 +12,6 @@ public interface PatientDAO {
 
 
     void update(int id, Patient patient);
+
+    public void savePatientUser(int patientId, String userName, String firstName, String lastName, int age, String gender, String email);
 }
