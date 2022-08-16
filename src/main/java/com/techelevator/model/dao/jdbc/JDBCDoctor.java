@@ -7,12 +7,13 @@ import org.bouncycastle.util.encoders.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-
+@Component
 
 public class JDBCDoctor implements DoctorDAO {
 
@@ -86,9 +87,9 @@ public class JDBCDoctor implements DoctorDAO {
     }
 
     @Override
-    public void saveDoctorUser(int doctorId, String userName, String firstName, String lastName, String email, BigDecimal hourCost, String address, int phoneNumber, String medicalSpecialty) {
-        jdbcTemplate.update("INSERT INTO doctor(doctor_id, user_name, first_name, last_name, email, address, phone_number, medical_specialty, hour_cost) " +
-                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", doctorId, userName, firstName, lastName, email, hourCost, address, phoneNumber, medicalSpecialty);
+    public void saveDoctorUser(int doctorId,  String firstName, String lastName, String email, BigDecimal hourCost, String address, String phoneNumber, String medicalSpecialty) {
+        jdbcTemplate.update("INSERT INTO doctor(doctor_id,  first_name, last_name, email, hour_cost, address, phone_number, medical_specialty ) " +
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?)", doctorId, firstName, lastName, email, hourCost, address, phoneNumber, medicalSpecialty);
     }
 
     private Doctor mapRowToDoctor(SqlRowSet row)

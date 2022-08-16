@@ -26,13 +26,12 @@ CREATE TABLE availability (
 
 CREATE TABLE doctor (
     doctor_id Integer PRIMARY KEY,
-    user_name varchar(20) NOT NULL,
-    first_name varchar(20) NOT NULL,
-    last_name varchar(20) NOT NULL,
-    email varchar(20) NOT NULL,
-    address varchar(20) NOT NULL,
+    first_name varchar(50) NOT NULL,
+    last_name varchar(50) NOT NULL,
+    email varchar(50) NOT NULL,
+    address varchar(50) NOT NULL,
     phone_number varchar(20) NOT NULL,
-    medical_specialty varchar(20) NOT NULL,
+    medical_specialty varchar(50) NOT NULL,
     hour_cost Money NOT NULL
 );
 
@@ -66,7 +65,6 @@ CREATE TABLE review (
 
 CREATE TABLE patient (
     patient_id Integer PRIMARY KEY,
-    user_name varchar(20) NOT NULL,
     first_name varchar(20) NOT NULL,
     last_name varchar(20) NOT NULL,
     age Integer NOT NULL,
