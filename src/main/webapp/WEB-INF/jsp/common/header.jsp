@@ -14,6 +14,7 @@
 <c:url var="popperJs" value="/js/popper.min.js" />
 <c:url var="bootstrapJs" value="/js/bootstrap.min.js" />
 
+
 <link rel="stylesheet" type="text/css" href="${bootstrapCss}">
 <link rel="stylesheet" type="text/css" href="${siteCss}">
 
@@ -40,59 +41,55 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="#"> 
-			<c:url var="homePageHref" value="/" />
-			<c:url var="imgSrc" value="/img/placeholder.png" /> 
-			<a href="${homePageHref}"><img src="${imgSrc}" class="img-fluid" style="height: 50px;" /></a>
+	<nav class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+		<c:url var="homePageHref" value="/" />
+		<a class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" href="${homePageHref}">
+			<c:url var="imgSrc" value="/img/logo.png" />
+			<img src="${imgSrc}" class="img-fluid" style="height: 100px;" />
 		</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#navbarSupportedContent"
-			aria-controls="navbarSupportedContent" aria-expanded="false"
-			aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-				<c:url var="homePageHref" value="/" />
-				<li class="nav-item"><a class="nav-link" href="${homePageHref}">Home</a></li>
-
-				<c:if test="${not empty currentUser}">
-					<c:url var="dashboardHref" value="/users/${currentUser}" />
-					<li class="nav-item"><a class="nav-link" href="${dashboardHref}">Private Messages</a></li>
-					<c:url var="newMessageHref"
-						value="/users/${currentUser}/messages/new" />
-					<li class="nav-item"><a class="nav-link" href="${newMessageHref}">New Message</a></li>
-					<c:url var="sentMessagesHref"
-						value="/users/${currentUser}/messages" />
-					<li class="nav-item"><a class="nav-link" href="${sentMessagesHref}">Sent Messages</a></li>
-					<c:url var="changePasswordHref"
-						value="/users/${currentUser}/changePassword" />
-					<li class="nav-item"><a class="nav-link" href="${changePasswordHref}">Change Password</a></li>
+		<div class="d-flex align-items-center justify-content-md-between">
+			<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+				<c:if test="${not empty currentUser && currentUserRole == 'doctor'}">
+					<c:url var="link1" value="/" />
+					<li class="nav-item"><a class="nav-link px-2 link-secondary" href="${link1}">Appointments</a></li>
+					<c:url var="link2" value="/" />
+					<li class="nav-item"><a class="nav-link px-2 link-secondary" href="${link2}">Reviews</a></li>
+					<c:url var="link3" value="/" />
+					<li class="nav-item"><a class="nav-link px-2 link-secondary" href="${link3}">Edit Office Hours</a></li>
+					<c:url var="link4" value="/" />
+					<li class="nav-item"><a class="nav-link px-2 link-secondary" href="${link4}">My profile</a></li>
+				</c:if>
+				<c:if test="${not empty currentUser && currentUserRole == 'patient'}">
+					<c:url var="link1" value="/" />
+					<li class="nav-item"><a class="nav-link px-2 link-secondary" href="${link1}">Doctors List</a></li>
+					<c:url var="link2" value="/" />
+					<li class="nav-item"><a class="nav-link px-2 link-secondary" href="${link2}">Appointments</a></li>
+					<c:url var="link3" value="/" />
+					<li class="nav-item"><a class="nav-link px-2 link-secondary" href="${link3}">My profile</a></li>
+				</c:if>
+				<c:if test="${empty currentUser}">
+					<c:url var="link1" value="/" />
+					<li class="nav-item"><a class="nav-link px-2 link-secondary" href="${link1}">Doctors List</a></li>
 				</c:if>
 			</ul>
-			<ul class="navbar-nav ml-auto">
+
+			<ul class="col-md-3 text-end">
 				<c:choose>
 					<c:when test="${empty currentUser}">
 						<c:url var="newUserHref" value="/users/new" />
-						<li class="nav-item"><a class="nav-link" href="${newUserHref}">Sign Up</a></li>
+						<li class="nav-item"><a class="btn btn-outline-primary me-2" href="${newUserHref}">Sign Up</a></li>
 						<c:url var="loginHref" value="/login" />
-						<li class="nav-item"><a class="nav-link" href="${loginHref}">Log In</a></li>
+						<li class="nav-item"><a class="btn btn-primary" href="${loginHref}">Log In</a></li>
 					</c:when>
 					<c:otherwise>
 						<c:url var="logoutAction" value="/logout" />
 						<form id="logoutForm" action="${logoutAction}" method="POST">
 							<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 						</form>
-						<li class="nav-item"><a id="logoutLink" href="#">Log Out</a></li>
+						<li class="nav-item"><a class="btn btn-outline-primary me-2" id="logoutLink" href="#">Log Out</a></li>
 					</c:otherwise>
 				</c:choose>
 			</ul>
 		</div>
 	</nav>
-
-	<c:if test="${not empty currentUser}">
-		<p id="currentUser">Current User: ${currentUser}</p>
-	</c:if>
 	<div class="container">
