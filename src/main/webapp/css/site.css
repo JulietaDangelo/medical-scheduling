@@ -1,0 +1,38 @@
+.homepage {
+    background-image: linear-gradient(transparent, rgba(255, 255, 255)), url(https://img.freepik.com/premium-photo/medical-banner-with-icons_1325-1526.jpg?w=1380);
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+}
+
+.homepage-text {
+    position: relative;
+    top: 30%;
+    text-align: center;
+}
+
+.homepage-text h1 {
+    font-size: 60px;
+    text-shadow: 1px 1px 1px #fff;
+}
+
+.homepage-text p {
+    font-size: 25px;
+    margin: 20px;
+    padding-bottom: 20px;
+    text-shadow: 1px 1px 1px #fff;
+}
+
+
+.homepage-button {
+    margin-top: 20px;
+    padding: 10px 50px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 18px;
+    transition: 0.5s;
+}
+
+.homepage-button:hover {
+    background-color: #0258b5;
+}
