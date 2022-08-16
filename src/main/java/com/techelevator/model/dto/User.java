@@ -1,20 +1,41 @@
 package com.techelevator.model.dto;
 
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class User {
+	@NotBlank(message = "Your User Name is required")
 	private String userName;
-	
+
 	@Size(min=8, message="Password too short, must be at least 8")
 	@Pattern.List({
 		@Pattern(regexp=".*[a-z].*", message="Must have a lower case"),
 		@Pattern(regexp=".*[A-Z].*", message="Must have a capital")
 	})
 	private String password;
+	@NotBlank(message = "Your Role is required")
 	private String role;
-	
+
+	@NotBlank(message = "Your Confirmation password is required")
 	private String confirmPassword;
+
+	private boolean isPasswordConfirmed;
+
+
+	@AssertTrue(message = "Both passwords must be equal")
+	public boolean getPasswordUnique()
+	{
+		if(password != null) {
+			return(password.equalsIgnoreCase(confirmPassword));
+		}
+		return true;
+	}
+
+
+
 	public String getUserName() {
 		return userName;
 	}
@@ -45,4 +66,7 @@ public class User {
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
+
+
+
 }
