@@ -10,4 +10,6 @@ public interface UserDAO {
 
 	public Object getUserByUserName(String userName);
 
+	public String getUserSpecialty(String userName);
+
 }
