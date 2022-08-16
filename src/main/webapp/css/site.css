@@ -37,6 +37,10 @@
     background-color: #0258b5;
 }
 
+.container {
+    min-height: 70vh;
+}
+
 :root {
     --bs-blue: #0d6efd;
     --bs-indigo: #6610f2;
@@ -136,10 +140,6 @@ ul {
 
 .border-bottom {
     border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color)!important;
-}
-
-.mb-4 {
-    margin-bottom: 1.5rem!important;
 }
 
 .align-items-center {
