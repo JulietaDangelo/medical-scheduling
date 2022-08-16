@@ -1,7 +1,7 @@
 package com.techelevator.controller;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -33,7 +33,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(path="/users", method=RequestMethod.POST)
-	public String createUser(@Valid @ModelAttribute User user, BindingResult result, RedirectAttributes flash) {
+	public String createUser(@Valid @ModelAttribute User user, BindingResult result, RedirectAttributes flash, HttpSession session) {
 		if(result.hasErrors()) {
 			flash.addFlashAttribute("user", user);
 			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "user", result);
@@ -41,7 +41,11 @@ public class UserController {
 		}
 		
 		userDAO.saveUser(user.getUserName(), user.getPassword(), user.getRole());
-		return "redirect:/login";
+		session.setAttribute("currentUser", userDAO.getUserByUserName(user.getUserName()));
+		if(user.getRole().equalsIgnoreCase("Doctor")){
+			return "redirect:/users/new/doctor";
+		}
+		return  "redirect:/users/new/patient";
 	}
 	
 	

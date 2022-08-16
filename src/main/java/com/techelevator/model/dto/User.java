@@ -7,6 +7,9 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class User {
+
+	private int id;
+
 	@NotBlank(message = "Your User Name is required")
 	private String userName;
 
@@ -67,6 +70,13 @@ public class User {
 		this.confirmPassword = confirmPassword;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 
 }

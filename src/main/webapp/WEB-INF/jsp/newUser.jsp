@@ -23,7 +23,14 @@
 				<label for="confirmPassword">Confirm Password: </label>
 				<input type="password" id="confirmPassword" name="confirmPassword" placeHolder="Re-Type Password" class="form-control" />	
 			</div>
-			<button type="submit" class="btn btn-primary">Create User</button>
+			<div class="form-group">
+				<label for="role">Type:</label>
+				<select name="role"	id="role">
+					<option value="Doctor">Doctor</option>
+					<option value="Patient">Patient</option>
+				</select>
+			</div>
+			<button type="submit" class="btn btn-primary">Next</button>
 		</div>
 		<div class="col-sm-4"></div>
 	</div>

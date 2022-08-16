@@ -16,5 +16,5 @@ public interface DoctorDAO {
 
     void update(int id, Doctor doctor);
 
-    public void saveDoctorUser(int doctorId, String userName, String firstName, String lastName, String email, BigDecimal hourCost, String address, int phoneNumber, String medicalSpecialty);
+    public void saveDoctorUser(int doctorId, String firstName, String lastName, String email, BigDecimal hourCost, String address, String phoneNumber, String medicalSpecialty);
 }
