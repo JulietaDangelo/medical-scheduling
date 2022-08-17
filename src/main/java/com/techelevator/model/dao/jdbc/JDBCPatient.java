@@ -5,10 +5,11 @@ import com.techelevator.model.dto.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.math.BigDecimal;
-
+@Component
 public class JDBCPatient implements PatientDAO {
 
     private final JdbcTemplate jdbcTemplate;
@@ -47,9 +48,9 @@ public class JDBCPatient implements PatientDAO {
     }
 
     @Override
-    public void savePatientUser(int patientId, String userName, String firstName, String lastName, int age, String gender, String email) {
-        jdbcTemplate.update("INSERT INTO doctor(patient_id, user_name, first_name, last_name, age, gender, email) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?)", patientId, userName, firstName, lastName, age, gender, email);
+    public void savePatientUser(int patientId, String firstName, String lastName, int age, String gender, String email) {
+        jdbcTemplate.update("INSERT INTO patient(patient_id, first_name, last_name, age, gender, email) " +
+                "VALUES (?, ?, ?, ?, ?, ?)", patientId, firstName, lastName, age, gender, email);
     }
 
 

@@ -65,11 +65,11 @@ CREATE TABLE review (
 
 CREATE TABLE patient (
     patient_id Integer PRIMARY KEY,
-    first_name varchar(20) NOT NULL,
-    last_name varchar(20) NOT NULL,
+    first_name varchar(50) NOT NULL,
+    last_name varchar(50) NOT NULL,
     age Integer NOT NULL,
-    gender varchar(20) NOT NULL,
-    email varchar(40) NOT NULL
+    gender varchar(50) NOT NULL,
+    email varchar(50) NOT NULL
 );
 
 
