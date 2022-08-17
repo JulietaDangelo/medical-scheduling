@@ -27,7 +27,8 @@
 <c:forEach var="doctor" items="${doctors}">
 
   <div class="list-group w-50 p-3 div-doctor-list">
-    <a href="#" class="list-group-item list-group-item-action align-items-start">
+      <c:url var="link1" value="/doctor-list/public-profile?id=${doctor.doctorId}" />
+    <a href="${link1}" class="list-group-item list-group-item-action align-items-start">
       <div class="">
         <h3 class="mb-1">${doctor.firstName} ${doctor.lastName}</h3>
           <h4 class="card-subtitle mb-2 text-muted">| ${doctor.medicalSpecialty}</h4>
@@ -38,8 +39,7 @@
           <div class="doctor-data-info"><div>Hourly rate:</div> $${doctor.hourCost}</div>
           <div class="doctor-data-info"><div>Rating:</div></div>
       </div>
-<%--        <c:url var="seeDoctorProfile" value="/doctor-list"> <c:param name="specialty" value="${specialty}" /></c:url>--%>
-      <button type="button" class="btn btn-info btn-sm button-doctor-list">See Profile</button>
+        <button type="button" class="btn btn-info btn-sm button-doctor-list" href="${link1}" >See Profile</button>
     </a>
   </div>
 
