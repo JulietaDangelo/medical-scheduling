@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,6 +35,13 @@ public class UserController {
 	
 	@RequestMapping(path="/users", method=RequestMethod.POST)
 	public String createUser(@Valid @ModelAttribute User user, BindingResult result, RedirectAttributes flash, HttpSession session) {
+
+		boolean isUserNameAvailable = userDAO.isUserNameAvailable(user.getUserName());
+		if(!isUserNameAvailable) {
+			FieldError error = new FieldError("user", "userName","The UserName is not available.");
+			result.addError(error);
+		}
+
 		if(result.hasErrors()) {
 			flash.addFlashAttribute("user", user);
 			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "user", result);
@@ -42,6 +50,7 @@ public class UserController {
 		
 		userDAO.saveUser(user.getUserName(), user.getPassword(), user.getRole());
 		session.setAttribute("currentUser", userDAO.getUserByUserName(user.getUserName()));
+
 		if(user.getRole().equalsIgnoreCase("Doctor")){
 			return "redirect:/users/new/doctor";
 		}

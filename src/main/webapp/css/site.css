@@ -150,6 +150,10 @@ ul {
     flex-wrap: wrap!important;
 }
 
+.flex-nwrap {
+    flex-wrap: nowrap!important;
+}
+
 .border-bottom {
     border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color)!important;
 }

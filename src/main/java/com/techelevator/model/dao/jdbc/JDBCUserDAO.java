@@ -58,6 +58,14 @@ public class JDBCUserDAO implements UserDAO
 	}
 
 	@Override
+	public boolean isUserNameAvailable(String userName) {
+		if(getUserByUserName(userName) == null) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
 	public Object getUserByUserName(String userName) {
 		String sqlSearchForUsername ="SELECT * "+
 		"FROM app_user "+

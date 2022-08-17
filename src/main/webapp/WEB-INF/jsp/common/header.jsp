@@ -48,28 +48,28 @@
 			<img src="${imgSrc}" class="img-fluid" style="height: 100px;" />
 		</a>
 		<div class="d-flex align-items-center justify-content-md-between">
-			<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-				<c:if test="${not empty currentUser && currentUserRole == 'doctor'}">
+			<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 d-flex flex-nwrap">
+				<c:if test="${not empty currentUser && currentUser.isDoctor()}">
 					<c:url var="link1" value="/" />
-					<li class="nav-item"><a class="nav-link px-2 link-secondary" href="${link1}">Appointments</a></li>
+					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${link1}">Appointments</a></li>
 					<c:url var="link2" value="/" />
-					<li class="nav-item"><a class="nav-link px-2 link-secondary" href="${link2}">Reviews</a></li>
+					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${link2}">Reviews</a></li>
 					<c:url var="link3" value="/" />
-					<li class="nav-item"><a class="nav-link px-2 link-secondary" href="${link3}">Edit Office Hours</a></li>
+					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${link3}">Office Hours</a></li>
 					<c:url var="link4" value="/" />
-					<li class="nav-item"><a class="nav-link px-2 link-secondary" href="${link4}">My profile</a></li>
+					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${link4}">My profile</a></li>
 				</c:if>
-				<c:if test="${not empty currentUser && currentUserRole == 'patient'}">
+				<c:if test="${not empty currentUser && currentUser.isPatient()}">
 					<c:url var="link1" value="/" />
-					<li class="nav-item"><a class="nav-link px-2 link-secondary" href="${link1}">Doctors List</a></li>
+					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${link1}">Doctors List</a></li>
 					<c:url var="link2" value="/" />
-					<li class="nav-item"><a class="nav-link px-2 link-secondary" href="${link2}">Appointments</a></li>
+					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${link2}">Appointments</a></li>
 					<c:url var="link3" value="/" />
-					<li class="nav-item"><a class="nav-link px-2 link-secondary" href="${link3}">My profile</a></li>
+					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${link3}">My profile</a></li>
 				</c:if>
 				<c:if test="${empty currentUser}">
 					<c:url var="link1" value="/" />
-					<li class="nav-item"><a class="nav-link px-2 link-secondary" href="${link1}">Doctors List</a></li>
+					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${link1}">Doctors List</a></li>
 				</c:if>
 			</ul>
 

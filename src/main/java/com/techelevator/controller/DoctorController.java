@@ -39,6 +39,7 @@ public class DoctorController {
             return "redirect:/users/new/doctor";
         }
         User user = (User)session.getAttribute("currentUser");
+
         doctorDAO.saveDoctorUser(user.getId(), doctor.getFirstName(), doctor.getLastName(), doctor.getEmail(), doctor.getHourCost(), doctor.getAddress(), doctor.getPhoneNumber(), doctor.getMedicalSpecialty());
 
         return  "redirect:/";
