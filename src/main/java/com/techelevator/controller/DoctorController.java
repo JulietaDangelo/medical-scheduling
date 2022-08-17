@@ -59,6 +59,17 @@ public class DoctorController {
         return "doctorList";
     }
 
+    @RequestMapping("/doctor/profile")
+    public String profilePage(HttpServletRequest request, HttpSession session) {
+        User user = (User)session.getAttribute("currentUser");
+        int id = user.getId();
+
+        Doctor doctor = doctorDAO.getDoctorById(id);
+
+        request.setAttribute("doctor", doctor);
+
+        return "doctor/doctorPersonalProfile";
+    }
 
     private List<Doctor> getDoctor(HttpServletRequest request) {
         SpecialtyFilter filter = getFilters(request);

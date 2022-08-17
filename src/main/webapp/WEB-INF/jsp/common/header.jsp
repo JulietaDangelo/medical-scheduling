@@ -56,7 +56,7 @@
 					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${link2}">Reviews</a></li>
 					<c:url var="link3" value="/" />
 					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${link3}">Office Hours</a></li>
-					<c:url var="link4" value="/" />
+					<c:url var="link4" value="/doctor/profile" />
 					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${link4}">My profile</a></li>
 				</c:if>
 

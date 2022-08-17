@@ -10,9 +10,6 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-
-
-
 <c:url var="formAction" value="/users/new/doctor" />
 <form method="POST" action="${formAction}">
     <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
