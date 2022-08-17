@@ -4,10 +4,26 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+
+
 <h2 class="text-center title-doctor-list">Doctor List</h2>
+
+<div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Filter by speciality
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <c:forEach var="specialty" items="${specialtyList}">
+            <c:url var="medicalSpecialtyUrl" value="/doctor-list"> <c:param name="specialty" value="${specialty}" /></c:url>
+            <li><a href="${medicalSpecialtyUrl}">${specialty}</a></li>
+        </c:forEach>
+    </ul>
+</div>
 
 
 <div class="div-complete-doctor-list">
+
 <c:forEach var="doctor" items="${doctors}">
 
   <div class="list-group w-50 p-3 div-doctor-list">
@@ -26,21 +42,9 @@
     </a>
   </div>
 
-
 </c:forEach>
+
 </div>
+
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />
 
-<%--
-<div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action align-items-start">
-    <div class="">
-      <h3 class="mb-1">${doctor.firstName} ${doctor.lastName}  |  ${doctor.medicalSpecialty}</h3>
-    </div>
-    <p class="mb-1">Address: ${doctor.address}</p>
-    <p class="mb-1">Phone number: ${doctor.phoneNumber}</p>
-    <p class="mb-1">Hourly rate: $${doctor.hourCost}</p>
-    <p class="mb-1">Rating: </p>
-    <button type="button" class="btn btn-info btn-sm">See Profile</button>
-  </a>
-</div>--%>

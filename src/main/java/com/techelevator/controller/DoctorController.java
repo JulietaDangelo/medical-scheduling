@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.model.dao.DoctorDAO;
 import com.techelevator.model.dto.Doctor;
+import com.techelevator.model.dto.SpecialtyFilter;
 import com.techelevator.model.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
@@ -47,10 +49,31 @@ public class DoctorController {
     }
 
     @RequestMapping("/doctor-list")
-    public String getAllDoctors(ModelMap modelMap) {
-        List<Doctor> doctor = doctorDAO.getAll();
+    public String getAllDoctors(HttpServletRequest request, ModelMap modelMap) {
+        List<Doctor> doctor = getDoctor(request);
         modelMap.put("doctors", doctor);
+        List<String> specialtyList = Doctor.getSpecialtyList();
+        modelMap.put("specialtyList", specialtyList);
         return "doctorList";
+    }
+
+
+    private List<Doctor> getDoctor(HttpServletRequest request) {
+        SpecialtyFilter filter = getFilters(request);
+        List<Doctor> doctors = doctorDAO.getAll(filter);
+
+        return doctors;
+    }
+
+    private SpecialtyFilter getFilters(HttpServletRequest request) {
+        SpecialtyFilter filter = new SpecialtyFilter();
+
+        if (request.getParameter("specialty") != null) {
+            String medicalSpecialty = String.valueOf(request.getParameter("specialty"));
+            filter.setSpecialty(medicalSpecialty);
+        }
+
+        return filter;
     }
 
 }

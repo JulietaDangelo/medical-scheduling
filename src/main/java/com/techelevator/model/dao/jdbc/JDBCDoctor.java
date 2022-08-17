@@ -3,6 +3,7 @@ package com.techelevator.model.dao.jdbc;
 
 import com.techelevator.model.dao.DoctorDAO;
 import com.techelevator.model.dto.Doctor;
+import com.techelevator.model.dto.SpecialtyFilter;
 import org.bouncycastle.util.encoders.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -18,10 +19,13 @@ import java.util.List;
 public class JDBCDoctor implements DoctorDAO {
 
     private final JdbcTemplate jdbcTemplate;
+
+    private static final String SELECT_PRODUCTS_SQL = "SELECT doctor_id, first_name, last_name, email, address, phone_number, medical_specialty, hour_cost FROM doctor WHERE medical_specialty = ?";
+
     @Autowired
     public JDBCDoctor(DataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);}
-
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    }
 
 
     @Override
@@ -38,6 +42,26 @@ public class JDBCDoctor implements DoctorDAO {
         return doctors;
     }
 
+    @Override
+    public List<Doctor> getAll(SpecialtyFilter filter) {
+        if (filter.getSpecialty() == null || filter.getSpecialty().equals("All")) {
+            return getAll();
+        }
+
+        String sql = SELECT_PRODUCTS_SQL;
+
+        List<String> filters = new ArrayList<>();
+        List<Object> queryParameters = new ArrayList<>();
+
+        if (filter.getSpecialty() != null) {
+            queryParameters.add(filter.getSpecialty());
+        }
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, queryParameters.toArray());
+
+        return mapRowSetToDoctors(results);
+    }
+
 
     @Override
     public Doctor getDoctorById(int id) {
@@ -47,8 +71,7 @@ public class JDBCDoctor implements DoctorDAO {
 
         SqlRowSet row = jdbcTemplate.queryForRowSet(query, id);
 
-        if(row.next())
-        {
+        if (row.next()) {
             return mapRowToDoctor(row);
         }
 
@@ -87,13 +110,13 @@ public class JDBCDoctor implements DoctorDAO {
     }
 
     @Override
-    public void saveDoctorUser(int doctorId,  String firstName, String lastName, String email, BigDecimal hourCost, String address, String phoneNumber, String medicalSpecialty) {
+    public void saveDoctorUser(int doctorId, String firstName, String lastName, String email, BigDecimal hourCost, String address, String phoneNumber, String medicalSpecialty) {
         jdbcTemplate.update("INSERT INTO doctor(doctor_id,  first_name, last_name, email, hour_cost, address, phone_number, medical_specialty ) " +
-                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?)", doctorId, firstName, lastName, email, hourCost, address, phoneNumber, medicalSpecialty);
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)", doctorId, firstName, lastName, email, hourCost, address, phoneNumber, medicalSpecialty);
     }
 
-    private Doctor mapRowToDoctor(SqlRowSet row)
-    {
+
+    private Doctor mapRowToDoctor(SqlRowSet row) {
         Doctor doctor = new Doctor();
 
         int id = row.getInt("doctor_id");
@@ -116,4 +139,13 @@ public class JDBCDoctor implements DoctorDAO {
 
         return doctor;
     }
+
+    private List<Doctor> mapRowSetToDoctors(SqlRowSet results) {
+        List<Doctor> doctors = new ArrayList<>();
+        while (results.next()) {
+            doctors.add(mapRowToDoctor(results));
+        }
+        return doctors;
+    }
+
 }

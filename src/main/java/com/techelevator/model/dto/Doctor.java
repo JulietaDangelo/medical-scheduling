@@ -6,6 +6,8 @@ import org.hibernate.validator.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Doctor {
 
@@ -105,5 +107,24 @@ public class Doctor {
 
     public void setHourCost(BigDecimal hourCost) {
         this.hourCost = hourCost;
+    }
+
+    public static List<String> getSpecialtyList() {
+        List<String> medicalSpecialty = new ArrayList<>();
+        medicalSpecialty.add("All");
+        medicalSpecialty.add("Allergy and immunology");
+        medicalSpecialty.add("Anesthesiology");
+        medicalSpecialty.add("Cardiology");
+        medicalSpecialty.add("Dermatology");
+        medicalSpecialty.add("Endocrinology");
+        medicalSpecialty.add("Gastroenterology");
+        medicalSpecialty.add("Geriatric Medicine");
+        medicalSpecialty.add("Gynecology");
+        medicalSpecialty.add("Sports Medicine");
+        medicalSpecialty.add("Neurology");
+        medicalSpecialty.add("Ophthalmology");
+        medicalSpecialty.add("Pediatrician");
+        medicalSpecialty.add("Psychiatry");
+        return medicalSpecialty;
     }
 }

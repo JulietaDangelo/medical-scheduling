@@ -10,8 +10,8 @@ VALUES ('Carreyra12', 'Password1', 'patient', '4141414141')
      , ('Costanzo12', 'Password3', 'doctor', '414145321');
 
 INSERT INTO doctor(doctor_id, first_name, last_name, email, address, phone_number, medical_specialty, hour_cost)
-VALUES ( (SELECT id FROM app_user WHERE user_name = 'DAngelo12'), 'Julieta', 'DAngelo', 'juli@gmail.com', 'hello 234', '4141414141', 'Dermatologist', '100')
-      , ( (SELECT id FROM app_user WHERE user_name = 'Costanzo12'), 'Sofia', 'Costanzo', 'sofi@gmail.com', 'bye 1234', '4141414122', 'Cardiologist', '10');
+VALUES ( (SELECT id FROM app_user WHERE user_name = 'DAngelo12'), 'Julieta', 'DAngelo', 'juli@gmail.com', 'hello 234', '4141414141', 'Dermatology', '100')
+      , ( (SELECT id FROM app_user WHERE user_name = 'Costanzo12'), 'Sofia', 'Costanzo', 'sofi@gmail.com', 'bye 1234', '4141414122', 'Cardiology', '10');
 
 INSERT INTO patient(patient_id, first_name, last_name, age, gender, email)
 VALUES ( (SELECT id FROM app_user WHERE user_name = 'Carreyra12'), 'Magali', 'Carreyra', '23', 'Female', 'maga@gmail.com');
