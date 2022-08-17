@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
 
@@ -6,35 +7,40 @@
 <script src="${validationJs}"></script>
 
 <c:url var="formAction" value="/users" />
-<form method="POST" action="${formAction}">
-<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+<form:form modelAttribute="user" method="POST" action="${formAction}">
+	<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
 	<div class="row">
 		<div class="col-sm-4"></div>
 		<div class="col-sm-4">
+			<h1>Sign Up</h1>
 			<div class="form-group">
-				<label for="userName">User Name: </label>
-				<input type="text" id="userName" name="userName" placeHolder="User Name" class="form-control" />
+				<form:label path="userName">User Name: </form:label>
+				<form:input path="userName" cssClass="form-control" />
+				<form:errors path="userName" cssClass="error" />
+				<label id="userNameAvailableError" class="error">The UserName is not available.</label>
 			</div>
 			<div class="form-group">
-				<label for="password">Password: </label>
-				<input type="password" id="password" name="password" placeHolder="Password" class="form-control" />
+				<form:label path="password">Password: </form:label>
+				<form:password path="password" cssClass="form-control" />
+				<form:errors path="password" cssClass="error" />
 			</div>
 			<div class="form-group">
-				<label for="confirmPassword">Confirm Password: </label>
-				<input type="password" id="confirmPassword" name="confirmPassword" placeHolder="Re-Type Password" class="form-control" />	
+				<form:label path="confirmPassword">Confirm Password: </form:label>
+				<form:password path="confirmPassword" cssClass="form-control" />
+				<form:errors path="confirmPassword" cssClass="error" />
 			</div>
 			<div class="form-group">
-				<label for="role">Type:</label>
-				<select name="role"	id="role">
-					<option value="Doctor">Doctor</option>
-					<option value="Patient">Patient</option>
-				</select>
+				<form:label path="role">Type: </form:label>
+				<form:select  path="role">
+					<form:option value="doctor">Doctor</form:option>
+					<form:option value="patient">Patient</form:option>
+				</form:select>
 			</div>
-			<button type="submit" class="btn btn-primary">Next</button>
+			<button type="submit" id="newUserButton" class="btn btn-primary">Create User</button>
 		</div>
 		<div class="col-sm-4"></div>
 	</div>
-</form>
+</form:form>
 		
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />
 

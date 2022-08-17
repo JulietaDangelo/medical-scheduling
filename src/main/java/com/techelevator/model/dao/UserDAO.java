@@ -12,4 +12,6 @@ public interface UserDAO {
 
 	public String getUserSpecialty(String userName);
 
+	public boolean isUserNameAvailable(String userName);
+
 }

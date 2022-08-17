@@ -28,6 +28,7 @@
 <div class="row">
 	<div class="col-sm-4"></div>
 	<div class="col-sm-4">
+		<h1>Log In</h1>
 		<c:url var="formAction" value="/login" />
 		<form method="POST" action="${formAction}">
 		<input type="hidden" name="destination" value="${param.destination}"/>

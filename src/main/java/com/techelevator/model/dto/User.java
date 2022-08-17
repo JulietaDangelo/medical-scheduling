@@ -1,5 +1,6 @@
 package com.techelevator.model.dto;
 
+import com.techelevator.model.dao.UserDAO;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.AssertTrue;
@@ -27,17 +28,14 @@ public class User {
 
 	private boolean isPasswordConfirmed;
 
-
 	@AssertTrue(message = "Both passwords must be equal")
-	public boolean getPasswordUnique()
+	public boolean getPasswordConfirmed()
 	{
 		if(password != null) {
 			return(password.equalsIgnoreCase(confirmPassword));
 		}
 		return true;
 	}
-
-
 
 	public String getUserName() {
 		return userName;
@@ -76,6 +74,14 @@ public class User {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public boolean isDoctor() {
+		return role.equalsIgnoreCase("doctor");
+	}
+
+	public boolean isPatient() {
+		return role.equalsIgnoreCase("patient");
 	}
 
 
