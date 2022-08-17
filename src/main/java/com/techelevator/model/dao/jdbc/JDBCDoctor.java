@@ -28,7 +28,7 @@ public class JDBCDoctor implements DoctorDAO {
     public List<Doctor> getAll() {
         List<Doctor> doctors = new ArrayList<>();
 
-        String sql = "SELECT doctor_id,user_name, first_name, last_name, email, address, phone_number, medical_specialty, hour_cost " +
+        String sql = "SELECT doctor_id, first_name, last_name, email, address, phone_number, medical_specialty, hour_cost " +
                 "FROM doctor ;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
@@ -41,7 +41,7 @@ public class JDBCDoctor implements DoctorDAO {
 
     @Override
     public Doctor getDoctorById(int id) {
-        String query = "SELECT  doctor_id,user_name, first_name, last_name, email, address, phone_number, medical_specialty, hour_cost " +
+        String query = "SELECT  doctor_id, first_name, last_name, email, address, phone_number, medical_specialty, hour_cost " +
                 "FROM doctor\n" +
                 "WHERE doctor_id = ?;";
 
@@ -59,7 +59,7 @@ public class JDBCDoctor implements DoctorDAO {
     @Override
     public List<Doctor> getDoctorBySpecialty(String specialty) {
         List<Doctor> doctors = new ArrayList<>();
-        String query = "SELECT  doctor_id,user_name, first_name, last_name, email, address, phone_number, medical_specialty, hour_cost " +
+        String query = "SELECT  doctor_id, first_name, last_name, email, address, phone_number, medical_specialty, hour_cost " +
                 "FROM doctor\n" +
                 "WHERE medical_specialty = ?;";
 
@@ -97,7 +97,6 @@ public class JDBCDoctor implements DoctorDAO {
         Doctor doctor = new Doctor();
 
         int id = row.getInt("doctor_id");
-        String userName = row.getString("user_name");
         String firstName = row.getString("first_name");
         String lastName = row.getString("last_name");
         String email = row.getString("email");
@@ -107,7 +106,6 @@ public class JDBCDoctor implements DoctorDAO {
         BigDecimal hourCost = row.getBigDecimal("hour_cost");
 
         doctor.setDoctorId(id);
-        doctor.setUserName(userName);
         doctor.setFirstName(firstName);
         doctor.setLastName(lastName);
         doctor.setEmail(email);

@@ -9,7 +9,8 @@
     <div class="homepage-text">
         <h1>Welcome to iSchedule</h1>
         <p>The best medical professionals in one place<br>Start now</p>
-        <button class="btn btn-primary homepage-button">Find a Doctor</button>
+        <c:url var="doctorList" value="/doctor-list" />
+        <a href="${doctorList}"><button class="btn btn-primary homepage-button">Find a Doctor</button></a>
     </div>
 </section>
 

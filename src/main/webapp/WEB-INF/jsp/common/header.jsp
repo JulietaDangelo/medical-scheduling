@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Critter</title>
+<title>iSchedule | Medical Appointments</title>
 <c:url var="bootstrapCss" value="/css/bootstrap.min.css" />
 <c:url var="siteCss" value="/css/site.css" />
 
@@ -60,7 +60,7 @@
 					<li class="nav-item"><a class="nav-link px-2 link-secondary" href="${link4}">My profile</a></li>
 				</c:if>
 				<c:if test="${not empty currentUser && currentUserRole == 'patient'}">
-					<c:url var="link1" value="/" />
+					<c:url var="link1" value="/doctor-list" />
 					<li class="nav-item"><a class="nav-link px-2 link-secondary" href="${link1}">Doctors List</a></li>
 					<c:url var="link2" value="/" />
 					<li class="nav-item"><a class="nav-link px-2 link-secondary" href="${link2}">Appointments</a></li>
@@ -68,7 +68,7 @@
 					<li class="nav-item"><a class="nav-link px-2 link-secondary" href="${link3}">My profile</a></li>
 				</c:if>
 				<c:if test="${empty currentUser}">
-					<c:url var="link1" value="/" />
+					<c:url var="link1" value="/doctor-list" />
 					<li class="nav-item"><a class="nav-link px-2 link-secondary" href="${link1}">Doctors List</a></li>
 				</c:if>
 			</ul>

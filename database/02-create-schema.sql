@@ -32,7 +32,7 @@ CREATE TABLE doctor (
     address varchar(50) NOT NULL,
     phone_number varchar(20) NOT NULL,
     medical_specialty varchar(50) NOT NULL,
-    hour_cost Money NOT NULL
+    hour_cost NUMERIC(10,2) NOT NULL
 );
 
 CREATE TABLE appointment (
@@ -49,7 +49,7 @@ CREATE TABLE prescription (
     patient_id Integer,
     doctor_id Integer,
     prescription_name varchar(20) NOT NULL,
-    cost Money NOT NULL
+    cost NUMERIC(10,2) NOT NULL
 );
 
 CREATE TABLE review (

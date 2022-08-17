@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class DoctorController {
@@ -42,6 +43,13 @@ public class DoctorController {
         doctorDAO.saveDoctorUser(user.getId(), doctor.getFirstName(), doctor.getLastName(), doctor.getEmail(), doctor.getHourCost(), doctor.getAddress(), doctor.getPhoneNumber(), doctor.getMedicalSpecialty());
 
         return  "redirect:/";
+    }
+
+    @RequestMapping("/doctor-list")
+    public String getAllDoctors(ModelMap modelMap) {
+        List<Doctor> doctor = doctorDAO.getAll();
+        modelMap.put("doctors", doctor);
+        return "doctorList";
     }
 
 }
