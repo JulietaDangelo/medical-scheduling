@@ -8,7 +8,7 @@
 
 <h2 class="text-center title-doctor-list">Doctor List</h2>
 
-<div class="dropdown">
+<div class="dropdown dropdown-specialty">
     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         Filter by speciality
         <span class="caret"></span>

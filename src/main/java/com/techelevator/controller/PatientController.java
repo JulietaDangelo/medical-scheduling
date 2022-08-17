@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -46,5 +47,11 @@ public class PatientController {
         patientDAO.savePatientUser(user.getId(), patient.getFirstName(), patient.getLastName(), patient.getAge(), patient.getGender(), patient.getEmail());
 
         return  "redirect:/";
+    }
+
+    @RequestMapping(path="/patient/profile")
+    public String profilePagePatient(HttpServletRequest request, HttpSession session) {
+
+        return "patient/patientProfile";
     }
 }
