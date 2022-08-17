@@ -21,10 +21,7 @@ public class Patient {
     @NotBlank(message = "Your Email is required")
     private String email;
     @NotNull(message = "Your Age is required")
-    @Pattern.List({
-            @Pattern(regexp=".*\\d.*", message="Must be only numbers")
-    })
-    private int age;
+    private Integer age;
 
 
     @NotBlank(message = "Your Gender is required")
@@ -73,11 +70,11 @@ public class Patient {
         this.email = email;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
