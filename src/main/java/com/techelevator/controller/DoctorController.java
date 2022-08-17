@@ -30,6 +30,8 @@ public class DoctorController {
 
     @RequestMapping(path="/users/new/doctor", method= RequestMethod.GET)
     public String displayNewDoctorForm(ModelMap modelHolder) {
+        List<String> specialtyList = Doctor.getSpecialtyList();
+        modelHolder.put("specialtyList", specialtyList);
         return "doctor/newDoctor";
     }
 
