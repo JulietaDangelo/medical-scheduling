@@ -10,9 +10,6 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-
-
-
 <c:url var="formAction" value="/users/new/doctor" />
 <form method="POST" action="${formAction}">
     <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
@@ -42,13 +39,11 @@
             <div class="form-group">
                 <label for="medicalSpecialty">Medical Specialty:</label>
                 <select name="medicalSpecialty"	id="medicalSpecialty">
-                    <option value="Anesthesiology ">Anesthesiology </option>
-                    <option value="Dermatology">Dermatology</option>
-                    <option value="Pediatric Dermatology">Pediatric Dermatology</option>
-                    <option value="Neuroradiology">Neuroradiology</option>
-                    <option value="Sports Medicine">Sports Medicine</option>
-                    <option value="Hematology">Hematology</option>
-                    <option value="Geriatric Medicine">Geriatric Medicine</option>
+                    <c:forEach var="specialty" items="${specialtyList}">
+                        <c:if test="${!specialty.equals('All')}">
+                            <option value="${specialty}">${specialty} </option>
+                        </c:if>
+                    </c:forEach>
                 </select>
             </div>
             <div class="form-group">
