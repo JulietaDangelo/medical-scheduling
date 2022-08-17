@@ -38,6 +38,7 @@
           <div class="doctor-data-info"><div>Hourly rate:</div> $${doctor.hourCost}</div>
           <div class="doctor-data-info"><div>Rating:</div></div>
       </div>
+<%--        <c:url var="seeDoctorProfile" value="/doctor-list"> <c:param name="specialty" value="${specialty}" /></c:url>--%>
       <button type="button" class="btn btn-info btn-sm button-doctor-list">See Profile</button>
     </a>
   </div>
