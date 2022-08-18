@@ -23,6 +23,7 @@
         <li class="list-group-item"><strong>Phone Number: </strong> ${doctor.phoneNumber}</li>
         <li class="list-group-item"><strong>Medical Specialty: </strong> ${doctor.medicalSpecialty}</li>
         <li class="list-group-item"><strong>Hourly Cost: </strong>$ ${doctor.hourCost}</li>
+        <li class="list-group-item"><strong>Available Hours: </strong> Monday to Friday, from ${availability.startingTime} to ${availability.endingTime}</li>
     </ul>
 </div>
 

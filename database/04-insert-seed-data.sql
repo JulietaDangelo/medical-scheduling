@@ -16,5 +16,10 @@ VALUES ( (SELECT id FROM app_user WHERE user_name = 'DAngelo12'), 'Julieta', 'DA
 INSERT INTO patient(patient_id, first_name, last_name, age, gender, email)
 VALUES ( (SELECT id FROM app_user WHERE user_name = 'Carreyra12'), 'Magali', 'Carreyra', '23', 'Female', 'maga@gmail.com');
 
+INSERT INTO availability(doctor_id, starting_time, ending_time)
+VALUES(2, '09:00', '17:00');
+
+INSERT INTO appointment(starting_time, ending_time, day_of_week, patient_id, doctor_id)
+VALUES ('09:00', '10:00', 'Monday', 1, 2);
 
 COMMIT;
