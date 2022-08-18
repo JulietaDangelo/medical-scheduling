@@ -10,16 +10,20 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<h1>Personal Profile</h1>
+<h1 class="text-center title-doctor-list">Personal Profile</h1>
 
-<h2>Your Personal Information</h2>
+<h2 class="text-center title-doctor-list">Your Personal Information</h2>
 
-<p><strong>First Name: </strong> ${doctor.firstName}</p>
-<p><strong>Last Name: </strong> ${doctor.lastName}</p>
-<p><strong>Email: </strong> ${doctor.email}</p>
-<p><strong>Address: </strong> ${doctor.address}</p>
-<p><strong>Phone Number: </strong> ${doctor.phoneNumber}</p>
-<p><strong>Medical Specialty: </strong> ${doctor.medicalSpecialty}</p>
-<p><strong>Hourly Cost: </strong> ${doctor.hourCost}</p>
+<div class="table-profile">
+    <ul class="list-group">
+        <li class="list-group-item"><strong>First Name: </strong> ${doctor.firstName}</li>
+        <li class="list-group-item"><strong>Last Name: </strong> ${doctor.lastName}</li>
+        <li class="list-group-item"><strong>Email: </strong> ${doctor.email}</li>
+        <li class="list-group-item"><strong>Address: </strong> ${doctor.address}</li>
+        <li class="list-group-item"><strong>Phone Number: </strong> ${doctor.phoneNumber}</li>
+        <li class="list-group-item"><strong>Medical Specialty: </strong> ${doctor.medicalSpecialty}</li>
+        <li class="list-group-item"><strong>Hourly Cost: </strong>$ ${doctor.hourCost}</li>
+    </ul>
+</div>
 
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />

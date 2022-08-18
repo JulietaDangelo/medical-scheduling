@@ -83,6 +83,24 @@
     text-decoration: none;
 }
 
+.table-profile {
+    display: flex;
+    justify-content: center;
+}
+
+.table-profile ul {
+    width: 50%;
+}
+
+.table-profile ul li {
+    display: flex;
+    justify-content: center;
+}
+
+.table-profile ul li strong{
+    padding-right: 5px;
+}
+
 :root {
     --bs-blue: #0d6efd;
     --bs-indigo: #6610f2;

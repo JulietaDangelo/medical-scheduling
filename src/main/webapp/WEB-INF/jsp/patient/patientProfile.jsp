@@ -5,22 +5,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-<h1>Personal Profile</h1>
+<h1 class="text-center title-doctor-list">Personal Profile</h1>
 
-<h2>Your Personal Information</h2>
+<h2 class="text-center title-doctor-list">Your Personal Information</h2>
 
-
-<label for="firstName">First Name:</label>
-<input id="firstName" name="firstName" type="text" value="${patient.firstName}">
-<label for="lastName">Last Name:</label>
-<input id="lastName" name="lastName" type="text" value="${patient.lastName}">
-<label for="email">Email:</label>
-<input id="email" name="email" type="text" value="${patient.email}">
-<label for="age">Age:</label>
-<input id="age" name="age" type="number" value="${patient.age}">
-<label for="gender">Gender:</label>
-<input id="gender" name="gender" type="text" value="${patient.gender}">
-
+<div class="table-profile">
+    <ul class="list-group">
+        <li class="list-group-item"><strong>First Name:  </strong>  ${patient.firstName}</li>
+        <li class="list-group-item"><strong>Last Name:  </strong>  ${patient.lastName}</li>
+        <li class="list-group-item"><strong>Email:  </strong>  ${patient.email}</li>
+        <li class="list-group-item"><strong>Age:  </strong>  ${patient.age}</li>
+        <li class="list-group-item"><strong>Gender:  </strong>  ${patient.gender}</li>
+    </ul>
+</div>
 
 
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />
