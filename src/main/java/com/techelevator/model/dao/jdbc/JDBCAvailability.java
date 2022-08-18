@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Component
@@ -45,6 +46,12 @@ public class JDBCAvailability implements AvailabilityDAO {
                 "WHERE doctor_id = ?;";
 
         jdbcTemplate.update(sql, availability.getStartingTime(), availability.getEndingTime(), availability.getDoctorId());
+    }
+
+    @Override
+    public void saveAvailability(int doctorId, LocalTime startingTime, LocalTime endingTime) {
+        jdbcTemplate.update("INSERT INTO availability(doctor_id, starting_time, ending_time) " +
+                "VALUES (?, ?, ?)", doctorId, startingTime, endingTime);
     }
 
     private Availability mapRowToAvailabilty(SqlRowSet row) {
