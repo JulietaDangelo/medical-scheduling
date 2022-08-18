@@ -39,13 +39,13 @@ public class JDBCAvailability implements AvailabilityDAO {
     }
 
     @Override
-    public void updateAvailability(int id, Availability availability) {
+    public void updateAvailability(int id, LocalTime startingTime, LocalTime endingTime) {
         String sql = "UPDATE availability\n" +
                 "SET starting_time = ?\n" +
                 "    , ending_time = ?\n" +
                 "WHERE doctor_id = ?;";
 
-        jdbcTemplate.update(sql, availability.getStartingTime(), availability.getEndingTime(), availability.getDoctorId());
+        jdbcTemplate.update(sql, startingTime, endingTime, id);
     }
 
     @Override
