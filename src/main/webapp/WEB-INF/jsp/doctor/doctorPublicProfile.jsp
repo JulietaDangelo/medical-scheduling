@@ -21,5 +21,6 @@
 <p><strong>Phone Number: </strong> ${doctor.phoneNumber}</p>
 <p><strong>Medical Specialty: </strong> ${doctor.medicalSpecialty}</p>
 <p><strong>Hourly Cost: </strong> $${doctor.hourCost}</p>
+<p><strong>Available Hours: </strong> Monday to Friday, from ${availability.startingTime} to ${availability.endingTime}</p>
 
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />

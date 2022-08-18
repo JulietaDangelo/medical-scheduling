@@ -19,9 +19,8 @@ CREATE TABLE app_user (
 CREATE TABLE availability (
     availability_id SERIAL PRIMARY KEY,
     doctor_id Integer,
-    starting_time timestamp NOT NULL,
-    ending_time timestamp NOT NULL,
-    is_taken boolean NOT NULL
+    starting_time time NOT NULL,
+    ending_time time NOT NULL
 );
 
 CREATE TABLE doctor (
@@ -37,8 +36,9 @@ CREATE TABLE doctor (
 
 CREATE TABLE appointment (
     appointment_id SERIAL PRIMARY KEY,
-    starting_time timestamp NOT NULL,
-    ending_time timestamp NOT NULL,
+    starting_time time NOT NULL,
+    ending_time time NOT NULL,
+    day_of_week varchar(30) NOT NULL,
     patient_id Integer,
     doctor_id Integer
 );
