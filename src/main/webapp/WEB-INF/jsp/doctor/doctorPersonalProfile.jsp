@@ -29,6 +29,10 @@
     <a  href="${updateHours}">
         <button type="button" class="btn btn-info btn-sm button-doctor-list"  >Update Hours</button>
     </a>
+    <c:url var="updateInfo" value="/users/update/doctor"/>
+    <a  href="${updateInfo}">
+        <button type="button" class="btn btn-info btn-sm button-doctor-list"  >Update Information</button>
+    </a>
 
 </div>
 

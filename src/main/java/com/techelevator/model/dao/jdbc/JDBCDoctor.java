@@ -96,7 +96,7 @@ public class JDBCDoctor implements DoctorDAO {
     }
 
     @Override
-    public void update(int id, Doctor doctor) {
+    public void update(int id, String email, String address, String phoneNumber, String specialty, BigDecimal hourCost) {
         String sql = "UPDATE doctor\n" +
                 "SET email = ?\n" +
                 "    , address = ?\n" +
@@ -105,7 +105,7 @@ public class JDBCDoctor implements DoctorDAO {
                 "    , hour_cost = ?\n" +
                 "WHERE doctor_id = ?;";
 
-        jdbcTemplate.update(sql, doctor.getEmail(), doctor.getAddress(), doctor.getPhoneNumber(), doctor.getMedicalSpecialty(), doctor.getHourCost(), id);
+        jdbcTemplate.update(sql, email, address, phoneNumber, specialty, hourCost, id);
 
     }
 
