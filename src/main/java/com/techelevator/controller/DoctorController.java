@@ -110,7 +110,7 @@ public class DoctorController {
         return "doctor/doctorPublicProfile";
     }
 
-    @RequestMapping("/doctor/profile/update", method= RequestMethod.GET)
+    @RequestMapping(path="/doctor/profile/update", method= RequestMethod.GET)
     public String displayHours(HttpServletRequest request, HttpSession session) {
         User user = (User)session.getAttribute("currentUser");
         int id = user.getId();
