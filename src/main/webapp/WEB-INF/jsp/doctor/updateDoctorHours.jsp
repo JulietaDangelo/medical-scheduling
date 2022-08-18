@@ -15,42 +15,24 @@
 <p><strong>Available Hours: </strong> Monday to Friday, from ${availability.startingTime} to ${availability.endingTime}</p>
 
 <c:url var="formAction" value="/users/profile/update"/>
-<form modelAttribute="availability" method="POST" action="${formAction}">
+<form method="POST" action="${formAction}" modelAttribute="availability">
     <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
     <div class="row">
         <div class="col-sm-4">
             <div class="form-group">
-                <label path="startingTime" for="startingTime">From: </label>
-                <select  path="startingTime" id="startingTime" name="startingTime">
-                    <option value="08:00">08:00</option>
-                    <option value="09:00">09:00</option>
-                    <option value="10:00">10:00</option>
-                    <option value="11:00">11:00</option>
-                    <option value="12:00">12:00</option>
-                    <option value="13:00">13:00</option>
-                    <option value="14:00">14:00</option>
-                    <option value="15:00">15:00</option>
-                    <option value="16:00">16:00</option>
-                    <option value="17:00">17:00</option>
-                    <option value="18:00">18:00</option>
-                </select>
+
+                <label for="startingTime">From: </label>
+
+                <input type="time" id="startingTime" name="startingTime"
+                       min="09:00" max="18:00" required>
             </div>
 
             <div class="form-group">
-                <label path="endingTime" for="endingTime">To: </label>
-                <select  path="endingTime" id="endingTime" name="endingTime">
-                    <option value="08:00">08:00</option>
-                    <option value="09:00">09:00</option>
-                    <option value="10:00">10:00</option>
-                    <option value="11:00">11:00</option>
-                    <option value="12:00">12:00</option>
-                    <option value="13:00">13:00</option>
-                    <option value="14:00">14:00</option>
-                    <option value="15:00">15:00</option>
-                    <option value="16:00">16:00</option>
-                    <option value="17:00">17:00</option>
-                    <option value="18:00">18:00</option>
-                </select>
+
+                <label for="endingTime">From: </label>
+
+                <input type="time" id="endingTime" name="endingTime"
+                       min="09:00" max="18:00" required>
             </div>
             <button type="submit" class="btn btn-primary">Update Hours</button>
         </div>

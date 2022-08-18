@@ -6,7 +6,6 @@ public class Availability {
 
     private int availabilityId;
     private int doctorId;
-    private String dayOfWeek;
     private LocalTime startingTime;
     private LocalTime endingTime;
 
@@ -24,14 +23,6 @@ public class Availability {
 
     public void setDoctorId(int doctorId) {
         this.doctorId = doctorId;
-    }
-
-    public String getDayOfWeek() {
-        return dayOfWeek;
-    }
-
-    public void setDayOfWeek(String dayOfWeek) {
-        this.dayOfWeek = dayOfWeek;
     }
 
     public LocalTime getStartingTime() {

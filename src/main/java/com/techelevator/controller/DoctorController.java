@@ -137,9 +137,9 @@ public class DoctorController {
         }
         User user = (User)session.getAttribute("currentUser");
 
-        availabilityDAO.updateAvailability(availability.getAvailabilityId(), availability);
+        availabilityDAO.updateAvailability(user.getId(), availability.getStartingTime(), availability.getEndingTime());
 
-        return  "redirect:/users/profile";
+        return  "redirect:/doctor/profile";
     }
 
 
@@ -149,12 +149,9 @@ public class DoctorController {
         int id = user.getId();
 
         Doctor doctor = doctorDAO.getDoctorById(id);
-//        Availability availability = availabilityDAO.getAvailabilityByDoctorId(id);
+
         model.addAttribute("availability", new Availability());
         request.setAttribute("doctor", doctor);
-//        request.setAttribute("availability", availability);
-
-
 
         return "doctor/doctorsAvailability";
     }
