@@ -15,7 +15,7 @@
 <h1>Indicate your available hours from Monday to Friday </h1>
 
 <c:url var="formAction" value="/users/new/doctor/availability"/>
-<form method="POST" action="${formAction}">
+<form method="POST" action="${formAction}" modelAttribute="availability">
     <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
     <div class="row">
         <div class="col-sm-4"></div>

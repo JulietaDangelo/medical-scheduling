@@ -15,7 +15,7 @@
 <p><strong>Available Hours: </strong> Monday to Friday, from ${availability.startingTime} to ${availability.endingTime}</p>
 
 <c:url var="formAction" value="/users/profile/update"/>
-<form modelAttribute="availability" method="POST" action="${formAction}">
+<form method="POST" action="${formAction}">
     <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
     <div class="row">
         <div class="col-sm-4"></div>
