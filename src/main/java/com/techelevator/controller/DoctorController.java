@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.print.Doc;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -87,6 +88,18 @@ public class DoctorController {
         }
 
         return filter;
+    }
+
+    @RequestMapping("/doctor-list/public-profile")
+    public String details(HttpServletRequest request)
+    {
+        int id = Integer.parseInt(request.getParameter("id"));
+
+        Doctor doctor = doctorDAO.getDoctorById(id);
+
+        request.setAttribute("doctor", doctor);
+
+        return "doctor/doctorPublicProfile";
     }
 
 }
