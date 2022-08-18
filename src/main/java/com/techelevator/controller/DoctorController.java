@@ -8,6 +8,7 @@ import com.techelevator.model.dto.SpecialtyFilter;
 import com.techelevator.model.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -52,7 +53,7 @@ public class DoctorController {
 
         doctorDAO.saveDoctorUser(user.getId(), doctor.getFirstName(), doctor.getLastName(), doctor.getEmail(), doctor.getHourCost(), doctor.getAddress(), doctor.getPhoneNumber(), doctor.getMedicalSpecialty());
 
-        return  "redirect:/";
+        return  "redirect:/users/new/doctor/availability";
     }
 
     @RequestMapping("/doctor-list")
@@ -110,7 +111,7 @@ public class DoctorController {
         return "doctor/doctorPublicProfile";
     }
 
-    @RequestMapping("/doctor/profile/update", method= RequestMethod.GET)
+    @RequestMapping(path= "/doctor/profile/update", method= RequestMethod.GET)
     public String displayHours(HttpServletRequest request, HttpSession session) {
         User user = (User)session.getAttribute("currentUser");
         int id = user.getId();
@@ -141,4 +142,37 @@ public class DoctorController {
         return  "redirect:/users/profile";
     }
 
+
+    @RequestMapping(path= "/users/new/doctor/availability", method= RequestMethod.GET)
+    public String setAvailableHours(HttpServletRequest request, HttpSession session, Model model) {
+        User user = (User)session.getAttribute("currentUser");
+        int id = user.getId();
+
+        Doctor doctor = doctorDAO.getDoctorById(id);
+//        Availability availability = availabilityDAO.getAvailabilityByDoctorId(id);
+        model.addAttribute("availability", new Availability());
+        request.setAttribute("doctor", doctor);
+//        request.setAttribute("availability", availability);
+
+
+
+        return "doctor/doctorsAvailability";
+    }
+
+    @RequestMapping(path="/users/new/doctor/availability", method=RequestMethod.POST)
+    public String updateAvailableHours(@Valid @ModelAttribute Availability availability,
+                              BindingResult result,
+                              RedirectAttributes flash,
+                              HttpSession session) {
+        if(result.hasErrors()) {
+            flash.addFlashAttribute("availability", availability);
+            flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "availability", result);
+            return "redirect:/users/profile/update";
+        }
+        User user = (User)session.getAttribute("currentUser");
+
+        availabilityDAO.saveAvailability(user.getId(), availability.getStartingTime(), availability.getEndingTime());
+
+        return  "redirect:/";
+    }
 }
