@@ -50,19 +50,35 @@
     font-weight: 700;
 }
 
-.div-complete-doctor-list {
+.doctor-list-centre{
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
+}
+
+.div-complete-doctor-list {
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-template-rows: repeat(2, 2fr);
+    grid-gap: 20px;
 }
 
 .div-doctor-list {
     display: inline-block!important;
-    width: 40%;
+}
+
+.div-button-doctor-list {
+    display: flex;
+    justify-content: center;
 }
 
 .button-doctor-list {
     margin-bottom: 15px;
+}
+
+.button-doctor-list a {
+    text-decoration: none;
+    color: #fff;
 }
 
 .title-doctor-list {
@@ -99,6 +115,10 @@
 
 .table-profile ul li strong{
     padding-right: 5px;
+}
+
+.div-button-update {
+    display: inline;
 }
 
 :root {

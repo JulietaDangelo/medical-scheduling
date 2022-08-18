@@ -23,13 +23,13 @@
         <li class="list-group-item"><strong>Phone Number: </strong> ${doctor.phoneNumber}</li>
         <li class="list-group-item"><strong>Medical Specialty: </strong> ${doctor.medicalSpecialty}</li>
         <li class="list-group-item"><strong>Hourly Cost: </strong>$ ${doctor.hourCost}</li>
-        <li class="list-group-item"><strong>Available Hours: </strong> Monday to Friday, from ${availability.startingTime} to ${availability.endingTime}</li>
+        <li class="list-group-item">
+            <strong>Available Hours: </strong> Monday to Friday, from ${availability.startingTime} to ${availability.endingTime}
+        </li>
     </ul>
-    <c:url var="updateHours" value="/doctor/profile/update"/>
-    <a  href="${updateHours}">
-        <button type="button" class="btn btn-info btn-sm button-doctor-list"  >Update Hours</button>
-    </a>
-
 </div>
-
+<span class="div-button-doctor-list">
+    <c:url var="updateHours" value="/doctor/profile/update"/>
+    <button type="button" class="btn btn-info button-doctor-list"><a href="${updateHours}">Update Hours</a></button>
+</span>
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />

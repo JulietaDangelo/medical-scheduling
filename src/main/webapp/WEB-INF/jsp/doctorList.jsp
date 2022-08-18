@@ -21,31 +21,33 @@
     </ul>
 </div>
 
+<div class="doctor-list-centre">
+    <div class="div-complete-doctor-list">
 
-<div class="div-complete-doctor-list">
+        <c:forEach var="doctor" items="${doctors}">
 
-<c:forEach var="doctor" items="${doctors}">
+            <div class="list-group w-50 p-3 div-doctor-list">
+                <c:url var="link1" value="/doctor-list/public-profile?id=${doctor.doctorId}" />
+                <a href="#" class="list-group-item list-group-item-action align-items-start">
+                    <div class="doctor-list-tag">
+                        <h3 class="mb-1">${doctor.firstName} ${doctor.lastName}</h3>
+                        <h4 class="card-subtitle mb-2 text-muted">| ${doctor.medicalSpecialty}</h4>
+                    </div>
+                    <div class="doctor-data">
+                        <div class="doctor-data-info"><div>Address:</div> ${doctor.address}</div>
+                        <div class="doctor-data-info"><div>Phone number:</div> ${doctor.phoneNumber}</div>
+                        <div class="doctor-data-info"><div>Hourly rate:</div> $${doctor.hourCost}</div>
+                        <div class="doctor-data-info"><div>Rating:</div></div>
+                    </div>
+                    <button type="button" class="btn btn-info btn-sm button-doctor-list" href="${link1}" >See Profile</button>
+                </a>
+            </div>
 
-  <div class="list-group w-50 p-3 div-doctor-list">
-      <c:url var="link1" value="/doctor-list/public-profile?id=${doctor.doctorId}" />
-    <a href="${link1}" class="list-group-item list-group-item-action align-items-start">
-      <div class="">
-        <h3 class="mb-1">${doctor.firstName} ${doctor.lastName}</h3>
-          <h4 class="card-subtitle mb-2 text-muted">| ${doctor.medicalSpecialty}</h4>
-      </div>
-      <div class="doctor-data">
-          <div class="doctor-data-info"><div>Address:</div> ${doctor.address}</div>
-          <div class="doctor-data-info"><div>Phone number:</div> ${doctor.phoneNumber}</div>
-          <div class="doctor-data-info"><div>Hourly rate:</div> $${doctor.hourCost}</div>
-          <div class="doctor-data-info"><div>Rating:</div></div>
-      </div>
-        <button type="button" class="btn btn-info btn-sm button-doctor-list" href="${link1}" >See Profile</button>
-    </a>
-  </div>
+        </c:forEach>
 
-</c:forEach>
-
+    </div>
 </div>
+
 
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />
 
