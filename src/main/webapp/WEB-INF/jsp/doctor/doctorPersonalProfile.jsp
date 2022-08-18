@@ -31,5 +31,7 @@
 <span class="div-button-doctor-list">
     <c:url var="updateHours" value="/doctor/profile/update"/>
     <button type="button" class="btn btn-info button-doctor-list"><a href="${updateHours}">Update Hours</a></button>
+    <c:url var="updateInfo" value="/users/update/doctor"/>
+    <button type="button" class="btn btn-info btn-sm button-doctor-list"><a  href="${updateInfo}">Update Information</a></button>
 </span>
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />

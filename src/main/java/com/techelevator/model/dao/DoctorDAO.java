@@ -14,8 +14,7 @@ public interface DoctorDAO {
 
     List<Doctor> getDoctorBySpecialty(String specialty);
 
-
-    void update(int id, Doctor doctor);
+    void update(int id, String email, String address, String phoneNumber, String specialty, BigDecimal hourCost);
 
     public void saveDoctorUser(int doctorId, String firstName, String lastName, String email, BigDecimal hourCost, String address, String phoneNumber, String medicalSpecialty);
 

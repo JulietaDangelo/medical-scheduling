@@ -20,6 +20,7 @@ import javax.print.Doc;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Controller
@@ -171,5 +172,23 @@ public class DoctorController {
         availabilityDAO.saveAvailability(user.getId(), availability.getStartingTime(), availability.getEndingTime());
 
         return  "redirect:/";
+    }
+
+    @RequestMapping(path="/users/update/doctor", method= RequestMethod.GET)
+    public String displayUpdateInfoForm(ModelMap modelHolder, HttpSession session) {
+        List<String> specialtyList = Doctor.getSpecialtyList();
+
+        modelHolder.put("specialtyList", specialtyList);
+        return "doctor/updateDoctorInfo";
+    }
+
+
+    @RequestMapping(path="/users/update/doctor", method=RequestMethod.POST)
+    public String updateDoctorInfo(@Valid @ModelAttribute Doctor doctor, BindingResult result, RedirectAttributes flash, HttpSession session) {
+        User user = (User)session.getAttribute("currentUser");
+
+        doctorDAO.update(user.getId(), doctor.getEmail(), doctor.getAddress(), doctor.getPhoneNumber(), doctor.getMedicalSpecialty(), doctor.getHourCost());
+
+        return  "redirect:/doctor/profile";
     }
 }
