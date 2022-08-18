@@ -65,7 +65,7 @@
 					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${link1}">Doctors List</a></li>
 					<c:url var="link2" value="/" />
 					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${link2}">Appointments</a></li>
-					<c:url var="link3" value="/patient/my-profile" />
+					<c:url var="link3" value="/patient/profile" />
 					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${link3}">My profile</a></li>
 				</c:if>
 

@@ -49,8 +49,14 @@ public class PatientController {
         return  "redirect:/";
     }
 
-    @RequestMapping(path="/patient/profile")
-    public String profilePagePatient(HttpServletRequest request, HttpSession session) {
+    @RequestMapping("/patient/profile")
+    public String profilePage(HttpServletRequest request, HttpSession session) {
+        User user = (User)session.getAttribute("currentUser");
+        int id = user.getId();
+
+        Patient patient = patientDAO.getPatientById(id);
+
+        request.setAttribute("patient", patient);
 
         return "patient/patientProfile";
     }

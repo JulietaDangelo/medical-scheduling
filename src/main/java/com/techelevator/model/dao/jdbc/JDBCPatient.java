@@ -20,7 +20,7 @@ public class JDBCPatient implements PatientDAO {
 
     @Override
     public Patient getPatientById(int id) {
-        String query = "SELECT  patient_id, first_name, last_name, email, age, gender, user_name " +
+        String query = "SELECT  patient_id, first_name, last_name, email, age, gender " +
                 "FROM patient\n" +
                 "WHERE patient_id = ?;";
 
@@ -64,7 +64,6 @@ public class JDBCPatient implements PatientDAO {
         patient.setAge(rowSet.getInt("age"));
         patient.setGender(rowSet.getString("gender"));
         patient.setEmail(rowSet.getString("email"));
-        patient.setUserName(rowSet.getString("user_name"));
 
         return patient;
     }
