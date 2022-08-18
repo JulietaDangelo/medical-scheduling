@@ -4,7 +4,6 @@ import com.techelevator.model.dao.AvailabilityDAO;
 import com.techelevator.model.dao.DoctorDAO;
 import com.techelevator.model.dto.Availability;
 import com.techelevator.model.dto.Doctor;
-import com.techelevator.model.dto.SpecialtyFilter;
 import com.techelevator.model.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,11 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.print.Doc;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.math.BigDecimal;
 import java.util.List;
 
 @Controller
@@ -35,6 +32,7 @@ public class DoctorController {
         this.availabilityDAO = availabilityDAO;
     }
 
+    // Display form with specific information to new doctors
     @RequestMapping(path="/users/new/doctor", method= RequestMethod.GET)
     public String displayNewDoctorForm(ModelMap modelHolder) {
         List<String> specialtyList = Doctor.getSpecialtyList();
@@ -42,7 +40,7 @@ public class DoctorController {
         return "doctor/newDoctor";
     }
 
-
+    // Get information about new doctor
     @RequestMapping(path="/users/new/doctor", method=RequestMethod.POST)
     public String createDoctor(@Valid @ModelAttribute Doctor doctor, BindingResult result, RedirectAttributes flash, HttpSession session) {
         if(result.hasErrors()) {
@@ -57,15 +55,17 @@ public class DoctorController {
         return  "redirect:/users/new/doctor/availability";
     }
 
+    // Get the list of all the doctors
     @RequestMapping("/doctor-list")
     public String getAllDoctors(HttpServletRequest request, ModelMap modelMap) {
-        List<Doctor> doctor = getDoctor(request);
+        List<Doctor> doctor = doctorDAO.getDoctor(request);
         modelMap.put("doctors", doctor);
         List<String> specialtyList = Doctor.getSpecialtyList();
         modelMap.put("specialtyList", specialtyList);
-        return "doctorList";
+        return "doctor/doctorList";
     }
 
+    // Show the personal profile page of the doctor
     @RequestMapping("/doctor/profile")
     public String profilePage(HttpServletRequest request, HttpSession session) {
         User user = (User)session.getAttribute("currentUser");
@@ -80,24 +80,7 @@ public class DoctorController {
         return "doctor/doctorPersonalProfile";
     }
 
-    private List<Doctor> getDoctor(HttpServletRequest request) {
-        SpecialtyFilter filter = getFilters(request);
-        List<Doctor> doctors = doctorDAO.getAll(filter);
-
-        return doctors;
-    }
-
-    private SpecialtyFilter getFilters(HttpServletRequest request) {
-        SpecialtyFilter filter = new SpecialtyFilter();
-
-        if (request.getParameter("specialty") != null) {
-            String medicalSpecialty = String.valueOf(request.getParameter("specialty"));
-            filter.setSpecialty(medicalSpecialty);
-        }
-
-        return filter;
-    }
-
+    // Show the public profile of the doctors
     @RequestMapping("/doctor-list/public-profile")
     public String details(HttpServletRequest request)
     {
@@ -112,6 +95,7 @@ public class DoctorController {
         return "doctor/doctorPublicProfile";
     }
 
+    // Display form to choose hours in new doctor
     @RequestMapping(path="/doctor/profile/update", method= RequestMethod.GET)
     public String displayHours(HttpServletRequest request, HttpSession session) {
         User user = (User)session.getAttribute("currentUser");
@@ -126,6 +110,7 @@ public class DoctorController {
         return "doctor/updateDoctorHours";
     }
 
+    // Get hours from new doctor
     @RequestMapping(path="/users/profile/update", method=RequestMethod.POST)
     public String updateHours(@Valid @ModelAttribute Availability availability,
                               BindingResult result,
@@ -143,7 +128,7 @@ public class DoctorController {
         return  "redirect:/doctor/profile";
     }
 
-
+    // Get form to update hours from existing doctor
     @RequestMapping(path= "/users/new/doctor/availability", method= RequestMethod.GET)
     public String setAvailableHours(HttpServletRequest request, HttpSession session, Model model) {
         User user = (User)session.getAttribute("currentUser");
@@ -157,6 +142,7 @@ public class DoctorController {
         return "doctor/doctorsAvailability";
     }
 
+    // Update hours from existing doctor
     @RequestMapping(path="/users/new/doctor/availability", method=RequestMethod.POST)
     public String updateAvailableHours(@Valid @ModelAttribute Availability availability,
                               BindingResult result,
@@ -174,6 +160,7 @@ public class DoctorController {
         return  "redirect:/";
     }
 
+    // Display form to update personal info from doctor
     @RequestMapping(path="/users/update/doctor", method= RequestMethod.GET)
     public String displayUpdateInfoForm(ModelMap modelHolder, HttpSession session) {
         List<String> specialtyList = Doctor.getSpecialtyList();
@@ -182,7 +169,7 @@ public class DoctorController {
         return "doctor/updateDoctorInfo";
     }
 
-
+    // Get new personal info from doctor
     @RequestMapping(path="/users/update/doctor", method=RequestMethod.POST)
     public String updateDoctorInfo(@Valid @ModelAttribute Doctor doctor, BindingResult result, RedirectAttributes flash, HttpSession session) {
         User user = (User)session.getAttribute("currentUser");

@@ -1,21 +1,20 @@
 package com.techelevator.model.dao.jdbc;
 
-
 import com.techelevator.model.dao.DoctorDAO;
 import com.techelevator.model.dto.Doctor;
 import com.techelevator.model.dto.SpecialtyFilter;
-import org.bouncycastle.util.encoders.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-@Component
 
+@Component
 public class JDBCDoctor implements DoctorDAO {
 
     private final JdbcTemplate jdbcTemplate;
@@ -113,6 +112,26 @@ public class JDBCDoctor implements DoctorDAO {
     public void saveDoctorUser(int doctorId, String firstName, String lastName, String email, BigDecimal hourCost, String address, String phoneNumber, String medicalSpecialty) {
         jdbcTemplate.update("INSERT INTO doctor(doctor_id,  first_name, last_name, email, hour_cost, address, phone_number, medical_specialty ) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?)", doctorId, firstName, lastName, email, hourCost, address, phoneNumber, medicalSpecialty);
+    }
+
+    @Override
+    public List<Doctor> getDoctor(HttpServletRequest request) {
+        SpecialtyFilter filter = getFilters(request);
+        List<Doctor> doctors = getAll(filter);
+
+        return doctors;
+    }
+
+    @Override
+    public SpecialtyFilter getFilters(HttpServletRequest request) {
+        SpecialtyFilter filter = new SpecialtyFilter();
+
+        if (request.getParameter("specialty") != null) {
+            String medicalSpecialty = String.valueOf(request.getParameter("specialty"));
+            filter.setSpecialty(medicalSpecialty);
+        }
+
+        return filter;
     }
 
 
