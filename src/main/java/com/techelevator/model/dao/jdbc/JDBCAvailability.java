@@ -2,15 +2,12 @@ package com.techelevator.model.dao.jdbc;
 
 import com.techelevator.model.dao.AvailabilityDAO;
 import com.techelevator.model.dto.Availability;
-import com.techelevator.model.dto.Doctor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Component
