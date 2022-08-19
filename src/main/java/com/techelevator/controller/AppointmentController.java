@@ -11,9 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
@@ -53,26 +51,30 @@ public class AppointmentController {
         return "appointment/newAppointment";
     }
 
-    @RequestMapping(path="/appointment/doctor", method=RequestMethod.POST)
-    public String createAppointment(@Valid @ModelAttribute Appointment appointment,
-                               BindingResult result,
-                               RedirectAttributes flash,
-                               HttpSession session,
-                               HttpServletRequest request) {
-        if(result.hasErrors()) {
-            flash.addFlashAttribute("appointment", appointment);
-            flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "appointment", result);
-            return "redirect:/appointment/doctor";
-        }
+    @RequestMapping(path="/appointment/doctor/{doctorId}", method=RequestMethod.POST)
+    public String createAppointment(@RequestParam String appOption,
+                               @PathVariable int doctorId,
+                               HttpSession session) {
+        Appointment appointment = new Appointment();
+        String[] options = appOption.split("-");
+        appointment.setDayOfWeek(options[0]);
+        appointment.setStartingTime(LocalTime.parse(options[1] + ":00"));
+        appointment.calculateDefaultEndingTime();
+
         User user = (User)session.getAttribute("currentUser");
-        int id = Integer.parseInt(request.getParameter("id"));
         LocalTime startingTime = appointment.getStartingTime();
         LocalTime endingTime = appointment.getEndingTime();
         String dayOfWeek = appointment.getDayOfWeek();
 
-        appointmentDAO.createNewAppointment(startingTime, endingTime, dayOfWeek, user.getId(), id);
+        appointmentDAO.createNewAppointment(startingTime, endingTime, dayOfWeek, user.getId(), doctorId);
 
-        return  "redirect:/users/new/doctor/availability";
+        return  "redirect:/appointment/confirmation";
     }
+
+    @RequestMapping("/appointment/confirmation")
+    public String appointmentConfirmation() {
+        return "/appointment/confirmAppointment";
+    }
+
 
 }

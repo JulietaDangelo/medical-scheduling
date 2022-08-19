@@ -18,39 +18,7 @@
 <c:url var="goBack" value="/doctor-list/public-profile?id=${doctor.doctorId}"/>
 <button type="button" class="btn btn-info button-doctor-list"><a href="${goBack}">Go Back</a></button>
 
-<c:url var="formAction" value="/appointment/doctor" />
-<form method="POST" action="${formAction}">
-    <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-    <div class="row">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
-
-            <div class="form-group">
-                <label for="dayOfWeek">Day:</label>
-                <select name="dayOfWeek" id="dayOfWeek">
-                    <option value="Monday">Monday </option>
-                    <option value="Tuesday">Tuesday </option>
-                    <option value="Wednesday">Wednesday </option>
-                    <option value="Thursday">Thursday </option>
-                    <option value="Friday">Friday </option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="medicalSpecialty">Time:</label>
-                <select name="medicalSpecialty"	id="medicalSpecialty">
-                    <c:forEach begin="${startTime}" end="${endTime - 1}" var="startingTime">
-                        <option value="${startingTime}">${startingTime} </option>
-                    </c:forEach>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Create Doctor Profile</button>
-        </div>
-        <div class="col-sm-4"></div>
-    </div>
-</form>
-
-<%--<c:url var="formAction" value="/appointment/doctor" />
+<c:url var="formAction" value="/appointment/doctor/${doctor.doctorId}" />
 <form method="POST" action="${formAction}">
     <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
     <div class="container-appointments">
@@ -75,31 +43,31 @@
                             </td>
                             <td>
                                 <div class="custom-control custom-checkbox">
-                                    <input type="radio" class="custom-control-input" id="monday-${step}" name="appOption" >
+                                    <input type="radio" class="custom-control-input" value="monday-${step}" name="appOption" >
                                     <label class="custom-control-label" for="monday-${step}">Select Appointment</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="custom-control custom-checkbox">
-                                    <input type="radio" class="custom-control-input " id="tuesday-${step}" name="appOption" >
+                                        <input type="radio" class="custom-control-input " value="tuesday-${step}" name="appOption" >
                                     <label class="custom-control-label" for="tuesday-${step}">Select Appointment</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="custom-control custom-checkbox">
-                                    <input type="radio" class="custom-control-input" id="wednesday-${step}" name="appOption" >
+                                    <input type="radio" class="custom-control-input" value="wednesday-${step}" name="appOption" >
                                     <label class="custom-control-label" for="wednesday-${step}">Select Appointment</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="custom-control custom-checkbox">
-                                    <input type="radio" class="custom-control-input" id="thursday-${step}" name="appOption" >
+                                    <input type="radio" class="custom-control-input" value="thursday-${step}" name="appOption" >
                                     <label class="custom-control-label" for="thursday-${step}">Select Appointment</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="custom-control custom-checkbox">
-                                    <input type="radio" class="custom-control-input " id="friday-${step}" name="appOption"  >
+                                    <input type="radio" class="custom-control-input " value="friday-${step}" name="appOption"  >
                                     <label class="custom-control-label" for="friday-${step}">Select Appointment</label>
                                 </div>
                             </td>
@@ -108,11 +76,11 @@
                     </tbody>
                 </table>
                 <span class="div-button-doctor-list">
-                    <button type="submit" class="btn btn-primary">Make Appointment</button>
+                    <button type="submit" class="btn btn-primary">Create an Appointment</button>
                 </span>
             </div>
         </div>
     </div>
-</form>--%>
+</form>
 
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />

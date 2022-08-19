@@ -26,9 +26,16 @@
         <li class="list-group-item"><strong>Available Hours: </strong> Monday to Friday, from ${startTime}:00 to ${endTime}:00</li>
     </ul>
 </div>
-<span class="div-button-doctor-list">
-    <c:url var="makeAppointment" value="/appointment/doctor?id=${doctor.doctorId}"/>
-    <button type="button" class="btn btn-info button-doctor-list"><a href="${makeAppointment}">Make An Appointment</a></button>
-</span>
+
+<c:if test="${not empty currentUser && currentUser.isPatient()}">
+    <span class="div-button-doctor-list">
+        <c:url var="makeAppointment" value="/appointment/doctor?id=${doctor.doctorId}"/>
+        <button type="button" class="btn btn-info button-doctor-list"><a href="${makeAppointment}">Make An Appointment</a></button>
+    </span>
+</c:if>
+<c:if test="${empty currentUser}">
+    <c:url var="loginHref" value="/login" />
+    <button class="nav-item"><a class="btn btn-primary" href="${loginHref}">Log In to book an appointment</a></button>
+</c:if>
 
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />

@@ -32,7 +32,7 @@ public class Appointment {
     }
 
     public void setEndingTime(LocalTime endingTime) {
-        this.endingTime = startingTime.plusHours(1);
+        this.endingTime = endingTime;
     }
 
     public String getDayOfWeek() {
@@ -57,5 +57,9 @@ public class Appointment {
 
     public void setDoctorId(int doctorId) {
         this.doctorId = doctorId;
+    }
+
+    public void calculateDefaultEndingTime() {
+        this.endingTime = startingTime.plusHours(1);
     }
 }
