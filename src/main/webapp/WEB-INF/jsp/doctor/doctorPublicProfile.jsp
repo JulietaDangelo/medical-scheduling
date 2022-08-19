@@ -26,5 +26,9 @@
         <li class="list-group-item"><strong>Available Hours: </strong> Monday to Friday, from ${availability.startingTime} to ${availability.endingTime}</li>
     </ul>
 </div>
+<span class="div-button-doctor-list">
+    <c:url var="makeAppointment" value="/appointment/doctor?id=${doctor.doctorId}"/>
+    <button type="button" class="btn btn-info button-doctor-list"><a href="${makeAppointment}">Make An Appointment</a></button>
+</span>
 
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />
