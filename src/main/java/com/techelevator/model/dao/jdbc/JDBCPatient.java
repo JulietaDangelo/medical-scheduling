@@ -8,15 +8,15 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-import java.math.BigDecimal;
+
 @Component
 public class JDBCPatient implements PatientDAO {
 
     private final JdbcTemplate jdbcTemplate;
     @Autowired
     public JDBCPatient(DataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);}
-
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    }
 
     @Override
     public Patient getPatientById(int id) {
@@ -52,7 +52,6 @@ public class JDBCPatient implements PatientDAO {
         jdbcTemplate.update("INSERT INTO patient(patient_id, first_name, last_name, age, gender, email) " +
                 "VALUES (?, ?, ?, ?, ?, ?)", patientId, firstName, lastName, age, gender, email);
     }
-
 
     private Patient mapRowToPatient (SqlRowSet rowSet) {
 
