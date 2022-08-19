@@ -29,12 +29,20 @@ public class Availability {
         return startingTime;
     }
 
+    public int getStartingTimeAsInt() {
+        return startingTime.getHour();
+    }
+
     public void setStartingTime(LocalTime startingTime) {
         this.startingTime = startingTime;
     }
 
     public LocalTime getEndingTime() {
         return endingTime;
+    }
+
+    public int getEndingTimeAsInt() {
+        return endingTime.getHour();
     }
 
     public void setEndingTime(LocalTime endingTime) {

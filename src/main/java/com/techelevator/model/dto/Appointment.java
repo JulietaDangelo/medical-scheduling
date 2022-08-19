@@ -58,4 +58,8 @@ public class Appointment {
     public void setDoctorId(int doctorId) {
         this.doctorId = doctorId;
     }
+
+    public void calculateDefaultEndingTime() {
+        this.endingTime = startingTime.plusHours(1);
+    }
 }

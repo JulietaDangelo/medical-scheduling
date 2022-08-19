@@ -4,6 +4,7 @@
 <html>
 <head>
 <title>iSchedule | Medical Appointments</title>
+<link rel="icon" type="favicon" href="/img/icon.ico">
 <c:url var="bootstrapCss" value="/css/bootstrap.min.css" />
 <c:url var="siteCss" value="/css/site.css" />
 
@@ -15,6 +16,7 @@
 <c:url var="bootstrapJs" value="/js/bootstrap.min.js" />
 
 
+
 <link rel="stylesheet" type="text/css" href="${bootstrapCss}">
 <link rel="stylesheet" type="text/css" href="${siteCss}">
 
@@ -24,6 +26,8 @@
 <script src="${jqTimeagoJs}"></script>
 <script src="${popperJs}"></script>
 <script src="${bootstrapJs}"></script>
+
+
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -52,19 +56,20 @@
 			<c:url var="doctorProfile" value="/doctor/profile" />
 			<c:url var="patientProfile" value="/patient/profile" />
 			<c:url var="doctorList" value="/doctor-list" />
-			<c:url var="appointments" value="/" />
+			<c:url var="doctorAppointments" value="/doctor/appointments" />
+			<c:url var="patientAppointments" value="/patient/appointments" />
 			<c:url var="reviews" value="/" />
 
 			<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 d-flex flex-nwrap">
 				<c:if test="${not empty currentUser && currentUser.isDoctor()}">
-					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${appointments}">Appointments</a></li>
+					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${doctorAppointments}">Appointments</a></li>
 					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${reviews}">Reviews</a></li>
 					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${doctorProfile}">My profile</a></li>
 				</c:if>
 
 				<c:if test="${not empty currentUser && currentUser.isPatient()}">
 					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${doctorList}">Doctors List</a></li>
-					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${appointments}">Appointments</a></li>
+					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${patientAppointments}">Appointments</a></li>
 					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${patientProfile}">My profile</a></li>
 				</c:if>
 
