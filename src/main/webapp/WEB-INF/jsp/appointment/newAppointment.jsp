@@ -12,7 +12,10 @@
 
 <h1>${doctor.firstName} ${doctor.lastName}</h1>
 <p><strong>Medical Specialty: </strong> ${doctor.medicalSpecialty}</p>
-<p><strong>Available Hours: </strong> Monday to Friday, from ${availability.startingTime} to ${availability.endingTime}</p>
+<p><strong>Available Hours: </strong> Monday to Friday, from ${startTime}:00 to ${endTime}:00</p>
+
+<c:url var="goBack" value="/doctor-list/public-profile?id=${doctor.doctorId}"/>
+<button type="button" class="btn btn-info button-doctor-list"><a href="${goBack}">Go Back</a></button>
 
 <div class="container-appointments">
     <div class="row">
@@ -29,41 +32,43 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>
-                        09:00
-                    </td>
-                    <td>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck10" checked>
-                            <label class="custom-control-label" for="customCheck10">Select Appointment</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck11" checked>
-                            <label class="custom-control-label" for="customCheck11">Select Appointment</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck12" checked>
-                            <label class="custom-control-label" for="customCheck12">Select Appointment</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck13" checked>
-                            <label class="custom-control-label" for="customCheck13">Select Appointment</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck14" checked>
-                            <label class="custom-control-label" for="customCheck14">Select Appointment</label>
-                        </div>
-                    </td>
-                </tr>
+                <c:forEach begin="${startTime}" end="${endTime - 1}" var="step">
+                    <tr>
+                        <td>
+                            ${step}:00
+                        </td>
+                        <td>
+                            <div class="custom-control custom-checkbox">
+                                <input type="radio" class="custom-control-input " id="customCheck" name="appOption" >
+                                <label class="custom-control-label" for="customCheck">Select Appointment</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="custom-control custom-checkbox">
+                                <input type="radio" class="custom-control-input " id="customCheck11" name="appOption" >
+                                <label class="custom-control-label" for="customCheck11">Select Appointment</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="custom-control custom-checkbox">
+                                <input type="radio" class="custom-control-input" id="customCheck12" name="appOption" >
+                                <label class="custom-control-label" for="customCheck12">Select Appointment</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="custom-control custom-checkbox">
+                                <input type="radio" class="custom-control-input" id="customCheck13" name="appOption" >
+                                <label class="custom-control-label" for="customCheck13">Select Appointment</label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="custom-control custom-checkbox">
+                                <input type="radio" class="custom-control-input " id="customCheck14" name="appOption"  >
+                                <label class="custom-control-label" for="customCheck14">Select Appointment</label>
+                            </div>
+                        </td>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>

@@ -73,9 +73,13 @@ public class DoctorController {
 
         Doctor doctor = doctorDAO.getDoctorById(id);
         Availability availability = availabilityDAO.getAvailabilityByDoctorId(id);
+        int startingTime = availability.getStartingTimeAsInt();
+        int endingTime = availability.getEndingTimeAsInt();
 
         request.setAttribute("doctor", doctor);
         request.setAttribute("availability", availability);
+        request.setAttribute("startTime", startingTime);
+        request.setAttribute("endTime", endingTime);
 
         return "doctor/doctorPersonalProfile";
     }
@@ -88,9 +92,13 @@ public class DoctorController {
 
         Doctor doctor = doctorDAO.getDoctorById(id);
         Availability availability = availabilityDAO.getAvailabilityByDoctorId(id);
+        int startingTime = availability.getStartingTimeAsInt();
+        int endingTime = availability.getEndingTimeAsInt();
 
         request.setAttribute("doctor", doctor);
         request.setAttribute("availability", availability);
+        request.setAttribute("startTime", startingTime);
+        request.setAttribute("endTime", endingTime);
 
         return "doctor/doctorPublicProfile";
     }

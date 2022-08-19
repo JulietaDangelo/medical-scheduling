@@ -10,7 +10,9 @@
         <h1>Welcome to iSchedule</h1>
         <p>The best medical professionals in one place<br>Start now</p>
         <c:url var="doctorList" value="/doctor-list" />
-        <a href="${doctorList}"><button class="btn btn-primary homepage-button">Find a Doctor</button></a>
+        <c:if test="${!currentUser.isDoctor()}">
+            <a href="${doctorList}"><button class="btn btn-primary homepage-button">Find a Doctor</button></a>
+        </c:if>
     </div>
 </section>
 

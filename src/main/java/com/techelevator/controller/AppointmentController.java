@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.model.dao.AppointmentDAO;
 import com.techelevator.model.dao.AvailabilityDAO;
 import com.techelevator.model.dao.DoctorDAO;
+import com.techelevator.model.dto.Appointment;
 import com.techelevator.model.dto.Availability;
 import com.techelevator.model.dto.Doctor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,15 +29,21 @@ public class AppointmentController {
     }
 
     @RequestMapping(path="/appointment/doctor", method= RequestMethod.GET)
-    public String displayNewAppointment(ModelMap modelHolder, HttpServletRequest request) {
+    public String displayNewAppointment(HttpServletRequest request) {
         int id = Integer.parseInt(request.getParameter("id"));
 
         Availability availability = availabilityDAO.getAvailabilityByDoctorId(id);
         Doctor doctor = doctorDAO.getDoctorById(id);
 
+        int startingTime = availability.getStartingTimeAsInt();
+        int endingTime = availability.getEndingTimeAsInt();
+
         request.setAttribute("availability", availability);
-        request.setAttribute("doctor",doctor);
+        request.setAttribute("doctor", doctor);
+        request.setAttribute("startTime", startingTime);
+        request.setAttribute("endTime", endingTime);
 
         return "appointment/newAppointment";
     }
+
 }

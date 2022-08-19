@@ -2,8 +2,6 @@ package com.techelevator.model.dao.jdbc;
 
 import com.techelevator.model.dao.AppointmentDAO;
 import com.techelevator.model.dto.Appointment;
-import com.techelevator.model.dto.Availability;
-import com.techelevator.model.dto.Doctor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
