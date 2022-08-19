@@ -43,31 +43,31 @@
                             </td>
                             <td>
                                 <div class="custom-control custom-checkbox">
-                                    <input type="radio" class="custom-control-input" value="monday-${step}" name="appOption" >
+                                    <input type="radio" class="custom-control-input" value="Monday-${step}" name="appOption" >
                                     <label class="custom-control-label" for="monday-${step}">Select Appointment</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="custom-control custom-checkbox">
-                                        <input type="radio" class="custom-control-input " value="tuesday-${step}" name="appOption" >
+                                        <input type="radio" class="custom-control-input " value="Tuesday-${step}" name="appOption" >
                                     <label class="custom-control-label" for="tuesday-${step}">Select Appointment</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="custom-control custom-checkbox">
-                                    <input type="radio" class="custom-control-input" value="wednesday-${step}" name="appOption" >
+                                    <input type="radio" class="custom-control-input" value="Wednesday-${step}" name="appOption" >
                                     <label class="custom-control-label" for="wednesday-${step}">Select Appointment</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="custom-control custom-checkbox">
-                                    <input type="radio" class="custom-control-input" value="thursday-${step}" name="appOption" >
+                                    <input type="radio" class="custom-control-input" value="Thursday-${step}" name="appOption" >
                                     <label class="custom-control-label" for="thursday-${step}">Select Appointment</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="custom-control custom-checkbox">
-                                    <input type="radio" class="custom-control-input " value="friday-${step}" name="appOption"  >
+                                    <input type="radio" class="custom-control-input " value="Friday-${step}" name="appOption"  >
                                     <label class="custom-control-label" for="friday-${step}">Select Appointment</label>
                                 </div>
                             </td>
