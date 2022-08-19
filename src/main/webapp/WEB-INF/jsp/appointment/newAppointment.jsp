@@ -75,9 +75,6 @@
                     </c:forEach>
                     </tbody>
                 </table>
-<%--                <span class="div-button-doctor-list">--%>
-<%--                    <button type="submit" class="btn btn-primary">Create an Appointment</button>--%>
-<%--                </span>--%>
                 <span class="div-button-doctor-list">
                     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Make appointment</button>
                 </span>
