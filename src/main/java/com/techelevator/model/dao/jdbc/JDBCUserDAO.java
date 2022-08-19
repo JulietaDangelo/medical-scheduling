@@ -13,8 +13,7 @@ import com.techelevator.model.dto.User;
 import com.techelevator.services.security.PasswordHasher;
 
 @Component
-public class JDBCUserDAO implements UserDAO
-{
+public class JDBCUserDAO implements UserDAO {
 
 	private JdbcTemplate jdbcTemplate;
 	private PasswordHasher hashMaster;
@@ -84,20 +83,4 @@ public class JDBCUserDAO implements UserDAO
 		return thisUser;
 	}
 
-	@Override
-	public String getUserSpecialty(String userName) {
-		String sqlSearchForSpecialty ="SELECT role "+
-				"FROM app_user "+
-				"WHERE UPPER(user_name) = ? ";
-
-		SqlRowSet user = jdbcTemplate.queryForRowSet(sqlSearchForSpecialty, userName.toUpperCase());
-
-		String specialty = "";
-
-		if(user.next()) {
-			specialty = user.getString("role");
-		}
-
-		return specialty;
-	}
 }

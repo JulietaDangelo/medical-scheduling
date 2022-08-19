@@ -25,6 +25,7 @@ public class UserController {
 		this.userDAO = userDAO;
 	}
 
+	// Display form for new users
 	@RequestMapping(path="/users/new", method=RequestMethod.GET)
 	public String displayNewUserForm(ModelMap modelHolder) {
 		if( ! modelHolder.containsAttribute("user")) {
@@ -32,7 +33,8 @@ public class UserController {
 		}
 		return "newUser";
 	}
-	
+
+	// Create new user
 	@RequestMapping(path="/users", method=RequestMethod.POST)
 	public String createUser(@Valid @ModelAttribute User user, BindingResult result, RedirectAttributes flash, HttpSession session) {
 

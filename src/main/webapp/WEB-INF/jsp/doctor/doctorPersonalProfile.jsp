@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Student
-  Date: 17/8/2022
-  Time: 16:39
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
 
@@ -34,4 +27,6 @@
     <c:url var="updateInfo" value="/users/update/doctor"/>
     <button type="button" class="btn btn-info btn-sm button-doctor-list"><a  href="${updateInfo}">Update Information</a></button>
 </span>
+
+
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />

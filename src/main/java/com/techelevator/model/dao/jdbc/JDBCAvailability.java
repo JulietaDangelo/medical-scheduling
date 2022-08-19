@@ -29,7 +29,7 @@ public class JDBCAvailability implements AvailabilityDAO {
         SqlRowSet row = jdbcTemplate.queryForRowSet(query, id);
 
         if (row.next()) {
-            return mapRowToAvailabilty(row);
+            return mapRowToAvailability(row);
         }
 
         return null;
@@ -51,7 +51,7 @@ public class JDBCAvailability implements AvailabilityDAO {
                 "VALUES (?, ?, ?)", doctorId, startingTime, endingTime);
     }
 
-    private Availability mapRowToAvailabilty(SqlRowSet row) {
+    private Availability mapRowToAvailability(SqlRowSet row) {
         Availability availability = new Availability();
 
         int id = row.getInt("availability_id");

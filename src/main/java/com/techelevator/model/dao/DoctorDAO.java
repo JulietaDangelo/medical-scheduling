@@ -11,10 +11,9 @@ public interface DoctorDAO {
 
     List<Doctor> getAll();
     Doctor getDoctorById(int id);
-    List<Doctor> getDoctorBySpecialty(String specialty);
     void update(int id, String email, String address, String phoneNumber, String specialty, BigDecimal hourCost);
-    public void saveDoctorUser(int doctorId, String firstName, String lastName, String email, BigDecimal hourCost, String address, String phoneNumber, String medicalSpecialty);
-    public List<Doctor> getAll(SpecialtyFilter filter);
+    void saveDoctorUser(int doctorId, String firstName, String lastName, String email, BigDecimal hourCost, String address, String phoneNumber, String medicalSpecialty);
+    List<Doctor> getAll(SpecialtyFilter filter);
     List<Doctor> getDoctor(HttpServletRequest request);
     SpecialtyFilter getFilters(HttpServletRequest request);
 

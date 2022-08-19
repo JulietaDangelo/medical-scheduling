@@ -10,10 +10,8 @@ import javax.validation.constraints.Size;
 public class User {
 
 	private int id;
-
 	@NotBlank(message = "Your User Name is required")
 	private String userName;
-
 	@Size(min=8, message="Password too short, must be at least 8")
 	@Pattern.List({
 		@Pattern(regexp=".*[a-z].*", message="Must have a lower case"),
@@ -22,10 +20,8 @@ public class User {
 	private String password;
 	@NotBlank(message = "Your Role is required")
 	private String role;
-
 	@NotBlank(message = "Your Confirmation password is required")
 	private String confirmPassword;
-
 	private boolean isPasswordConfirmed;
 
 	@AssertTrue(message = "Both passwords must be equal")
@@ -40,15 +36,9 @@ public class User {
 	public String getUserName() {
 		return userName;
 	}
-	/**
-	 * @return the role
-	 */
 	public String getRole() {
 		return role;
 	}
-	/**
-	 * @param role the role to set
-	 */
 	public void setRole(String role) {
 		this.role = role;
 	}
@@ -67,22 +57,17 @@ public class User {
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
-
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 	public boolean isDoctor() {
 		return role.equalsIgnoreCase("doctor");
 	}
-
 	public boolean isPatient() {
 		return role.equalsIgnoreCase("patient");
 	}
-
 
 }
