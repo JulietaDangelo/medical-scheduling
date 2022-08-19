@@ -32,7 +32,7 @@ public class Appointment {
     }
 
     public void setEndingTime(LocalTime endingTime) {
-        this.endingTime = endingTime;
+        this.endingTime = startingTime.plusHours(1);
     }
 
     public String getDayOfWeek() {
