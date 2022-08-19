@@ -16,4 +16,23 @@
     </div>
 </section>
 
+<c:if test="${not empty currentUser && currentUser.isDoctor()}">
+    <c:forEach var="appointment" items="${appointments}" begin="1" end="1">
+
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; top:200px; right: 20px;" id="notification">
+            <div class="toast-header">
+                <strong class="mr-auto">New Appointment!</strong>
+                <small>${appointment.key.dayOfWeek}</small>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close" onclick="myFunction()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body">
+                You have a new appointment ${appointment.key.dayOfWeek} at ${appointment.key.startingTime}hs.
+            </div>
+        </div>
+
+    </c:forEach>
+</c:if>
+
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />
