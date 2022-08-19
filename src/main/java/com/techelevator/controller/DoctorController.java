@@ -16,11 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.print.Doc;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.math.BigDecimal;
 import java.util.List;
 
 @Controller
@@ -63,7 +61,7 @@ public class DoctorController {
         modelMap.put("doctors", doctor);
         List<String> specialtyList = Doctor.getSpecialtyList();
         modelMap.put("specialtyList", specialtyList);
-        return "doctorList";
+        return "doctor/doctorList";
     }
 
     @RequestMapping("/doctor/profile")
