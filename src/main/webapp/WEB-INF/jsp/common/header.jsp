@@ -16,6 +16,7 @@
 <c:url var="bootstrapJs" value="/js/bootstrap.min.js" />
 
 
+
 <link rel="stylesheet" type="text/css" href="${bootstrapCss}">
 <link rel="stylesheet" type="text/css" href="${siteCss}">
 
@@ -25,6 +26,8 @@
 <script src="${jqTimeagoJs}"></script>
 <script src="${popperJs}"></script>
 <script src="${bootstrapJs}"></script>
+
+
 
 <script type="text/javascript">
 	$(document).ready(function() {

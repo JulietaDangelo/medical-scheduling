@@ -68,7 +68,7 @@ public class AppointmentController {
 
         appointmentDAO.createNewAppointment(startingTime, endingTime, dayOfWeek, user.getId(), doctorId);
 
-        return  "redirect:/appointment/confirmation";
+        return  "redirect:/patient/appointments";
     }
 
     @RequestMapping("/appointment/confirmation")
