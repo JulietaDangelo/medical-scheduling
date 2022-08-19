@@ -28,7 +28,7 @@
 
             <div class="list-group w-50 p-3 div-doctor-list">
                 <c:url var="link1" value="/doctor-list/public-profile?id=${doctor.doctorId}" />
-                <a href="#" class="list-group-item list-group-item-action align-items-start">
+                <a href="${link1}" class="list-group-item list-group-item-action align-items-start">
                     <div class="doctor-list-tag">
                         <h3 class="mb-1">${doctor.firstName} ${doctor.lastName}</h3>
                         <h4 class="card-subtitle mb-2 text-muted">| ${doctor.medicalSpecialty}</h4>
