@@ -3,10 +3,8 @@ package com.techelevator.controller;
 import com.techelevator.model.dao.AppointmentDAO;
 import com.techelevator.model.dao.AvailabilityDAO;
 import com.techelevator.model.dao.DoctorDAO;
-import com.techelevator.model.dto.Appointment;
-import com.techelevator.model.dto.Availability;
-import com.techelevator.model.dto.Doctor;
-import com.techelevator.model.dto.User;
+import com.techelevator.model.dao.PatientDAO;
+import com.techelevator.model.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class AppointmentController {
@@ -74,6 +73,24 @@ public class AppointmentController {
     @RequestMapping("/appointment/confirmation")
     public String appointmentConfirmation() {
         return "/appointment/confirmAppointment";
+    }
+
+    @RequestMapping("/doctor/appointments")
+    public String getAllAppointmentsForDoctor(ModelMap modelMap, HttpSession session) {
+        User user = (User)session.getAttribute("currentUser");
+        Map<Appointment, Patient> appointments = appointmentDAO.getAppointmentByDoctorId(user.getId());
+        modelMap.put("appointments", appointments);
+
+        return "doctor/doctorAppointments";
+    }
+
+    @RequestMapping("/patient/appointments")
+    public String getAllAppointmentsForPatient(ModelMap modelMap, HttpSession session) {
+        User user = (User)session.getAttribute("currentUser");
+        Map<Appointment, Doctor> appointments = appointmentDAO.getAppointmentByPatientId(user.getId());
+        modelMap.put("appointments", appointments);
+
+        return "patient/patientAppointments";
     }
 
 
