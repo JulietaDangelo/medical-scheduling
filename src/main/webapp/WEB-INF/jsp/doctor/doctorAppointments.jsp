@@ -17,7 +17,8 @@
         <p>Hour: ${appointment.key.startingTime}</p>
         <p>Patient: ${appointment.value.firstName} ${appointment.value.lastName}</p>
         <p>
-          <button type="button" class="btn btn-primary">Make prescription</button>
+          <c:url var="linkPrescription" value="/doctor/appointments/prescription?id=${appointment.key.patientId}" />
+          <a href="${linkPrescription}"><button type="button" class="btn btn-primary">Make prescription</button></a>
           <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             View patient info
           </button>

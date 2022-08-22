@@ -14,8 +14,8 @@
     <c:url var="formAction" value="/users/profile/update"/>
     <form method="POST" action="${formAction}" modelAttribute="availability" class="form-doctor-hour">
         <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-        <div class="row">
-            <div class="col-sm-4">
+        <div class="row form-doctor-hour">
+            <div class="col-sm-4  form-doctor-hour">
                 <div class="form-group">
                     <label for="startingTime">From: </label>
                     <input type="time" id="startingTime" name="startingTime"

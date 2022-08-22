@@ -68,11 +68,6 @@ public class AppointmentController {
         return  "redirect:/patient/appointments";
     }
 
-    // Display appointment confirmation
-    @RequestMapping("/appointment/confirmation")
-    public String appointmentConfirmation() {
-        return "/appointment/confirmAppointment";
-    }
 
     // Get all the appointments for a doctor
     @RequestMapping("/doctor/appointments")
