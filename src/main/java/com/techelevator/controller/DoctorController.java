@@ -86,8 +86,7 @@ public class DoctorController {
 
     // Show the public profile of the doctors
     @RequestMapping("/doctor-list/public-profile")
-    public String details(HttpServletRequest request)
-    {
+    public String details(HttpServletRequest request) {
         int id = Integer.parseInt(request.getParameter("id"));
 
         Doctor doctor = doctorDAO.getDoctorById(id);
@@ -170,7 +169,7 @@ public class DoctorController {
 
     // Display form to update personal info from doctor
     @RequestMapping(path="/users/update/doctor", method= RequestMethod.GET)
-    public String displayUpdateInfoForm(ModelMap modelHolder, HttpSession session) {
+    public String displayUpdateInfoForm(ModelMap modelHolder) {
         List<String> specialtyList = Doctor.getSpecialtyList();
 
         modelHolder.put("specialtyList", specialtyList);
@@ -179,7 +178,7 @@ public class DoctorController {
 
     // Get new personal info from doctor
     @RequestMapping(path="/users/update/doctor", method=RequestMethod.POST)
-    public String updateDoctorInfo(@Valid @ModelAttribute Doctor doctor, BindingResult result, RedirectAttributes flash, HttpSession session) {
+    public String updateDoctorInfo(@Valid @ModelAttribute Doctor doctor, HttpSession session) {
         User user = (User)session.getAttribute("currentUser");
 
         doctorDAO.update(user.getId(), doctor.getEmail(), doctor.getAddress(), doctor.getPhoneNumber(), doctor.getMedicalSpecialty(), doctor.getHourCost());

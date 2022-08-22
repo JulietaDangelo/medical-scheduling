@@ -11,9 +11,7 @@ import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Component
@@ -114,43 +112,4 @@ public class JDBCAppointment implements AppointmentDAO {
         return appointmentsByPatient;
     }
 
-    private Appointment mapRowToAppointment(SqlRowSet row) {
-        Appointment appointment = new Appointment();
-
-        int id = row.getInt("appointment_id");
-        LocalTime startingTime = row.getTime("starting_time").toLocalTime();
-        LocalTime endingTime = row.getTime("ending_time").toLocalTime();
-        String dayOfWeek = row.getString("day_of_week");
-        int doctorId = row.getInt("doctor_id");
-        int patientId = row.getInt("patient_id");
-
-        appointment.setAppointmentId(id);
-        appointment.setStartingTime(startingTime);
-        appointment.setEndingTime(endingTime);
-        appointment.setDayOfWeek(dayOfWeek);
-        appointment.setDoctorId(doctorId);
-        appointment.setPatientId(patientId);
-
-        return appointment;
-    }
-
-    private Appointment mapRowToAppointmentByDoctors(SqlRowSet row) {
-        Appointment appointment = new Appointment();
-
-        int id = row.getInt("appointment_id");
-        LocalTime startingTime = row.getTime("starting_time").toLocalTime();
-        LocalTime endingTime = row.getTime("ending_time").toLocalTime();
-        String dayOfWeek = row.getString("day_of_week");
-        int doctorId = row.getInt("doctor_id");
-        int patientId = row.getInt("patient_id");
-
-        appointment.setAppointmentId(id);
-        appointment.setStartingTime(startingTime);
-        appointment.setEndingTime(endingTime);
-        appointment.setDayOfWeek(dayOfWeek);
-        appointment.setDoctorId(doctorId);
-        appointment.setPatientId(patientId);
-
-        return appointment;
-    }
 }

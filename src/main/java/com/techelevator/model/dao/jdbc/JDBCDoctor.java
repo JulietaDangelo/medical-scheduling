@@ -26,7 +26,6 @@ public class JDBCDoctor implements DoctorDAO {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-
     @Override
     public List<Doctor> getAll() {
         List<Doctor> doctors = new ArrayList<>();
@@ -61,7 +60,6 @@ public class JDBCDoctor implements DoctorDAO {
         return mapRowSetToDoctors(results);
     }
 
-
     @Override
     public Doctor getDoctorById(int id) {
         String query = "SELECT  doctor_id, first_name, last_name, email, address, phone_number, medical_specialty, hour_cost " +
@@ -76,22 +74,6 @@ public class JDBCDoctor implements DoctorDAO {
 
         return null;
 
-    }
-
-    @Override
-    public List<Doctor> getDoctorBySpecialty(String specialty) {
-        List<Doctor> doctors = new ArrayList<>();
-        String query = "SELECT  doctor_id, first_name, last_name, email, address, phone_number, medical_specialty, hour_cost " +
-                "FROM doctor\n" +
-                "WHERE medical_specialty = ?;";
-
-        SqlRowSet row = jdbcTemplate.queryForRowSet(query, specialty);
-
-        while (row.next()) {
-            doctors.add(mapRowToDoctor(row));
-        }
-
-        return doctors;
     }
 
     @Override
@@ -133,7 +115,6 @@ public class JDBCDoctor implements DoctorDAO {
 
         return filter;
     }
-
 
     private Doctor mapRowToDoctor(SqlRowSet row) {
         Doctor doctor = new Doctor();
