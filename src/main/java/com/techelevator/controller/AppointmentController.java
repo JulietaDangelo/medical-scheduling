@@ -27,6 +27,7 @@ public class AppointmentController {
         this.doctorDAO = doctorDAO;
     }
 
+    // Display form to get new appointment
     @RequestMapping(path="/appointment/doctor", method= RequestMethod.GET)
     public String displayNewAppointment(HttpServletRequest request) {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -45,11 +46,13 @@ public class AppointmentController {
         return "appointment/newAppointment";
     }
 
+    // Create new appointment
     @RequestMapping(path="/appointment/doctor/{doctorId}", method=RequestMethod.POST)
     public String createAppointment(@RequestParam String appOption,
                                @PathVariable int doctorId,
                                HttpSession session) {
         Appointment appointment = new Appointment();
+        // Get value of the radio button and split it to get both the day and the time
         String[] options = appOption.split("-");
         appointment.setDayOfWeek(options[0]);
         appointment.setStartingTime(LocalTime.parse(options[1] + ":00"));
@@ -65,11 +68,13 @@ public class AppointmentController {
         return  "redirect:/patient/appointments";
     }
 
+    // Display appointment confirmation
     @RequestMapping("/appointment/confirmation")
     public String appointmentConfirmation() {
         return "/appointment/confirmAppointment";
     }
 
+    // Get all the appointments for a doctor
     @RequestMapping("/doctor/appointments")
     public String getAllAppointmentsForDoctor(ModelMap modelMap, HttpSession session) {
         User user = (User)session.getAttribute("currentUser");
@@ -79,6 +84,7 @@ public class AppointmentController {
         return "doctor/doctorAppointments";
     }
 
+    // Get all the appointments for a patient
     @RequestMapping("/patient/appointments")
     public String getAllAppointmentsForPatient(ModelMap modelMap, HttpSession session) {
         User user = (User)session.getAttribute("currentUser");

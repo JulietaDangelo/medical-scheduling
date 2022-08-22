@@ -1,9 +1,6 @@
 package com.techelevator.controller;
 
-
-import com.techelevator.model.dao.DoctorDAO;
 import com.techelevator.model.dao.PatientDAO;
-import com.techelevator.model.dto.Doctor;
 import com.techelevator.model.dto.Patient;
 import com.techelevator.model.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,20 +21,21 @@ public class PatientController {
 
     private PatientDAO patientDAO;
 
-
     @Autowired
     public PatientController(PatientDAO patientDAO) {
         this.patientDAO = patientDAO;
     }
 
+    // Display form for new patients
     @RequestMapping(path="/users/new/patient", method= RequestMethod.GET)
     public String displayNewPatientForm(ModelMap modelHolder) {
 
         return "patient/newPatient";
     }
 
+    // Create new patient
     @RequestMapping(path="/users/new/patient", method=RequestMethod.POST)
-    public String createDoctor(@Valid @ModelAttribute Patient patient, BindingResult result, RedirectAttributes flash, HttpSession session) {
+    public String createNewPatient(@Valid @ModelAttribute Patient patient, BindingResult result, RedirectAttributes flash, HttpSession session) {
         if(result.hasErrors()) {
             flash.addFlashAttribute("patient", patient);
             flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "patient", result);
@@ -49,6 +47,7 @@ public class PatientController {
         return  "redirect:/";
     }
 
+    // Display personal profile of patient
     @RequestMapping("/patient/profile")
     public String profilePage(HttpServletRequest request, HttpSession session) {
         User user = (User)session.getAttribute("currentUser");
