@@ -102,7 +102,7 @@ public class DoctorController {
         return "doctor/doctorPublicProfile";
     }
 
-    // Display form to choose hours in new doctor
+    // Display form to choose hours in existing doctor
     @RequestMapping(path="/doctor/profile/update", method= RequestMethod.GET)
     public String displayHours(HttpServletRequest request, HttpSession session) {
         User user = (User)session.getAttribute("currentUser");
@@ -111,13 +111,18 @@ public class DoctorController {
         Doctor doctor = doctorDAO.getDoctorById(id);
         Availability availability = availabilityDAO.getAvailabilityByDoctorId(id);
 
+        int startingTime = availability.getStartingTimeAsInt();
+        int endingTime = availability.getEndingTimeAsInt();
+
+        request.setAttribute("startTime", startingTime);
+        request.setAttribute("endTime", endingTime);
         request.setAttribute("doctor", doctor);
         request.setAttribute("availability", availability);
 
         return "doctor/updateDoctorHours";
     }
 
-    // Get hours from new doctor
+    // Get hours from existing doctor
     @RequestMapping(path="/users/profile/update", method=RequestMethod.POST)
     public String updateHours(@Valid @ModelAttribute Availability availability,
                               BindingResult result,
@@ -135,7 +140,7 @@ public class DoctorController {
         return  "redirect:/doctor/profile";
     }
 
-    // Get form to update hours from existing doctor
+    // Get form to update hours from new doctor
     @RequestMapping(path= "/users/new/doctor/availability", method= RequestMethod.GET)
     public String setAvailableHours(HttpServletRequest request, HttpSession session, Model model) {
         User user = (User)session.getAttribute("currentUser");
@@ -149,7 +154,7 @@ public class DoctorController {
         return "doctor/doctorsAvailability";
     }
 
-    // Update hours from existing doctor
+    // Update hours from new doctor
     @RequestMapping(path="/users/new/doctor/availability", method=RequestMethod.POST)
     public String updateAvailableHours(@Valid @ModelAttribute Availability availability,
                               BindingResult result,
@@ -168,11 +173,28 @@ public class DoctorController {
     }
 
     // Display form to update personal info from doctor
-    @RequestMapping(path="/users/update/doctor", method= RequestMethod.GET)
-    public String displayUpdateInfoForm(ModelMap modelHolder) {
-        List<String> specialtyList = Doctor.getSpecialtyList();
+//    @RequestMapping(path="/users/update/doctor", method= RequestMethod.GET)
+//    public String displayUpdateInfoForm(ModelMap modelHolder, HttpServletRequest request, HttpSession session) {
+//        List<String> specialtyList = Doctor.getSpecialtyList();
+//        User user = (User)session.getAttribute("currentUser");
+//        int id = user.getId();
+//
+//        Doctor doctor = doctorDAO.getDoctorById(id);
+//        request.setAttribute("doctor", doctor);
+//        modelHolder.put("specialtyList", specialtyList);
+//
+//        return "doctor/updateDoctorInfo";
+//    }
 
-        modelHolder.put("specialtyList", specialtyList);
+    @RequestMapping(path="/users/update/doctor", method= RequestMethod.GET)
+    public String displayUpdateInfoForm(HttpServletRequest request, HttpSession session) {
+        User user = (User)session.getAttribute("currentUser");
+        int id = user.getId();
+        List<String> specialtyList = Doctor.getSpecialtyList();
+        Doctor doctor = doctorDAO.getDoctorById(id);
+
+        request.setAttribute("doctor", doctor);
+        request.setAttribute("specialtyList", specialtyList);
         return "doctor/updateDoctorInfo";
     }
 

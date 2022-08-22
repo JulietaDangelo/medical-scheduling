@@ -6,7 +6,9 @@
 
 <h1 class="text-center">Update Available Hours</h1>
 
-<p class="text-center"><strong>Available Hours: </strong> Monday to Friday, from ${availability.startingTime} to ${availability.endingTime}</p>
+<p class="text-center"><strong>Available Hours: </strong> Monday to Friday, from ${startTime}:00 to ${endTime}:00</p>
+
+<p class="text-center">Appointments can only be scheduled on the hour (e.g. 10am)</p>
 
 <div class="div-doctor-hours">
     <c:url var="formAction" value="/users/profile/update"/>

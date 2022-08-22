@@ -6,6 +6,8 @@
 
 <h4 class="text-center">Indicate your available hours from Monday to Friday </h4>
 
+<p class="text-center">Appointments can only be scheduled on the hour (e.g. 10am)</p>
+
 <div class="div-doctor-hours">
     <c:url var="formAction" value="/users/new/doctor/availability"/>
     <form method="POST" action="${formAction}" modelAttribute="availability" class="form-doctor-hour">
