@@ -21,6 +21,8 @@
     </ul>
 </div>
 
+<button type="button" class="btn btn-info button-doctor-list" onclick="history.back()">Go Back</button>
+
 <c:if test="${not empty currentUser && currentUser.isPatient()}">
     <span class="div-button-doctor-list">
         <c:url var="makeAppointment" value="/appointment/doctor?id=${doctor.doctorId}"/>
