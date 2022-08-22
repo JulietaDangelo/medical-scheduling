@@ -1,7 +1,48 @@
+:root {
+    --font-color: #6c757d;
+    --button-bg: #007bff;
+    --button-color: #fff;
+    --button-hover: #0258b5;
+    --toast: #fcf6bd;
+    --toast--bg: #6c757d;
+    --border-radius: 1rem;
+    --button--border-radius : 0.8rem;
+    --titles-color: #001219;
+}
+
+* {
+    color: var(--font-color);
+}
+
+button {
+    font-size: 1.8rem;
+}
+
+h1 {
+    font-size: 6rem;
+    color: var(--titles-color);
+}
+
+h2 {
+    font-size: 4rem;
+    color: var(--titles-color);
+}
+
+h3 {
+    font-size: 3rem;
+    color: var(--titles-color);
+}
+
+h4 {
+    font-size: 2rem;
+}
+
+/*Home Page*/
+
 .homepage {
-    background-image: linear-gradient(transparent, rgba(255, 255, 255)), url(https://img.freepik.com/premium-photo/medical-banner-with-icons_1325-1526.jpg?w=1380);
+    background-image: linear-gradient(transparent, rgba(255, 255, 255)), url(../img/banner.png);
     width: 100%;
-    height: 100vh;
+    height: 77vh;
     background-size: cover;
 }
 
@@ -12,38 +53,41 @@
 }
 
 .homepage-text h1 {
-    font-size: 60px;
+    font-size: 6rem;
     text-shadow: 1px 1px 1px #fff;
 }
 
 .homepage-text p {
-    font-size: 25px;
-    margin: 20px;
-    padding-bottom: 20px;
+    font-size: 2.5rem;
+    margin: 2rem;
+    padding-bottom: 2rem;
     text-shadow: 1px 1px 1px #fff;
+    color: var(--titles-color);
 }
 
 .homepage-button {
-    margin-top: 20px;
-    padding: 10px 50px;
-    background-color: #007bff;
-    color: #fff!important;
+    margin-top: 2rem;
+    padding: 1rem 5rem;
+    background-color: var(--button-bg);
+    color: var(--button-color);
     text-decoration: none;
-    font-size: 18px;
+    font-size: 1.8rem;
     transition: 0.5s;
 }
 
 .homepage-button:hover {
-    background-color: #0258b5;
+    background-color: var(--button-hover);
 }
+
+/*Doctor list*/
 
 .doctor-data {
     width: 80%;
     display: grid;
     grid-template-columns: repeat(2, 2fr);
     grid-template-rows: repeat(2, 2fr);
-    grid-row-gap: 10px;
-    margin-bottom: 10px;
+    grid-row-gap: 1rem;
+    margin-bottom: 1rem;
 }
 
 .doctor-data-info div {
@@ -90,14 +134,16 @@
 }
 
 .dropdown-specialty {
-    margin-left: 50px;
-    margin-bottom: 30px
+    margin-left: 5rem;
+    margin-bottom: 3rem;
 }
 
 .dropdown-specialty ul li a {
     color: #343a40;
     text-decoration: none;
 }
+
+/*Profile table*/
 
 .table-profile {
     display: flex;
@@ -114,12 +160,14 @@
 }
 
 .table-profile ul li strong{
-    padding-right: 5px;
+    padding-right: .5rem;
 }
 
 .div-button-update {
     display: inline;
 }
+
+/*Doctor hours*/
 
 .div-doctor-hours {
     display: flex;
@@ -132,8 +180,10 @@
 }
 
 .button-doctor-hour {
-    margin-top: 15px;
+    margin-top: 1.5rem;
 }
+
+/*Rating stars*/
 
 .rating {
     display: inline-block;
@@ -148,6 +198,54 @@
     color: #FFC000;
     position: absolute;
 }
+
+/*Toast / Notifications*/
+
+.toast.show {
+    display: block;
+    opacity: 1;
+}
+
+.toast {
+    max-width: 35rem;
+    overflow: hidden;
+    background-color: var(--toast);
+    background-clip: padding-box;
+    border: 1px solid var(--toast);
+    border-radius: 1rem;
+    box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 10%);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    margin-bottom: 0.5rem;
+}
+
+.toast-header {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    color: var(--toast--bg);
+    background-color: rgba(255,255,255,.85);
+    background-clip: padding-box;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+}
+
+.toast-body {
+    padding: 0.75rem;
+    color: var(--toast--bg);
+}
+
+
+
+
+
+
+
+
+
+
+/*Bootstrap*/
 
 :root {
     --bs-blue: #0d6efd;
@@ -364,41 +462,7 @@ h4 {
     vertical-align: middle;
 }
 
-.toast.show {
-    display: block;
-    opacity: 1;
-}
-.toast {
-    max-width: 350px;
-    overflow: hidden;
-    background-color: rgba(255,255,255,.85);
-    background-clip: padding-box;
-    border: 1px solid rgba(0,0,0,.1);
-    border-radius: 0.25rem;
-    box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 10%);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-}
 
-.fade {
-    transition: opacity .15s linear;
-}
-
-.toast-header {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center;
-    padding: 0.25rem 0.75rem;
-    color: #6c757d;
-    background-color: rgba(255,255,255,.85);
-    background-clip: padding-box;
-    border-bottom: 1px solid rgba(0,0,0,.05);
-}
-
-.toast-body {
-    padding: 0.75rem;
-}
 
 .mr-auto, .mx-auto {
     margin-right: auto!important;

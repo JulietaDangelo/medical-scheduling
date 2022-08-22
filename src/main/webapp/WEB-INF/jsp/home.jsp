@@ -8,7 +8,7 @@
 <section class="homepage">
     <div class="homepage-text">
         <h1>Welcome to iSchedule</h1>
-        <p>The best medical professionals in one place<br>Start now</p>
+        <p>The world's number one Patient and Doctor Appointment Scheduling Software</p>
         <c:url var="doctorList" value="/doctor-list"/>
         <c:if test="${!currentUser.isDoctor()}">
             <a href="${doctorList}">
