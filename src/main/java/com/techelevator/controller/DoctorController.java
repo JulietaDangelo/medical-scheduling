@@ -2,8 +2,10 @@ package com.techelevator.controller;
 
 import com.techelevator.model.dao.AvailabilityDAO;
 import com.techelevator.model.dao.DoctorDAO;
+import com.techelevator.model.dao.ReviewDAO;
 import com.techelevator.model.dto.Availability;
 import com.techelevator.model.dto.Doctor;
+import com.techelevator.model.dto.Review;
 import com.techelevator.model.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,11 +27,13 @@ public class DoctorController {
 
     private DoctorDAO doctorDAO;
     private AvailabilityDAO availabilityDAO;
+    private ReviewDAO reviewDAO;
 
     @Autowired
-    public DoctorController(DoctorDAO doctorDAO, AvailabilityDAO availabilityDAO) {
+    public DoctorController(DoctorDAO doctorDAO, AvailabilityDAO availabilityDAO, ReviewDAO reviewDAO) {
         this.doctorDAO = doctorDAO;
         this.availabilityDAO = availabilityDAO;
+        this.reviewDAO = reviewDAO;
     }
 
     // Display form with specific information to new doctors
@@ -91,6 +95,7 @@ public class DoctorController {
 
         Doctor doctor = doctorDAO.getDoctorById(id);
         Availability availability = availabilityDAO.getAvailabilityByDoctorId(id);
+        List<Review> reviews = reviewDAO.getReviewsByDoctorId(id);
         int startingTime = availability.getStartingTimeAsInt();
         int endingTime = availability.getEndingTimeAsInt();
 
@@ -98,6 +103,7 @@ public class DoctorController {
         request.setAttribute("availability", availability);
         request.setAttribute("startTime", startingTime);
         request.setAttribute("endTime", endingTime);
+        request.setAttribute("reviews", reviews);
 
         return "doctor/doctorPublicProfile";
     }

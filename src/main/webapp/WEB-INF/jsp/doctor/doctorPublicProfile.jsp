@@ -34,5 +34,27 @@
     <button class="nav-item"><a class="btn btn-primary" href="${loginHref}">Log In to book an appointment</a></button>
 </c:if>
 
+<div>
+    <ul>
+        <c:forEach var="review" items="${reviews}">
+            <li>
+                <h3>${review.title}</h3>
+                <div class="rating">
+                    <c:forEach begin="1" end="5" var="rating">
+                        <span class="${rating<= review.rating? 'filled':'' }">&#9734;</span>
+                    </c:forEach>
+                </div>
+                <p>${review.description}</p>
+            </li>
+        </c:forEach>
+    </ul>
+    <c:if test="${not empty currentUser && currentUser.isPatient()}">
+    <span class="div-button-doctor-list">
+        <c:url var="makeReview" value="/doctor-list/public-profile/review?id=${doctor.doctorId}"/>
+        <button type="button" class="btn btn-info button-doctor-list"><a href="${makeReview}">Make a Review</a></button>
+    </span>
+    </c:if>
+</div>
+
 
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />
