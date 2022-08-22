@@ -16,6 +16,19 @@
         <p>Day: ${appointment.key.dayOfWeek}</p>
         <p>Hour: ${appointment.key.startingTime}</p>
         <p>Patient: ${appointment.value.firstName} ${appointment.value.lastName}</p>
+        <p>
+          <button type="button" class="btn btn-primary">Make prescription</button>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            View patient info
+          </button>
+        </p>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+            <div><strong>Age:</strong> ${appointment.value.age}</div>
+            <div><strong>Gender:</strong> ${appointment.value.gender}</div>
+            <div><strong>Email:</strong> ${appointment.value.email}</div>
+          </div>
+        </div>
       </div>
 
     </c:forEach>
