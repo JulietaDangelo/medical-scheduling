@@ -1,12 +1,19 @@
 package com.techelevator.model.dto;
 
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.NotNull;
+
 public class Review {
 
     private int reviewId;
     private int doctorId;
     private int patientId;
+    @NotBlank(message = "A title is required")
     private String title;
+    @NotBlank(message = "A description is required")
     private String description;
+    @NotNull(message = "A rating is required")
     private int rating;
     private String answer;
 

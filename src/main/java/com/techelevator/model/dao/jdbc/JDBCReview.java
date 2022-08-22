@@ -41,15 +41,8 @@ public class JDBCReview implements ReviewDAO {
 
     @Override
     public void createReview(int doctorId, int patientId, String title, String description, int rating) {
-        String sql = "UPDATE review\n" +
-                "SET doctor_id = ?, \n" +
-                "    patient_id = ?,\n" +
-                "    title = ?,\n" +
-                "    description = ?,\n" +
-                "    rating = ?\n" +
-                "WHERE doctor_id = ?;";
-
-        jdbcTemplate.update(sql, doctorId, patientId, title, description, rating, doctorId);
+        jdbcTemplate.update("INSERT INTO review(doctor_id, patient_id, title, description, rating) " +
+                "VALUES (?, ?, ?, ?, ?)", doctorId, patientId, title, description, rating);
     }
 
     @Override
