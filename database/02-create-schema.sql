@@ -43,7 +43,6 @@ CREATE TABLE appointment (
     doctor_id Integer
 );
 
-
 CREATE TABLE prescription (
     prescription_id SERIAL PRIMARY KEY,
     patient_id Integer,
