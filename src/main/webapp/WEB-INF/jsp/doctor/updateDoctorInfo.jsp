@@ -6,36 +6,41 @@
 <h1>Update Personal Information</h1>
 
 <c:url var="formAction" value="/users/update/doctor" />
-<form method="POST" action="${formAction}">
+<form method="POST" action="${formAction}" modelAttribute="doctor">
     <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
     <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
             <div class="form-group">
                 <label for="email">Email: </label>
-                <input type="text" id="email" name="email" placeHolder="Email" class="form-control" />
+                <input type="text" id="email" name="email" placeHolder="Email" class="form-control" value="${doctor.email}" />
             </div>
             <div class="form-group">
                 <label for="address">Address: </label>
-                <input type="text" id="address" name="address" placeHolder="Address" class="form-control" />
+                <input type="text" id="address" name="address" placeHolder="Address" class="form-control" value="${doctor.address}"/>
             </div>
             <div class="form-group">
                 <label for="phoneNumber">Phone Number: </label>
-                <input type="number" id="phoneNumber" name="phoneNumber" placeHolder="Phone Number" class="form-control" />
+                <input type="number" id="phoneNumber" name="phoneNumber" placeHolder="Phone Number" class="form-control" value="${doctor.phoneNumber}"/>
             </div>
             <div class="form-group">
                 <label for="medicalSpecialty">Medical Specialty:</label>
                 <select name="medicalSpecialty"	id="medicalSpecialty">
                     <c:forEach var="specialty" items="${specialtyList}">
                         <c:if test="${!specialty.equals('All')}">
-                            <option value="${specialty}">${specialty} </option>
+                            <c:if test="${specialty.equalsIgnoreCase(doctor.medicalSpecialty)}">
+                                <option value="${specialty}" selected>${specialty} </option>
+                            </c:if>
+                            <c:if test="${!specialty.equalsIgnoreCase(doctor.medicalSpecialty)}">
+                                <option value="${specialty}">${specialty} </option>
+                            </c:if>
                         </c:if>
                     </c:forEach>
                 </select>
             </div>
             <div class="form-group">
                 <label for="hourCost">Cost Per Hour: </label>
-                <input type="number" id="hourCost" name="hourCost" placeHolder="Cost Per Hour" class="form-control" />
+                <input type="number" id="hourCost" name="hourCost" placeHolder="Cost Per Hour" class="form-control" value="${doctor.hourCost}"/>
             </div>
 
             <button type="submit" class="btn btn-primary">Update Profile</button>

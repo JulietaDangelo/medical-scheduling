@@ -9,8 +9,7 @@
 <p><strong>Medical Specialty: </strong> ${doctor.medicalSpecialty}</p>
 <p><strong>Available Hours: </strong> Monday to Friday, from ${startTime}:00 to ${endTime}:00</p>
 
-<c:url var="goBack" value="/doctor-list/public-profile?id=${doctor.doctorId}"/>
-<button type="button" class="btn btn-info button-doctor-list"><a href="${goBack}">Go Back</a></button>
+<button type="button" class="btn btn-info button-doctor-list" onclick="history.back()">Go Back</button>
 
 <c:url var="formAction" value="/appointment/doctor/${doctor.doctorId}" />
 <form method="POST" action="${formAction}">

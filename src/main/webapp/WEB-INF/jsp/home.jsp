@@ -17,7 +17,7 @@
 </section>
 
 <c:if test="${not empty currentUser && currentUser.isDoctor()}">
-    <c:forEach var="appointment" items="${appointments}" begin="1" end="1">
+    <c:forEach var="appointment" items="${appointments}" begin="0" end="1">
 
         <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="position: absolute; top:200px; right: 20px;" id="notification">
             <div class="toast-header">
