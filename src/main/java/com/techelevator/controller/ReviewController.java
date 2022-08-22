@@ -52,7 +52,7 @@ public class ReviewController {
         Doctor doctor = doctorDAO.getDoctorById(id);
         request.setAttribute("doctor", doctor);
 
-        return "review/displayReviews";
+        return "review/newReview";
     }
 
     // Send a new review
@@ -67,12 +67,12 @@ public class ReviewController {
             flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "review", result);
             return "redirect:/doctor-list/public-profile/review";
         }
-        int id = Integer.parseInt(request.getParameter("id"));
+        int doctorId = Integer.parseInt(request.getParameter("id"));
         User user = (User)session.getAttribute("currentUser");
 
-        reviewDAO.createReview(id, user.getId(), review.getTitle(), review.getDescription(), review.getRating());
+        reviewDAO.createReview(doctorId, user.getId(), review.getTitle(), review.getDescription(), review.getRating());
 
-        return  "redirect:/doctor-list/public-profile";
+        return  "redirect:/doctor-list";
     }
 
 }
