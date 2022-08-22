@@ -133,18 +133,16 @@ public class DoctorController {
 
     // Get hours from existing doctor
     @RequestMapping(path="/users/profile/update", method=RequestMethod.POST)
-    public String updateHours(@Valid @ModelAttribute Availability availability,
-                              BindingResult result,
-                              RedirectAttributes flash,
+    public String updateHours( @RequestParam(required = false) String startingTime,
+                               @RequestParam(required = false) String endingTime,
                               HttpSession session) {
-        if(result.hasErrors()) {
-            flash.addFlashAttribute("availability", availability);
-            flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "availability", result);
-            return "redirect:/users/profile/update";
-        }
+
         User user = (User)session.getAttribute("currentUser");
 
-        availabilityDAO.updateAvailability(user.getId(), availability.getStartingTime(), availability.getEndingTime());
+        LocalTime start = LocalTime.parse(startingTime);
+        LocalTime end = LocalTime.parse(endingTime);
+
+        availabilityDAO.updateAvailability(user.getId(), start, end);
 
         return  "redirect:/doctor/profile";
     }
