@@ -13,11 +13,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Controller
@@ -156,18 +159,15 @@ public class DoctorController {
 
     // Update hours from new doctor
     @RequestMapping(path="/users/new/doctor/availability", method=RequestMethod.POST)
-    public String updateAvailableHours(@Valid @ModelAttribute Availability availability,
-                              BindingResult result,
-                              RedirectAttributes flash,
+    public String updateAvailableHours( @RequestParam(required = false) String startingTime,
+                              @RequestParam(required = false) String endingTime,
                               HttpSession session) {
-        if(result.hasErrors()) {
-            flash.addFlashAttribute("availability", availability);
-            flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "availability", result);
-            return "redirect:/users/profile/update";
-        }
-        User user = (User)session.getAttribute("currentUser");
 
-        availabilityDAO.saveAvailability(user.getId(), availability.getStartingTime(), availability.getEndingTime());
+        User user = (User)session.getAttribute("currentUser");
+        LocalTime start = LocalTime.parse(startingTime);
+        LocalTime end = LocalTime.parse(endingTime);
+
+        availabilityDAO.saveAvailability(user.getId(), start, end);
 
         return  "redirect:/";
     }
