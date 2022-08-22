@@ -11,6 +11,7 @@
     <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
+            <input type="hidden" id="doctorId" name="doctorId" class="form-control" value="${doctor.doctorId}" />
             <div class="form-group">
                 <label for="email">Email: </label>
                 <input type="text" id="email" name="email" placeHolder="Email" class="form-control" value="${doctor.email}" />

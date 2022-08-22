@@ -23,4 +23,7 @@ VALUES(2, '09:00', '17:00'),
 INSERT INTO appointment(starting_time, ending_time, day_of_week, patient_id, doctor_id)
 VALUES ('09:00', '10:00', 'Monday', 1, 2);
 
+INSERT INTO review(doctor_id, patient_id, title, description, rating)
+VALUES (2, 1, 'Best doctor ever!', 'So awesome and not at all expensive. I would recommend.', 4);
+
 COMMIT;
