@@ -58,7 +58,7 @@
 			<c:url var="doctorList" value="/doctor-list" />
 			<c:url var="doctorAppointments" value="/doctor/appointments" />
 			<c:url var="patientAppointments" value="/patient/appointments" />
-			<c:url var="reviews" value="/" />
+			<c:url var="reviews" value="/doctor/reviews" />
 
 			<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 d-flex flex-nwrap">
 				<c:if test="${not empty currentUser && currentUser.isDoctor()}">
