@@ -34,7 +34,7 @@ public class JDBCAppointment implements AppointmentDAO {
     public Map<Appointment, Patient> getAppointmentByDoctorId(int doctorId) {
         Map<Appointment, Patient> appointmentsByDoctor = new HashMap<>();
 
-        String query = "SELECT appointment_id, starting_time, ending_time, day_of_week, a.patient_id, doctor_id, p.first_name, p.last_name, p.email, p.age, p.gender\n" +
+        String query = "SELECT appointment_id, starting_time, ending_time, day_of_week, confirmed, a.patient_id, doctor_id, p.first_name, p.last_name, p.email, p.age, p.gender\n" +
                 "FROM appointment as a\n" +
                 "INNER JOIN patient p ON p.patient_id = a.patient_id\n" +
                 "WHERE doctor_id = ?";
@@ -51,12 +51,14 @@ public class JDBCAppointment implements AppointmentDAO {
             String dayOfWeek = row.getString("day_of_week");
             int dId = row.getInt("doctor_id");
             int patientId = row.getInt("patient_id");
+            boolean confirmed = row.getBoolean("confirmed");
             appointment.setAppointmentId(id);
             appointment.setStartingTime(startingTime);
             appointment.setEndingTime(endingTime);
             appointment.setDayOfWeek(dayOfWeek);
             appointment.setDoctorId(dId);
             appointment.setPatientId(patientId);
+            appointment.setConfirmed(confirmed);
 
             patient.setFirstName(row.getString("first_name"));
             patient.setLastName(row.getString("last_name"));
@@ -83,7 +85,7 @@ public class JDBCAppointment implements AppointmentDAO {
     public Map<Appointment, Doctor> getAppointmentByPatientId(int patientId) {
         Map<Appointment, Doctor> appointmentsByPatient = new HashMap<>();
 
-        String query = "SELECT appointment_id, starting_time, ending_time, day_of_week, patient_id, a.doctor_id, d.first_name, d.last_name, d.email, d.phone_number, d.medical_specialty, d.address, d.hour_cost\n" +
+        String query = "SELECT appointment_id, starting_time, ending_time, day_of_week, confirmed, patient_id, a.doctor_id, d.first_name, d.last_name, d.email, d.phone_number, d.medical_specialty, d.address, d.hour_cost\n" +
                 "FROM appointment as a\n" +
                 "INNER JOIN doctor d ON a.doctor_id = d.doctor_id\n" +
                 "WHERE a.patient_id = ?";
@@ -100,12 +102,14 @@ public class JDBCAppointment implements AppointmentDAO {
             String dayOfWeek = row.getString("day_of_week");
             int dId = row.getInt("doctor_id");
             int pId = row.getInt("patient_id");
+            boolean confirmed = row.getBoolean("confirmed");
             appointment.setAppointmentId(id);
             appointment.setStartingTime(startingTime);
             appointment.setEndingTime(endingTime);
             appointment.setDayOfWeek(dayOfWeek);
             appointment.setDoctorId(dId);
             appointment.setPatientId(pId);
+            appointment.setConfirmed(confirmed);
 
             doctor.setFirstName(row.getString("first_name"));
             doctor.setLastName(row.getString("last_name"));
