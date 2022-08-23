@@ -4,9 +4,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-<h1 class="text-center title-doctor-list">${doctor.firstName} ${doctor.lastName} </h1>
+<h2 class="text-center title-doctor-list">${doctor.firstName} ${doctor.lastName} </h2>
 
-<h2 class="text-center title-doctor-list">Doctor Information</h2>
+<h3 class="text-center title-doctor-list">Doctor Information</h3>
 
 <div class="table-profile">
     <ul class="list-group">
@@ -21,27 +21,35 @@
     </ul>
 </div>
 <span class="button-center">
-    <button type="button" class="btn btn-info" onclick="history.back()">Go Back</button>
+    <span class="div-button-doctor-list">
+        <button type="button" class="btn btn-outline-primary me-2" onclick="history.back()">Go Back</button>
+    </span>
 
     <c:if test="${not empty currentUser && currentUser.isPatient()}">
         <span class="div-button-doctor-list">
             <c:url var="makeAppointment" value="/appointment/doctor?id=${doctor.doctorId}"/>
-            <button type="button" class="btn btn-info"><a href="${makeAppointment}">Make An Appointment</a></button>
+            <button type="button" class="btn btn-primary"><a href="${makeAppointment}">Make An Appointment</a></button>
         </span>
     </c:if>
     <c:if test="${empty currentUser}">
         <c:url var="loginHref" value="/login" />
         <span>
-            <a href="${loginHref}"><button class="btn btn-success">Log In to book an appointment</button></a>
+            <button class="btn btn-primary"><a href="${loginHref}">Log In to book an appointment</a></button>
         </span>
     </c:if>
+    <c:if test="${not empty currentUser && currentUser.isPatient()}">
+    <span class="div-button-doctor-list">
+        <c:url var="makeReview" value="/doctor-list/public-profile/review?id=${doctor.doctorId}"/>
+        <button type="button" class="btn btn-primary button-doctor-list"><a href="${makeReview}">Make a Review</a></button>
+    </span>
+    </c:if>
 </span>
-<div>
+<div class="container-reviews--profile">
     <ul>
         <c:forEach var="review" items="${reviews}">
             <li>
                 <div class="container-review">
-                    <div class="header-review">
+                    <div class="header-review border-bottom">
                         <div>
                             <h3>${review.key.title}</h3>
                             <p>${review.value.firstName} ${review.value.lastName}</p>
@@ -57,12 +65,6 @@
             </li>
         </c:forEach>
     </ul>
-    <c:if test="${not empty currentUser && currentUser.isPatient()}">
-    <span class="div-button-doctor-list">
-        <c:url var="makeReview" value="/doctor-list/public-profile/review?id=${doctor.doctorId}"/>
-        <button type="button" class="btn btn-info button-doctor-list"><a href="${makeReview}">Make a Review</a></button>
-    </span>
-    </c:if>
 </div>
 
 

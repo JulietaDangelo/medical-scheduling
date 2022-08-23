@@ -13,7 +13,7 @@
         <c:forEach var="review" items="${reviews}">
 
             <div class="container-review">
-                <div class="header-review">
+                <div class="header-review border-bottom">
                     <div>
                         <h3>${review.key.title}</h3>
                         <p>${review.value.firstName} ${review.value.lastName}</p>

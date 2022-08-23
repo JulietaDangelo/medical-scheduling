@@ -5,9 +5,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-<h1 class="text-center title-doctor-list">Personal Profile</h1>
-
-<h2 class="text-center title-doctor-list">Your Personal Information</h2>
+<h2 class="text-center title-doctor-list">Personal Profile</h2>
 
 <div class="table-profile">
     <ul class="list-group">
