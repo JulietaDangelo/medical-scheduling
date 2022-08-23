@@ -18,10 +18,10 @@
         <p><strong>Hour:</strong> ${appointment.key.startingTime}</p>
         <p><strong>Patient:</strong> ${appointment.value.firstName} ${appointment.value.lastName}</p>
         <c:if test="${appointment.key.confirmed}">
-          <p><strong>${appointment.key.confirmed} Status: Confirmed</strong></p>
+          <p><strong> Status: Confirmed</strong></p>
         </c:if>
         <c:if test="${appointment.key.confirmed == false}">
-          <p><strong>${appointment.key.confirmed} Status: Canceled</strong></p>
+          <p><strong> Status: Canceled</strong></p>
         </c:if>
           
         <p>
