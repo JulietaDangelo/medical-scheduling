@@ -4,7 +4,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-<h1 class="text-center">Update Available Hours</h1>
+<h2 class="text-center">Update Available Hours</h2>
 
 <p class="text-center"><strong>Available Hours: </strong> Monday to Friday, from ${startTime}:00 to ${endTime}:00</p>
 
