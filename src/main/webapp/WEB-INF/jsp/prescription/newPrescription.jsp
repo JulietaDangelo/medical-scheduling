@@ -6,7 +6,7 @@
 
 <h1 class="text-center">Create new prescription</h1>
 
-<c:url var="formAction" value="/doctor/appointments/prescription" />
+<c:url var="formAction" value="/doctor/appointments/prescription/${param.id}" />
 <form method="POST" action="${formAction}" model="prescription" />
   <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
   <div class="row">

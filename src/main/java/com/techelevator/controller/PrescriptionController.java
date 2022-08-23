@@ -1,19 +1,18 @@
 package com.techelevator.controller;
 
-import com.techelevator.model.dao.AvailabilityDAO;
-import com.techelevator.model.dao.DoctorDAO;
-import com.techelevator.model.dao.PrescriptionDAO;
-import com.techelevator.model.dao.ReviewDAO;
+import com.techelevator.model.dao.*;
 import com.techelevator.model.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.time.LocalTime;
+import java.util.Map;
 
 
 @Controller
@@ -21,9 +20,8 @@ public class PrescriptionController {
 
     private PrescriptionDAO prescriptionDAO;
     private DoctorDAO doctorDAO;
-
     @Autowired
-    public PrescriptionController(PrescriptionDAO prescriptionDAO, DoctorDAO doctorDAO) {
+    public PrescriptionController(PrescriptionDAO prescriptionDAO, DoctorDAO doctorDAO, PatientDAO patientDAO) {
         this.prescriptionDAO = prescriptionDAO;
         this.doctorDAO = doctorDAO;
     }
@@ -36,15 +34,26 @@ public class PrescriptionController {
     }
 
     // Create new prescription
-    @RequestMapping(path="/doctor/appointments/prescription", method=RequestMethod.POST)
-    public String createAppointment(HttpSession session, @ModelAttribute Prescription prescription, HttpServletRequest request) {
+    @RequestMapping(path="/doctor/appointments/prescription/{patientId}", method=RequestMethod.POST)
+    public String createAppointment(HttpSession session, @ModelAttribute Prescription prescription, HttpServletRequest request, @PathVariable int patientId) {
         // Prescription prescription = new Prescription();
-        int id = Integer.parseInt(request.getParameter("id"));
+        // int id = Integer.parseInt(request.getParameter("id"));
         User user = (User)session.getAttribute("currentUser");
         request.setAttribute("prescription", prescription);
 
-        prescriptionDAO.createNewPrescription(prescription.getPrescriptionName(), prescription.getCost(), id, user.getId());
+        prescriptionDAO.createNewPrescription(prescription.getPrescriptionName(), prescription.getCost(), patientId, user.getId());
 
-        return  "redirect:/patient/appointments";
+        return  "redirect:/doctor/appointments";
     }
+
+    @RequestMapping("/patient/prescriptions")
+    public String getAllPrescriptionsForPatient(ModelMap modelMap, HttpSession session) {
+        User user = (User)session.getAttribute("currentUser");
+        Map<Prescription, Doctor> prescription = prescriptionDAO.getPrescriptionByPatientId(user.getId());
+        modelMap.put("prescription", prescription);
+
+        return "patient/patientPrescriptions";
+    }
+
+
 }

@@ -59,6 +59,7 @@
 			<c:url var="doctorAppointments" value="/doctor/appointments" />
 			<c:url var="patientAppointments" value="/patient/appointments" />
 			<c:url var="reviews" value="/doctor/reviews" />
+			<c:url var="patientPrescriptions" value="/patient/prescriptions" />
 
 			<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 d-flex flex-nwrap">
 				<c:if test="${not empty currentUser && currentUser.isDoctor()}">
@@ -70,6 +71,7 @@
 				<c:if test="${not empty currentUser && currentUser.isPatient()}">
 					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${doctorList}">Doctors List</a></li>
 					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${patientAppointments}">Appointments</a></li>
+					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${patientPrescriptions}">Prescriptions</a></li>
 					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${patientProfile}">My profile</a></li>
 				</c:if>
 
