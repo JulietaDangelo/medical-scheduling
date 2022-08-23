@@ -352,6 +352,47 @@ h4 {
     font-size: 2.5rem;
 }
 
+/*********** New appointment ***********/
+
+.table-bordered>tbody>tr>td,
+.table-bordered>tbody>tr>th,
+.table-bordered>tfoot>tr>td,
+.table-bordered>tfoot>tr>th,
+.table-bordered>thead>tr>td,
+.table-bordered>thead>tr>th {
+    border-style: none;
+}
+
+.table>tbody>tr>td,
+.table>tbody>tr>th,
+.table>tfoot>tr>td,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>thead>tr>th {
+    border-top-style: none;
+}
+
+.custom-checkbox {
+    border-radius: 0.6rem;
+    border: 1px solid var(--toast);
+    border-left: .4rem solid var(--toast--hover);
+    background-color: var(--toast);
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+    padding-left: .6rem;
+}
+
+input[type=checkbox],
+input[type=radio] {
+    margin: 0;
+}
+
+.custom-checkbox label {
+    margin-bottom: 0;
+    margin-left: .6rem;
+}
+
 /*********** BOOTSTRAP ***********/
 
 :root {

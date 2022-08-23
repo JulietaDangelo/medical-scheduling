@@ -5,19 +5,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-<h1>${doctor.firstName} ${doctor.lastName}</h1>
+<h2>New Appointment</h2>
+<p>Take an appointment with <strong>${doctor.firstName} ${doctor.lastName}</strong></p>
 <p><strong>Medical Specialty: </strong> ${doctor.medicalSpecialty}</p>
 <p><strong>Available Hours: </strong> Monday to Friday, from ${startTime}:00 to ${endTime}:00</p>
 
-<button type="button" class="btn btn-info button-doctor-list" onclick="history.back()">Go Back</button>
+<button type="button" class="btn btn-outline-primary me-2 button-doctor-list" onclick="history.back()">Go Back</button>
 
 <c:url var="formAction" value="/appointment/doctor/${doctor.doctorId}" />
 <form method="POST" action="${formAction}">
     <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
     <div class="container-appointments">
-        <div class="row">
+        <div>
             <div class="col-12">
-                <table class="table table-bordered">
+                <table class="table">
                     <thead>
                     <tr>
                         <th scope="col">Hours</th>
@@ -25,7 +26,7 @@
                         <th scope="col">Tuesday</th>
                         <th scope="col">Wednesday</th>
                         <th scope="col">Thursday</th>
-c                        <th scope="col">Friday</th>
+                        <th scope="col">Friday</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -37,31 +38,31 @@ c                        <th scope="col">Friday</th>
                             <td>
                                 <div class="custom-control custom-checkbox">
                                     <input type="radio" class="custom-control-input" value="Monday-${step}" name="appOption" >
-                                    <label class="custom-control-label" for="monday-${step}">Select Appointment</label>
+                                    <label class="custom-control-label" for="Monday-${step}">Select</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="custom-control custom-checkbox">
                                         <input type="radio" class="custom-control-input " value="Tuesday-${step}" name="appOption" >
-                                    <label class="custom-control-label" for="tuesday-${step}">Select Appointment</label>
+                                    <label class="custom-control-label" for="Tuesday-${step}">Select</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="custom-control custom-checkbox">
                                     <input type="radio" class="custom-control-input" value="Wednesday-${step}" name="appOption" >
-                                    <label class="custom-control-label" for="wednesday-${step}">Select Appointment</label>
+                                    <label class="custom-control-label" for="Wednesday-${step}">Select</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="custom-control custom-checkbox">
                                     <input type="radio" class="custom-control-input" value="Thursday-${step}" name="appOption" >
-                                    <label class="custom-control-label" for="thursday-${step}">Select Appointment</label>
+                                    <label class="custom-control-label" for="Thursday-${step}">Select</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="custom-control custom-checkbox">
                                     <input type="radio" class="custom-control-input " value="Friday-${step}" name="appOption"  >
-                                    <label class="custom-control-label" for="friday-${step}">Select Appointment</label>
+                                    <label class="custom-control-label" for="Friday-${step}">Select</label>
                                 </div>
                             </td>
                         </tr>
@@ -69,7 +70,7 @@ c                        <th scope="col">Friday</th>
                     </tbody>
                 </table>
                 <span class="div-button-doctor-list">
-                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Make appointment</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Make appointment</button>
                 </span>
                 <!-- Modal -->
                 <div id="myModal" class="modal fade" role="dialog">
