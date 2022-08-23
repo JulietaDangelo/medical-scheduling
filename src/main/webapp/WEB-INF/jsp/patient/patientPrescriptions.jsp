@@ -14,7 +14,8 @@
 
             <div class="prescription">
                 <div class="div-prescription-logo">
-                    <img class="prescription-logo" src="/capstone-war-exploded/img/logo.png" alt="iSchedule">
+                    <c:url var="imgSrc" value="/img/logo.png" />
+                    <img src="${imgSrc}" class="img-fluid prescription-logo" alt="iSchedule" />
                 </div>
                 <div class="div-prescription-name">
                         <strong>Prescription name:</strong>
