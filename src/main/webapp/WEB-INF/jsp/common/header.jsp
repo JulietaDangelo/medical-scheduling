@@ -49,7 +49,7 @@
 		<c:url var="homePageHref" value="/" />
 		<a href="${homePageHref}">
 			<c:url var="imgSrc" value="/img/logo.png" />
-			<img src="${imgSrc}" class="img-fluid" style="height: 100px;" />
+			<img src="${imgSrc}" class="img-fluid nav-img-logo" style="height: 100px;" />
 		</a>
 		<div class="d-flex align-items-center justify-content-md-between">
 			<c:url var="home" value="/" />
@@ -61,7 +61,7 @@
 			<c:url var="reviews" value="/doctor/reviews" />
 			<c:url var="patientPrescriptions" value="/patient/prescriptions" />
 
-			<ul class="nav justify-content-center d-flex flex-nwrap">
+			<ul class="nav justify-content-center d-flex flex-wrap">
 				<c:if test="${not empty currentUser && currentUser.isDoctor()}">
 					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${doctorAppointments}">Appointments</a></li>
 					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${reviews}">Reviews</a></li>
@@ -80,7 +80,7 @@
 				</c:if>
 			</ul>
 
-			<ul class="col-md-3 text-end">
+			<ul class="flex-nav-disconnected pr-3">
 				<c:choose>
 					<c:when test="${empty currentUser}">
 						<c:url var="newUserHref" value="/users/new" />

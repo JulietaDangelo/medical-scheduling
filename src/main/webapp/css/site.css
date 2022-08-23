@@ -12,11 +12,28 @@
     --border-radius: 0.5rem;
     --button--border-radius : 0.8rem;
     --titles-color: #001219;
+    --scrollbar-color: #94cec6;
+    --background-hover: #f5f5f8;
+    --backgorund-modal: #e8e8ef;
 }
 
 * {
     color: var(--font-color);
 }
+
+body {
+    overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-color);
+}
+
 
 button {
     font-size: 1.8rem;
@@ -68,12 +85,11 @@ a {
 .nav>li>a:hover {
     background-color: var(--button-hover);
     color: #ffffff;
-    padding: .6rem 1.2rem;
     border-radius: var(--border-radius);
 }
 
 h1 {
-    font-size: 6rem;
+    font-size: 5rem;
     color: var(--titles-color);
 }
 
@@ -89,6 +105,22 @@ h3 {
 
 h4 {
     font-size: 2rem;
+}
+
+textarea {
+    resize: none;
+}
+
+.row {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+
+/*********** header.jsp ***********/
+
+.nav-img-logo {
+    margin-left: 15px;
 }
 
 /*********** home.jsp ***********/
@@ -133,6 +165,14 @@ h4 {
     background-color: var(--button-hover);
 }
 
+.flex-nav-disconnected {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0!important;
+    padding-right: 20px;
+}
+
 /*********** doctorList.jsp ***********/
 
 .doctor-data {
@@ -148,7 +188,7 @@ h4 {
     font-weight: 700;
 }
 
-.doctor-list-centre{
+.doctor-list-centre {
     display: flex;
     justify-content: center;
 }
@@ -163,6 +203,10 @@ h4 {
 
 .div-doctor-list {
     display: inline-block!important;
+}
+
+.background-hover:hover {
+    background-color: var(--background-hover);
 }
 
 .button-doctor-list {
@@ -190,6 +234,11 @@ h4 {
 .dropdown-specialty ul li a {
     color: #343a40;
     text-decoration: none;
+}
+
+.card-subtitle {
+    margin-top: 5px;
+    margin-bottom: 20px;
 }
 
 /*********** doctorPublicProfile.jsp ***********/
@@ -298,16 +347,28 @@ h4 {
 
 /******* upcoming appointments ********/
 
-.container-upcoming-appointments {
-    min-width: 70%;
+.flex-container-upcoming-appointment {
+    display: flex;
+    flex-direction: column;
 }
 
 .container-upcoming-appointment {
-    min-width: 50%;
+    max-width: 100%;
     background-color: var(--toast);
     border-left: .5rem solid var(--toast--hover);
     padding: 1rem 0 1rem 1.5rem;
     margin-bottom: 2.5rem;
+    border-radius: var(--border-radius);
+}
+
+.buttons-appointments {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.modal-header {
+    background-color: var(--backgorund-modal);
     border-radius: var(--border-radius);
 }
 
