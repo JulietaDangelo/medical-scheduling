@@ -41,7 +41,8 @@ CREATE TABLE appointment (
     day_of_week varchar(30) NOT NULL,
     patient_id Integer,
     doctor_id Integer,
-    confirmed boolean DEFAULT true
+    confirmed boolean DEFAULT 'true'
+
 
 );
 
