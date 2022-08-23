@@ -3,7 +3,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<h1>Update Personal Information</h1>
+<h2 class="text-center title-doctor-list">Update Personal Information</h2>
 
 <c:url var="formAction" value="/users/update/doctor" />
 <form method="POST" action="${formAction}" modelAttribute="doctor">
@@ -43,8 +43,7 @@
                 <label for="hourCost">Cost Per Hour: </label>
                 <input type="number" id="hourCost" name="hourCost" placeHolder="Cost Per Hour" class="form-control" value="${doctor.hourCost}"/>
             </div>
-
-            <button type="submit" class="btn btn-primary">Update Profile</button>
+                <button type="submit" class="btn btn-primary">Update Profile</button>
         </div>
         <div class="col-sm-4"></div>
     </div>

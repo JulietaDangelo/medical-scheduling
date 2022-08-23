@@ -14,7 +14,8 @@
     --titles-color: #001219;
     --scrollbar-color: #94cec6;
     --background-hover: #f5f5f8;
-    --backgorund-modal: #e8e8ef;
+    --background-modal: #e8e8ef;
+    --background-card: #ece9fc;
 }
 
 * {
@@ -345,16 +346,78 @@ textarea {
     background-color: var(--toast--bg--cancelled);
 }
 
-/******* upcoming appointments ********/
+/*********** patientPrescriptions.jsp ***********/
+
+
+.prescription-list-centre {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0;
+}
+
+.div-complete-prescription-list {
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-template-rows: repeat(2, 2fr);
+    grid-gap: 40px;
+}
+
+.prescription {
+    width: 300px;
+    height: 400px;
+    padding: 40px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--font-color);
+    box-shadow: 2px 2px 5px grey;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.div-prescription-logo {
+    margin-bottom: 20px;
+    flex-shrink: 1;
+}
+
+.prescription-logo {
+    width: 30%;
+}
+
+.prescription div p  {
+    font-size: 25px;
+    color: var(--titles-color);
+}
+
+.prescription div strong {
+    color: var(--button-bg);
+}
+
+.div-prescription-name {
+    flex-shrink: 1;
+}
+
+.div-prescription-cost {
+    flex-shrink: 1;
+}
+
+.div-prescription-firm {
+    flex-shrink: 4;
+}
+
+
+
+    /******* upcoming appointments ********/
 
 .flex-container-upcoming-appointment {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .container-upcoming-appointment {
-    max-width: 100%;
-    background-color: var(--toast);
+    width: 70%;
+    background-color: var(--background-card);
     border-left: .5rem solid var(--toast--hover);
     padding: 1rem 0 1rem 1.5rem;
     margin-bottom: 2.5rem;
@@ -368,7 +431,7 @@ textarea {
 }
 
 .modal-header {
-    background-color: var(--backgorund-modal);
+    background-color: var(--background-modal);
     border-radius: var(--border-radius);
 }
 

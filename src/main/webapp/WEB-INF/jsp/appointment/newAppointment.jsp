@@ -85,8 +85,8 @@
                                 <p>Do you want to confirm your appointment with ${doctor.firstName} ${doctor.lastName}?</p>
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-default">Confirm</button>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Go back</button>
+                                <button type="submit" class="btn btn-primary">Confirm</button>
+                                <button type="button" class="btn btn-outline-primary me-2" data-dismiss="modal">Go back</button>
                             </div>
                         </div>
                     </div>

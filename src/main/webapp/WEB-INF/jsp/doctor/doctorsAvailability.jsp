@@ -25,7 +25,7 @@
                     <input type="time" id="endingTime" name="endingTime"
                            min="09:00" max="18:00" required>
                 </div>
-                <button type="submit" class="btn btn-primary button-doctor-hour">Update Hours</button>
+                <button type="submit" class="btn btn-primary button-doctor-hour">Add Hours</button>
             </div>
             <div class="col-sm-4"></div>
         </div>

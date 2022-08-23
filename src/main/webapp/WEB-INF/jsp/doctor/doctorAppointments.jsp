@@ -10,21 +10,21 @@
 
 <div class="flex-container-upcoming-appointment">
 
-<c:forEach var="appointment" items="${appointments}">
+  <c:forEach var="appointment" items="${appointments}">
 
-  <div class="container-upcoming-appointment">
-    <p><strong>Day:</strong> ${appointment.key.dayOfWeek}</p>
-    <p><strong>Hour:</strong> ${appointment.key.startingTime}</p>
-    <p><strong>Patient:</strong> ${appointment.value.firstName} ${appointment.value.lastName}</p>
-    <c:if test="${appointment.key.confirmed}">
-      <p><strong> Status: Confirmed</strong></p>
-    </c:if>
-    <c:if test="${appointment.key.confirmed == false}">
-      <p><strong> Status: Canceled</strong></p>
-    </c:if>
+    <div class="container-upcoming-appointment">
+      <p><strong>Day:</strong> ${appointment.key.dayOfWeek}</p>
+      <p><strong>Hour:</strong> ${appointment.key.startingTime}</p>
+      <p><strong>Patient:</strong> ${appointment.value.firstName} ${appointment.value.lastName}</p>
+      <c:if test="${appointment.key.confirmed}">
+        <p><strong> Status: Confirmed</strong></p>
+      </c:if>
+      <c:if test="${appointment.key.confirmed == false}">
+        <p><strong> Status: Canceled</strong></p>
+      </c:if>
 
 
-    <div class="buttons-appointments">
+      <div class="buttons-appointments">
         <span>
           <c:if test="${appointment.key.confirmed == true}">
           <button type="button" class="btn btn-info btn-danger" data-toggle="modal" data-target="#myModal">Cancel
@@ -58,31 +58,31 @@
           </c:if>
         </span>
 
-      <span>
+        <span>
             <c:url var="linkPrescription" value="/doctor/appointments/prescription?id=${appointment.key.patientId}"/>
             <a href="${linkPrescription}">
               <button type="button" class="btn btn-primary">Make prescription</button>
             </a>
           </span>
 
-      <div>
-        <p>
-          <button class="btn btn-primary" type="button" onclick="toggleContent(this)" aria-expanded="false"
-                  aria-controls="collapseExample">
-            View patient info
-          </button>
-        </p>
-        <div class="collapse" id="collapseExample">
-          <div class="card card-body">
-            <p><strong>Age:</strong> ${appointment.value.age}</p>
-            <p><strong>Gender:</strong> ${appointment.value.gender}</p>
-            <p><strong>Email:</strong> ${appointment.value.email}</p>
+        <div>
+          <p>
+            <button class="btn btn-primary" type="button" onclick="toggleContent(this)" aria-expanded="false"
+                    aria-controls="collapseExample">
+              View patient info
+            </button>
+          </p>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+              <p><strong>Age:</strong> ${appointment.value.age}</p>
+              <p><strong>Gender:</strong> ${appointment.value.gender}</p>
+              <p><strong>Email:</strong> ${appointment.value.email}</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</c:forEach>
+  </c:forEach>
 </div>
 
 
