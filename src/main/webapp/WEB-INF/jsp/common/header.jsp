@@ -45,9 +45,9 @@
 
 </head>
 <body>
-	<nav class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+	<nav class="d-flex flex-wrap align-items-center justify-content-md-between py-3 border-bottom">
 		<c:url var="homePageHref" value="/" />
-		<a class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" href="${homePageHref}">
+		<a href="${homePageHref}">
 			<c:url var="imgSrc" value="/img/logo.png" />
 			<img src="${imgSrc}" class="img-fluid" style="height: 100px;" />
 		</a>
@@ -60,7 +60,7 @@
 			<c:url var="patientAppointments" value="/patient/appointments" />
 			<c:url var="reviews" value="/doctor/reviews" />
 
-			<ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 d-flex flex-nwrap">
+			<ul class="nav justify-content-center d-flex flex-nwrap">
 				<c:if test="${not empty currentUser && currentUser.isDoctor()}">
 					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${doctorAppointments}">Appointments</a></li>
 					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${reviews}">Reviews</a></li>
@@ -74,7 +74,6 @@
 				</c:if>
 
 				<c:if test="${empty currentUser}">
-					<c:url var="link1" value="/doctor-list" />
 					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${doctorList}">Doctors List</a></li>
 				</c:if>
 			</ul>

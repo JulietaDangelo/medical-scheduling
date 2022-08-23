@@ -40,13 +40,20 @@
     <ul>
         <c:forEach var="review" items="${reviews}">
             <li>
-                <h3>${review.title}</h3>
-                <div class="rating">
-                    <c:forEach begin="1" end="5" var="rating">
-                        <span class="${rating<= review.rating? 'filled':'' }">&#9734;</span>
-                    </c:forEach>
+                <div class="container-review">
+                    <div class="header-review">
+                        <div>
+                            <h3>${review.key.title}</h3>
+                            <p>${review.value.firstName} ${review.value.lastName}</p>
+                        </div>
+                        <div class="rating">
+                            <c:forEach begin="1" end="5" var="rating">
+                                <span class="rating-star ${rating<= review.key.rating? 'filled':'' }">&#9734;</span>
+                            </c:forEach>
+                        </div>
+                    </div>
+                    <p>${review.key.description}</p>
                 </div>
-                <p>${review.description}</p>
             </li>
         </c:forEach>
     </ul>

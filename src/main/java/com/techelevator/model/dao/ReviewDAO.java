@@ -1,12 +1,14 @@
 package com.techelevator.model.dao;
 
+import com.techelevator.model.dto.Patient;
 import com.techelevator.model.dto.Review;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ReviewDAO {
 
-    List<Review> getReviewsByDoctorId(int doctorId);
+    Map<Review, Patient> getReviewsByDoctorId(int doctorId);
 
     void update(String answer, int reviewId);
 

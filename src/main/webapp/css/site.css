@@ -1,11 +1,12 @@
 :root {
     --font-color: #6c757d;
-    --button-bg: #007bff;
+    --button-bg: #2a9d8f;
     --button-color: #fff;
-    --button-hover: #0258b5;
+    --button-hover: #1B655C;
     --toast: #fcf6bd;
+    --toast--hover: #f8e963;
     --toast--bg: #6c757d;
-    --border-radius: 1rem;
+    --border-radius: 0.5rem;
     --button--border-radius : 0.8rem;
     --titles-color: #001219;
 }
@@ -16,6 +17,48 @@
 
 button {
     font-size: 1.8rem;
+    border-radius: var(--border-radius);
+}
+
+.btn-primary {
+    border-color: var(--button-bg);
+    background-color: var(--button-bg);
+    border-radius: var(--border-radius);
+}
+
+.btn-primary:hover,
+.btn-primary.active,
+.btn-primary:active,
+.open>.dropdown-toggle.btn-primary,
+.btn-primary.focus,
+.btn-primary:focus{
+    color: #fff;
+    background-color: var(--button-hover);
+    border-color: var(--button-hover);
+}
+
+.btn-outline-primary {
+   border-color: var(--button-bg);
+   color: var(--button-bg);
+   border-radius: var(--border-radius);
+    background-color: #ffffff;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus{
+    color: var(--button-hover);
+}
+
+a {
+    color: var(--button-bg);
+}
+
+.nav>li>a:focus,
+.nav>li>a:hover {
+    background-color: var(--button-hover);
+    color: #ffffff;
+    padding: .6rem 1.2rem;
+    border-radius: var(--border-radius);
 }
 
 h1 {
@@ -191,22 +234,6 @@ h4 {
     margin-top: 1.5rem;
 }
 
-/*Rating stars*/
-
-.rating {
-    display: inline-block;
-}
-
-.rating span {
-    color: lightgray;
-}
-
-.filled:before {
-    content: "\2605";
-    color: #FFC000;
-    position: absolute;
-}
-
 /*Toast / Notifications*/
 
 .toast.show {
@@ -244,11 +271,61 @@ h4 {
     color: var(--toast--bg);
 }
 
+/******* upcoming appointments ********/
 
+.container-upcoming-appointments {
+    min-width: 70%;
+}
 
+.container-upcoming-appointment {
+    min-width: 50%;
+    background-color: var(--toast);
+    border-left: .5rem solid var(--toast--hover);
+    padding: 1rem 0 1rem 1.5rem;
+    margin-bottom: 2.5rem;
+    border-radius: var(--border-radius);
+}
 
+/******* reviews ********/
 
+.container-reviews {
+    min-width: 70%;
+    display: flex;
+    flex-direction: column;
+}
 
+.container-review {
+    border: 1px solid var(--button-hover);
+    border-radius: var(--border-radius);
+    padding: 0 2rem;
+    margin-bottom: 2rem;
+}
+
+.header-review {
+    display: flex;
+    justify-content: space-between;
+}
+
+/*Rating stars*/
+
+.rating {
+    display: inline-block;
+    margin-top: 2rem;
+}
+
+.rating span {
+    color: lightgray;
+}
+
+.filled:before {
+    content: "\2605";
+    color: #FFC000;
+    position: absolute;
+}
+
+.rating-star {
+    font-size: 2.5rem;
+}
 
 
 
@@ -468,8 +545,6 @@ h4 {
 .table-image td, th {
     vertical-align: middle;
 }
-
-
 
 .mr-auto, .mx-auto {
     margin-right: auto!important;

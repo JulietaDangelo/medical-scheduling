@@ -28,8 +28,7 @@
                     <div class="toast-header" style="display: block">
                         <strong class="mr-auto">Appointment Alert!</strong>
                         <small>${appointment.key.dayOfWeek}</small>
-                        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close"
-                                onclick="removeContent(this)">
+                        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close" onclick="removeContent(this)">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>

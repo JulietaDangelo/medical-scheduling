@@ -1,6 +1,8 @@
 package com.techelevator.model.dao.jdbc;
 
 import com.techelevator.model.dao.ReviewDAO;
+import com.techelevator.model.dto.Appointment;
+import com.techelevator.model.dto.Patient;
 import com.techelevator.model.dto.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -10,7 +12,9 @@ import org.springframework.stereotype.Component;
 import javax.sql.DataSource;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Component
 public class JDBCReview implements ReviewDAO {
@@ -23,20 +27,34 @@ public class JDBCReview implements ReviewDAO {
     }
 
     @Override
-    public List<Review> getReviewsByDoctorId(int doctorId) {
-        List<Review> reviews = new ArrayList<>();
+    public Map<Review, Patient> getReviewsByDoctorId(int doctorId) {
+        Map<Review, Patient> reviewsByDoctor = new HashMap<>();
 
-        String query = "SELECT review_id, doctor_id, patient_id, title, description, rating, answer " +
-                "FROM review\n" +
+        String query = "SELECT review_id, doctor_id, r.patient_id, title, description, rating, answer, p.first_name, p.last_name\n" +
+                "FROM review as r\n" +
+                "INNER JOIN patient p ON p.patient_id = r.patient_id\n" +
                 "WHERE doctor_id = ?;";
 
         SqlRowSet row = jdbcTemplate.queryForRowSet(query, doctorId);
 
         while (row.next()) {
-            reviews.add(mapRowToReview(row));
+            Review review = new Review();
+            Patient patient = new Patient();
+
+            review.setReviewId(row.getInt("review_id"));
+            review.setDoctorId(row.getInt("doctor_id"));
+            review.setPatientId(row.getInt("patient_id"));
+            review.setTitle(row.getString("title"));
+            review.setDescription(row.getString("description"));
+            review.setRating(row.getInt("rating"));
+
+            patient.setFirstName(row.getString("first_name"));
+            patient.setLastName(row.getString("last_name"));
+
+            reviewsByDoctor.put(review, patient);
         }
 
-        return reviews;
+        return reviewsByDoctor;
     }
 
     @Override
