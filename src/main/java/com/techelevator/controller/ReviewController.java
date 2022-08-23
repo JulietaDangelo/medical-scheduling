@@ -1,11 +1,11 @@
 package com.techelevator.controller;
 
-import com.techelevator.model.dao.AvailabilityDAO;
 import com.techelevator.model.dao.DoctorDAO;
 import com.techelevator.model.dao.ReviewDAO;
 import com.techelevator.model.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +15,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -44,8 +43,11 @@ public class ReviewController {
 
     // Show form to send a new review
     @RequestMapping("/doctor-list/public-profile/review")
-    public String displayNewReviewForm(HttpServletRequest request) {
+    public String displayNewReviewForm(HttpServletRequest request, ModelMap modelMap) {
         int id = Integer.parseInt(request.getParameter("id"));
+
+        Review review = new Review();
+        modelMap.put("review", review);
 
         Doctor doctor = doctorDAO.getDoctorById(id);
         request.setAttribute("doctor", doctor);
@@ -57,13 +59,10 @@ public class ReviewController {
     @RequestMapping(path="/doctor-list/public-profile/review", method= RequestMethod.POST)
     public String postNewReview(@Valid @ModelAttribute Review review,
                                 BindingResult result,
-                                RedirectAttributes flash,
                                 HttpServletRequest request,
                                 HttpSession session) {
         if(result.hasErrors()) {
-            flash.addFlashAttribute("review", review);
-            flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "review", result);
-            return "redirect:/doctor-list/public-profile/review";
+            return "review/newReview";
         }
         int doctorId = Integer.parseInt(request.getParameter("id"));
         User user = (User)session.getAttribute("currentUser");

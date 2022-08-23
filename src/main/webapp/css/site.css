@@ -345,6 +345,10 @@ textarea {
     background-color: var(--toast--bg--cancelled);
 }
 
+.toast-cancelled button span {
+    color: #ffffff;
+}
+
 /******* upcoming appointments ********/
 
 .flex-container-upcoming-appointment {
@@ -652,3 +656,7 @@ button.close {
     opacity: .5;
 }
 
+.validator-hidden-control {
+    position: absolute;
+    visibility: collapse;
+}
