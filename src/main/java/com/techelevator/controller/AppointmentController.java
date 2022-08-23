@@ -104,4 +104,17 @@ public class AppointmentController {
         return  "redirect:/doctor/appointments";
     }
 
+    @RequestMapping(path="/patient/appointments", method=RequestMethod.POST)
+    public String cancelAppointmentByPatient(HttpServletRequest request,
+                                    HttpSession session) {
+        int id = Integer.parseInt(request.getParameter("id"));
+
+
+
+        User user = (User)session.getAttribute("currentUser");
+        appointmentDAO.cancelAppointment( id);
+
+        return  "redirect:/patient/appointments";
+    }
+
 }
