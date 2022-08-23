@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import javax.sql.DataSource;
 import java.time.LocalTime;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Component
@@ -32,12 +33,12 @@ public class JDBCAppointment implements AppointmentDAO {
 
     @Override
     public Map<Appointment, Patient> getAppointmentByDoctorId(int doctorId) {
-        Map<Appointment, Patient> appointmentsByDoctor = new HashMap<>();
+        Map<Appointment, Patient> appointmentsByDoctor = new LinkedHashMap<>();
 
         String query = "SELECT appointment_id, starting_time, ending_time, day_of_week, confirmed, a.patient_id, doctor_id, p.first_name, p.last_name, p.email, p.age, p.gender\n" +
                 "FROM appointment as a\n" +
                 "INNER JOIN patient p ON p.patient_id = a.patient_id\n" +
-                "WHERE doctor_id = ?";
+                "WHERE doctor_id = ? " + " ORDER BY a.confirmed DESC";
 
         SqlRowSet row = jdbcTemplate.queryForRowSet(query, doctorId);
 
@@ -83,12 +84,12 @@ public class JDBCAppointment implements AppointmentDAO {
 
     @Override
     public Map<Appointment, Doctor> getAppointmentByPatientId(int patientId) {
-        Map<Appointment, Doctor> appointmentsByPatient = new HashMap<>();
+        Map<Appointment, Doctor> appointmentsByPatient = new LinkedHashMap<>();
 
         String query = "SELECT appointment_id, starting_time, ending_time, day_of_week, confirmed, patient_id, a.doctor_id, d.first_name, d.last_name, d.email, d.phone_number, d.medical_specialty, d.address, d.hour_cost\n" +
                 "FROM appointment as a\n" +
                 "INNER JOIN doctor d ON a.doctor_id = d.doctor_id\n" +
-                "WHERE a.patient_id = ?";
+                "WHERE a.patient_id = ?" + " ORDER BY a.confirmed DESC ";
 
         SqlRowSet row = jdbcTemplate.queryForRowSet(query, patientId);
 
