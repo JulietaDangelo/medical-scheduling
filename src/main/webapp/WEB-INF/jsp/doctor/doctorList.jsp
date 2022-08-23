@@ -37,7 +37,6 @@
                         <div class="doctor-data-info"><div>Address:</div> ${doctor.address}</div>
                         <div class="doctor-data-info"><div>Phone number:</div> ${doctor.phoneNumber}</div>
                         <div class="doctor-data-info"><div>Hourly rate:</div> $${doctor.hourCost}</div>
-                        <div class="doctor-data-info"><div>Rating:</div></div>
                     </div>
                     <button type="button" class="btn btn-primary btn-sm button-doctor-list" ><a href="${link1}">See Profile</a></button>
                 </span>

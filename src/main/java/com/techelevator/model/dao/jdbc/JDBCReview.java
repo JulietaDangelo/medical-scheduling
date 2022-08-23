@@ -1,7 +1,6 @@
 package com.techelevator.model.dao.jdbc;
 
 import com.techelevator.model.dao.ReviewDAO;
-import com.techelevator.model.dto.Appointment;
 import com.techelevator.model.dto.Patient;
 import com.techelevator.model.dto.Review;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +9,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Component

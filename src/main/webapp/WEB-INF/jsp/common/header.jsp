@@ -4,7 +4,10 @@
 <html>
 <head>
 <title>iSchedule | Medical Appointments</title>
+
 <link rel="icon" type="favicon" href="/img/icon.ico">
+
+<link rel="icon" type="favicon" href="https://img.favpng.com/21/21/14/computer-icons-royalty-free-clip-art-png-favpng-tJrUW2TtD8vR3HeBAgCDdLpPz.jpg">
 
 <c:url var="bootstrapCss" value="/css/bootstrap.min.css" />
 <c:url var="siteCss" value="/css/site.css" />

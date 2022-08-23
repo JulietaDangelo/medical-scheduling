@@ -4,6 +4,9 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<c:url var="validator" value="/js/appointment-validation.js" />
+<script src="${validator}"></script>
+
 
 <h2>New Appointment</h2>
 <p>Take an appointment with <strong>${doctor.firstName} ${doctor.lastName}</strong></p>
@@ -37,31 +40,31 @@
                             </td>
                             <td>
                                 <div class="custom-control custom-checkbox">
-                                    <input type="radio" class="custom-control-input" value="Monday-${step}" name="appOption" >
+                                    <input type="radio" class="custom-control-input radio" value="Monday-${step}" name="appOption" >
                                     <label class="custom-control-label" for="Monday-${step}">Select</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="custom-control custom-checkbox">
-                                        <input type="radio" class="custom-control-input " value="Tuesday-${step}" name="appOption" >
+                                        <input type="radio" class="custom-control-input radio" value="Tuesday-${step}" name="appOption" >
                                     <label class="custom-control-label" for="Tuesday-${step}">Select</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="custom-control custom-checkbox">
-                                    <input type="radio" class="custom-control-input" value="Wednesday-${step}" name="appOption" >
+                                    <input type="radio" class="custom-control-input radio" value="Wednesday-${step}" name="appOption" >
                                     <label class="custom-control-label" for="Wednesday-${step}">Select</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="custom-control custom-checkbox">
-                                    <input type="radio" class="custom-control-input" value="Thursday-${step}" name="appOption" >
+                                    <input type="radio" class="custom-control-input radio" value="Thursday-${step}" name="appOption" >
                                     <label class="custom-control-label" for="Thursday-${step}">Select</label>
                                 </div>
                             </td>
                             <td>
                                 <div class="custom-control custom-checkbox">
-                                    <input type="radio" class="custom-control-input " value="Friday-${step}" name="appOption"  >
+                                    <input type="radio" class="custom-control-input radio" value="Friday-${step}" name="appOption"  >
                                     <label class="custom-control-label" for="Friday-${step}">Select</label>
                                 </div>
                             </td>
@@ -69,8 +72,9 @@
                     </c:forEach>
                     </tbody>
                 </table>
+                <input type="text" name="appointmentCount" class="validator-hidden-control">
                 <span class="div-button-doctor-list">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Make appointment</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id="makeAppointmentButton">Make appointment</button>
                 </span>
                 <!-- Modal -->
                 <div id="myModal" class="modal fade" role="dialog">
@@ -82,7 +86,8 @@
                                 <h4 class="modal-title">Confirm appointment</h4>
                             </div>
                             <div class="modal-body">
-                                <p>Do you want to confirm your appointment with ${doctor.firstName} ${doctor.lastName}?</p>
+                                <p id="confirmMessage">Do you want to confirm your appointment with ${doctor.firstName} ${doctor.lastName}?</p>
+                                <p id="errorMessage">Please selecte an appointment time to continue</p>
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Confirm</button>

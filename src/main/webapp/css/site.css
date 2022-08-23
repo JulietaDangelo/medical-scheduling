@@ -346,6 +346,7 @@ textarea {
     background-color: var(--toast--bg--cancelled);
 }
 
+
 /*********** patientPrescriptions.jsp ***********/
 
 
@@ -407,7 +408,12 @@ textarea {
 
 
 
-    /******* upcoming appointments ********/
+/******* upcoming appointments ********/
+
+.toast-cancelled button span {
+    color: #ffffff;
+}
+
 
 .flex-container-upcoming-appointment {
     display: flex;
@@ -715,3 +721,7 @@ button.close {
     opacity: .5;
 }
 
+.validator-hidden-control {
+    position: absolute;
+    visibility: collapse;
+}
