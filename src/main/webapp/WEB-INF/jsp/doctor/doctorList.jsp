@@ -21,6 +21,7 @@
 </div>
 
 <div class="doctor-list-centre">
+
     <div class="div-complete-doctor-list">
 
         <c:forEach var="doctor" items="${doctors}">
@@ -38,7 +39,7 @@
                         <div class="doctor-data-info"><div>Hourly rate:</div> $${doctor.hourCost}</div>
                         <div class="doctor-data-info"><div>Rating:</div></div>
                     </div>
-                    <button type="button" class="btn btn-info btn-sm button-doctor-list" href="${link1}" >See Profile</button>
+                    <button type="button" class="btn btn-primary btn-sm button-doctor-list" href="${link1}" >See Profile</button>
                 </a>
             </div>
 

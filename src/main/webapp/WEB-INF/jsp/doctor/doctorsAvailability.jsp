@@ -4,7 +4,7 @@
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
 
 
-<h4 class="text-center">Indicate your available hours from Monday to Friday </h4>
+<h2 class="text-center">Indicate your available hours from Monday to Friday </h2>
 
 <p class="text-center">Appointments can only be scheduled on the hour (e.g. 10am)</p>
 

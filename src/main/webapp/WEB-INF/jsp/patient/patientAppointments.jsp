@@ -8,14 +8,14 @@
 <h2 class="text-center title-doctor-list">Upcoming Appointments</h2>
 
 <div class="doctor-list-centre">
-  <div class="div-complete-doctor-list">
+  <div class="container-upcoming-appointments">
 
     <c:forEach var="appointment" items="${appointments}">
 
-      <div>
-        <p>Day: ${appointment.key.dayOfWeek}</p>
-        <p>Hour: ${appointment.key.startingTime}</p>
-        <p>Doctor: ${appointment.value.firstName} ${appointment.value.lastName}</p>
+      <div class="container-upcoming-appointment">
+        <p><strong>Day:</strong> ${appointment.key.dayOfWeek}</p>
+        <p><strong>Hour:</strong> ${appointment.key.startingTime}</p>
+        <p><strong>Doctor:</strong> ${appointment.value.firstName} ${appointment.value.lastName}</p>
       </div>
 
     </c:forEach>

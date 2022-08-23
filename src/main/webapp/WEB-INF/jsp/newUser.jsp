@@ -12,7 +12,7 @@
 	<div class="row">
 		<div class="col-sm-4"></div>
 		<div class="col-sm-4">
-			<h1>Sign Up</h1>
+			<h2>Sign Up</h2>
 			<div class="form-group">
 				<form:label path="userName">User Name: </form:label>
 				<form:input path="userName" cssClass="form-control" />
