@@ -40,7 +40,9 @@ CREATE TABLE appointment (
     ending_time time NOT NULL,
     day_of_week varchar(30) NOT NULL,
     patient_id Integer,
-    doctor_id Integer
+    doctor_id Integer,
+    confirmed boolean DEFAULT true
+
 );
 
 CREATE TABLE prescription (

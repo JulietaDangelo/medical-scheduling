@@ -8,18 +8,23 @@
 <h2 class="text-center title-doctor-list">Your Reviews</h2>
 
 <div class="doctor-list-centre">
-    <div class="div-complete-doctor-list">
+    <div class="container-reviews">
 
         <c:forEach var="review" items="${reviews}">
 
-            <div class="list-group w-50 p-3 div-doctor-list">
-                <h3>${review.title}</h3>
-                <div class="rating">
-                    <c:forEach begin="1" end="5" var="rating">
-                        <span class="${rating<= review.rating? 'filled':'' }">&#9734;</span>
-                    </c:forEach>
+            <div class="container-review">
+                <div class="header-review">
+                    <div>
+                        <h3>${review.key.title}</h3>
+                        <p>${review.value.firstName} ${review.value.lastName}</p>
+                    </div>
+                    <div class="rating">
+                        <c:forEach begin="1" end="5" var="rating">
+                            <span class="rating-star ${rating<= review.key.rating? 'filled':'' }">&#9734;</span>
+                        </c:forEach>
+                    </div>
                 </div>
-                <p>${review.description}</p>
+                <p>${review.key.description}</p>
             </div>
 
         </c:forEach>

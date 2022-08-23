@@ -8,7 +8,7 @@
 <section class="homepage">
     <div class="homepage-text">
         <h1>Welcome to iSchedule</h1>
-        <p>The best medical professionals in one place<br>Start now</p>
+        <p>The world's number one Patient and Doctor Appointment Scheduling Software</p>
         <c:url var="doctorList" value="/doctor-list"/>
         <c:if test="${!currentUser.isDoctor()}">
             <a href="${doctorList}">
@@ -28,8 +28,7 @@
                     <div class="toast-header" style="display: block">
                         <strong class="mr-auto">Appointment Alert!</strong>
                         <small>${appointment.key.dayOfWeek}</small>
-                        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close"
-                                onclick="removeContent(this)">
+                        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close" onclick="removeContent(this)">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>

@@ -3,10 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.model.dao.AvailabilityDAO;
 import com.techelevator.model.dao.DoctorDAO;
 import com.techelevator.model.dao.ReviewDAO;
-import com.techelevator.model.dto.Availability;
-import com.techelevator.model.dto.Doctor;
-import com.techelevator.model.dto.Review;
-import com.techelevator.model.dto.User;
+import com.techelevator.model.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +21,7 @@ import javax.validation.Valid;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class DoctorController {
@@ -98,7 +96,7 @@ public class DoctorController {
 
         Doctor doctor = doctorDAO.getDoctorById(id);
         Availability availability = availabilityDAO.getAvailabilityByDoctorId(id);
-        List<Review> reviews = reviewDAO.getReviewsByDoctorId(id);
+        Map<Review, Patient> reviews = reviewDAO.getReviewsByDoctorId(id);
         int startingTime = availability.getStartingTimeAsInt();
         int endingTime = availability.getEndingTimeAsInt();
 

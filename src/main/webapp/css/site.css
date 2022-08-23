@@ -1,9 +1,91 @@
+:root {
+    --font-color: #6c757d;
+    --button-bg: #2a9d8f;
+    --button-color: #fff;
+    --button-hover: #1B655C;
+    --toast: #fcf6bd;
+    --toast--hover: #f8e963;
+    --toast--bg: #6c757d;
+    --border-radius: 0.5rem;
+    --button--border-radius : 0.8rem;
+    --titles-color: #001219;
+}
+
+* {
+    color: var(--font-color);
+}
+
+button {
+    font-size: 1.8rem;
+    border-radius: var(--border-radius);
+}
+
+.btn-primary {
+    border-color: var(--button-bg);
+    background-color: var(--button-bg);
+    border-radius: var(--border-radius);
+}
+
+.btn-primary:hover,
+.btn-primary.active,
+.btn-primary:active,
+.open>.dropdown-toggle.btn-primary,
+.btn-primary.focus,
+.btn-primary:focus{
+    color: #fff;
+    background-color: var(--button-hover);
+    border-color: var(--button-hover);
+}
+
+.btn-outline-primary {
+   border-color: var(--button-bg);
+   color: var(--button-bg);
+   border-radius: var(--border-radius);
+    background-color: #ffffff;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus{
+    color: var(--button-hover);
+}
+
+a {
+    color: var(--button-bg);
+}
+
+.nav>li>a:focus,
+.nav>li>a:hover {
+    background-color: var(--button-hover);
+    color: #ffffff;
+    padding: .6rem 1.2rem;
+    border-radius: var(--border-radius);
+}
+
+h1 {
+    font-size: 6rem;
+    color: var(--titles-color);
+}
+
+h2 {
+    font-size: 4rem;
+    color: var(--titles-color);
+}
+
+h3 {
+    font-size: 3rem;
+    color: var(--titles-color);
+}
+
+h4 {
+    font-size: 2rem;
+}
+
 /*********** home.jsp ***********/
 
 .homepage {
-    background-image: linear-gradient(transparent, rgba(255, 255, 255)), url(https://img.freepik.com/premium-photo/medical-banner-with-icons_1325-1526.jpg?w=1380);
+    background-image: linear-gradient(transparent, rgba(255, 255, 255)), url(../img/banner.png);
     width: 100%;
-    height: 100vh;
+    height: 77vh;
     background-size: cover;
 }
 
@@ -14,31 +96,31 @@
 }
 
 .homepage-text h1 {
-    font-size: 60px;
+    font-size: 6rem;
     text-shadow: 1px 1px 1px #fff;
 }
 
 .homepage-text p {
-    font-size: 25px;
-    margin: 20px;
-    padding-bottom: 20px;
+    font-size: 2.5rem;
+    margin: 2rem;
+    padding-bottom: 2rem;
     text-shadow: 1px 1px 1px #fff;
+    color: var(--titles-color);
 }
 
 .homepage-button {
-    margin-top: 20px;
-    padding: 10px 50px;
-    background-color: #007bff;
-    color: #fff!important;
+    margin-top: 2rem;
+    padding: 1rem 5rem;
+    background-color: var(--button-bg);
+    color: var(--button-color);
     text-decoration: none;
-    font-size: 18px;
+    font-size: 1.8rem;
     transition: 0.5s;
 }
 
 .homepage-button:hover {
-    background-color: #0258b5;
+    background-color: var(--button-hover);
 }
-
 
 /*********** doctorList.jsp ***********/
 
@@ -47,8 +129,8 @@
     display: grid;
     grid-template-columns: repeat(2, 2fr);
     grid-template-rows: repeat(2, 2fr);
-    grid-row-gap: 10px;
-    margin-bottom: 10px;
+    grid-row-gap: 1rem;
+    margin-bottom: 1rem;
 }
 
 .doctor-data-info div {
@@ -95,15 +177,14 @@
 }
 
 .dropdown-specialty {
-    margin-left: 50px;
-    margin-bottom: 30px
+    margin-left: 5rem;
+    margin-bottom: 3rem;
 }
 
 .dropdown-specialty ul li a {
     color: #343a40;
     text-decoration: none;
 }
-
 
 /*********** doctorPublicProfile.jsp ***********/
 
@@ -122,7 +203,7 @@
 }
 
 .table-profile ul li strong{
-    padding-right: 5px;
+    padding-right: .5rem;
 }
 
 .button-center {
@@ -150,11 +231,86 @@
 }
 
 .button-doctor-hour {
-    margin-top: 15px;
+    margin-top: 1.5rem;
 }
+
+/*Toast / Notifications*/
+
+.toast.show {
+    display: block;
+    opacity: 1;
+}
+
+.toast {
+    max-width: 35rem;
+    overflow: hidden;
+    background-color: var(--toast);
+    background-clip: padding-box;
+    border: 1px solid var(--toast);
+    border-radius: 1rem;
+    box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 10%);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    margin-bottom: 0.5rem;
+}
+
+.toast-header {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    color: var(--toast--bg);
+    background-color: rgba(255,255,255,.85);
+    background-clip: padding-box;
+    border-bottom: 1px solid rgba(0,0,0,.05);
+}
+
+.toast-body {
+    padding: 0.75rem;
+    color: var(--toast--bg);
+}
+
+/******* upcoming appointments ********/
+
+.container-upcoming-appointments {
+    min-width: 70%;
+}
+
+.container-upcoming-appointment {
+    min-width: 50%;
+    background-color: var(--toast);
+    border-left: .5rem solid var(--toast--hover);
+    padding: 1rem 0 1rem 1.5rem;
+    margin-bottom: 2.5rem;
+    border-radius: var(--border-radius);
+}
+
+/******* reviews ********/
+
+.container-reviews {
+    min-width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-review {
+    border: 1px solid var(--button-hover);
+    border-radius: var(--border-radius);
+    padding: 0 2rem;
+    margin-bottom: 2rem;
+}
+
+.header-review {
+    display: flex;
+    justify-content: space-between;
+}
+
+/*Rating stars*/
 
 .rating {
     display: inline-block;
+    margin-top: 2rem;
 }
 
 .rating span {
@@ -166,6 +322,11 @@
     color: #FFC000;
     position: absolute;
 }
+
+.rating-star {
+    font-size: 2.5rem;
+}
+
 
 
 /*********** BOOTSTRAP ***********/
@@ -383,42 +544,6 @@ h4 {
 
 .table-image td, th {
     vertical-align: middle;
-}
-
-.toast.show {
-    display: block;
-    opacity: 1;
-}
-.toast {
-    max-width: 350px;
-    overflow: hidden;
-    background-color: rgba(255,255,255,.85);
-    background-clip: padding-box;
-    border: 1px solid rgba(0,0,0,.1);
-    border-radius: 0.25rem;
-    box-shadow: 0 0.25rem 0.75rem rgb(0 0 0 / 10%);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-}
-
-.fade {
-    transition: opacity .15s linear;
-}
-
-.toast-header {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-    align-items: center;
-    padding: 0.25rem 0.75rem;
-    color: #6c757d;
-    background-color: rgba(255,255,255,.85);
-    background-clip: padding-box;
-    border-bottom: 1px solid rgba(0,0,0,.05);
-}
-
-.toast-body {
-    padding: 0.75rem;
 }
 
 .mr-auto, .mx-auto {

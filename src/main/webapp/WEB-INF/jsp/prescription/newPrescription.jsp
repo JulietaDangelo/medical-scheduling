@@ -4,7 +4,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<h1 class="text-center">Create new prescription</h1>
+<h2 class="text-center">Create new prescription</h2>
 
 <c:url var="formAction" value="/doctor/appointments/prescription/${param.id}" />
 <form method="POST" action="${formAction}" model="prescription" />
@@ -21,7 +21,7 @@
         <input type="number" id="cost" name="cost" placeHolder="0" class="form-control" value="${prescription.cost}"/>
       </div>
       <button type="submit" class="btn btn-primary">Send prescription</button>
-      <button type="button" class="btn btn-info" onclick="history.back()">Go Back</button>
+      <button type="button" class="btn btn-outline-primary me-2" onclick="history.back()">Go Back</button>
     </div>
     <div class="col-sm-4"></div>
   </div>

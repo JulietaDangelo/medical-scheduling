@@ -3,10 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.model.dao.AvailabilityDAO;
 import com.techelevator.model.dao.DoctorDAO;
 import com.techelevator.model.dao.ReviewDAO;
-import com.techelevator.model.dto.Availability;
-import com.techelevator.model.dto.Doctor;
-import com.techelevator.model.dto.Review;
-import com.techelevator.model.dto.User;
+import com.techelevator.model.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -19,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ReviewController {
@@ -37,7 +35,7 @@ public class ReviewController {
         User user = (User)session.getAttribute("currentUser");
         int id = user.getId();
 
-        List<Review> reviews = reviewDAO.getReviewsByDoctorId(id);
+        Map<Review, Patient> reviews = reviewDAO.getReviewsByDoctorId(id);
 
         request.setAttribute("reviews", reviews);
 
