@@ -22,12 +22,12 @@
     <div style="position:absolute; top: 200px; right: 50px;">
         <div style="display: flex; flex-direction: column;">
 
-
             <c:forEach var="appointment" items="${appointments}" begin="0" end="1">
+                <c:if test="${appointment.key.confirmed}">
                 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="notification">
                     <div class="toast-header" style="display: block">
                         <strong class="mr-auto">Appointment Alert!</strong>
-                        <small>${appointment.key.dayOfWeek}</small>
+                        <small>${appointment.value.firstName} ${appointment.value.lastName}</small>
                         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close" onclick="removeContent(this)">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -36,8 +36,34 @@
                         You have an appointment ${appointment.key.dayOfWeek} at ${appointment.key.startingTime}hs.
                     </div>
                 </div>
-
+                </c:if>
             </c:forEach>
+
+        </div>
+    </div>
+</c:if>
+
+<c:if test="${not empty currentUser && currentUser.isPatient()}">
+    <div style="position:absolute; top: 200px; right: 50px;">
+        <div style="display: flex; flex-direction: column;">
+
+            <c:forEach var="patientApp" items="${patientApps}" begin="0" end="${patientApps.size()}">
+                <c:if test="${!patientApp.key.confirmed}">
+                    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="notification">
+                        <div class="toast-header" style="display: block">
+                            <strong class="mr-auto">Appointment Cancelled!</strong>
+                            <small>${patientApp.value.firstName} ${patientApp.value.lastName}</small>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close" onclick="removeContent(this)">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="toast-body">
+                            Your appointment of ${patientApp.key.dayOfWeek} at ${patientApp.key.startingTime}hs was cancelled.
+                        </div>
+                    </div>
+                </c:if>
+            </c:forEach>
+
         </div>
     </div>
 </c:if>

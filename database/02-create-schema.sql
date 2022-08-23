@@ -42,8 +42,6 @@ CREATE TABLE appointment (
     patient_id Integer,
     doctor_id Integer,
     confirmed boolean DEFAULT 'true'
-
-
 );
 
 CREATE TABLE prescription (
