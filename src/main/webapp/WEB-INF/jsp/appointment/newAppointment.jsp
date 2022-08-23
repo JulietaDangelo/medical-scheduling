@@ -90,7 +90,7 @@
                                 <p id="errorMessage">Please selecte an appointment time to continue</p>
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">Confirm</button>
+                                <button type="submit" class="btn btn-primary" id="confirmButton">Confirm</button>
                                 <button type="button" class="btn btn-outline-primary me-2" data-dismiss="modal">Go back</button>
                             </div>
                         </div>
