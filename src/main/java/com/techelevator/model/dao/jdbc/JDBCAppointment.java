@@ -37,7 +37,7 @@ public class JDBCAppointment implements AppointmentDAO {
         String query = "SELECT appointment_id, starting_time, ending_time, day_of_week, confirmed, a.patient_id, doctor_id, p.first_name, p.last_name, p.email, p.age, p.gender\n" +
                 "FROM appointment as a\n" +
                 "INNER JOIN patient p ON p.patient_id = a.patient_id\n" +
-                "WHERE doctor_id = ?";
+                "WHERE doctor_id = ? ";
 
         SqlRowSet row = jdbcTemplate.queryForRowSet(query, doctorId);
 
