@@ -55,7 +55,8 @@ public class AppointmentController {
         // Get value of the radio button and split it to get both the day and the time
         String[] options = appOption.split("-");
         appointment.setDayOfWeek(options[0]);
-        appointment.setStartingTime(LocalTime.parse(options[1] + ":00"));
+        String hour = options[1].length() == 1 ? "0" + options[1] : options[1];
+        appointment.setStartingTime(LocalTime.parse(hour + ":00"));
         appointment.calculateDefaultEndingTime();
 
         User user = (User)session.getAttribute("currentUser");
@@ -94,5 +95,18 @@ public class AppointmentController {
         return "patient/patientAppointments";
     }
 
+
+    @RequestMapping(path="/doctor/appointments", method=RequestMethod.POST)
+    public String cancelAppointment(HttpServletRequest request,
+                                    HttpSession session) {
+        int id = Integer.parseInt(request.getParameter("id"));
+
+
+
+        User user = (User)session.getAttribute("currentUser");
+        appointmentDAO.cancelAppointment( id);
+
+        return  "redirect:/doctor/appointments";
+    }
 
 }
