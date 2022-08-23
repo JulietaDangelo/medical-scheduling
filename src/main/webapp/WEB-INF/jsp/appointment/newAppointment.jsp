@@ -25,7 +25,7 @@
                         <th scope="col">Tuesday</th>
                         <th scope="col">Wednesday</th>
                         <th scope="col">Thursday</th>
-                        <th scope="col">Friday</th>
+c                        <th scope="col">Friday</th>
                     </tr>
                     </thead>
                     <tbody>

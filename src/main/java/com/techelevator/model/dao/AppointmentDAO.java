@@ -12,4 +12,6 @@ public interface AppointmentDAO {
     void createNewAppointment(LocalTime startingTime, LocalTime endingTime, String dayOfWeek, int patientId, int doctorId);
     Map<Appointment, Patient> getAppointmentByDoctorId(int doctorId);
     Map<Appointment, Doctor> getAppointmentByPatientId(int patientId);
+
+    void cancelAppointment(int id);
 }

@@ -71,6 +71,15 @@ public class JDBCAppointment implements AppointmentDAO {
     }
 
     @Override
+    public void cancelAppointment(int id) {
+        String sql = "UPDATE appointment\n" +
+                    "SET confirmed = false " +
+                    "WHERE appointment_id = ?;";
+
+            jdbcTemplate.update(sql, id);
+    }
+
+    @Override
     public Map<Appointment, Doctor> getAppointmentByPatientId(int patientId) {
         Map<Appointment, Doctor> appointmentsByPatient = new HashMap<>();
 
@@ -111,5 +120,7 @@ public class JDBCAppointment implements AppointmentDAO {
 
         return appointmentsByPatient;
     }
+
+
 
 }
