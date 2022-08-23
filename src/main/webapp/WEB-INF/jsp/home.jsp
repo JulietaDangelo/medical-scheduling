@@ -23,20 +23,23 @@
         <div style="display: flex; flex-direction: column;">
 
             <c:forEach var="appointment" items="${appointments}" begin="0" end="1">
-                <c:if test="${appointment.key.confirmed}">
-                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="notification">
+                <div class="toast ${!appointment.key.confirmed ? "toast-cancelled" : ""}" role="alert" aria-live="assertive" aria-atomic="true" id="notification">
                     <div class="toast-header" style="display: block">
-                        <strong class="mr-auto">Appointment Alert!</strong>
+                        <strong class="mr-auto">${!appointment.key.confirmed ? "Appointment Cancelled!" : "Appointment Alert!"}</strong>
                         <small>${appointment.value.firstName} ${appointment.value.lastName}</small>
                         <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close" onclick="removeContent(this)">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="toast-body">
-                        You have an appointment ${appointment.key.dayOfWeek} at ${appointment.key.startingTime}hs.
+                        <c:if test="${appointment.key.confirmed}">
+                            You have an appointment ${appointment.key.dayOfWeek} at ${appointment.key.startingTime}hs.
+                        </c:if>
+                        <c:if test="${!appointment.key.confirmed}">
+                            Your appointment of ${appointment.key.dayOfWeek} at ${appointment.key.startingTime}hs was cancelled.
+                        </c:if>
                     </div>
                 </div>
-                </c:if>
             </c:forEach>
 
         </div>
@@ -49,7 +52,7 @@
 
             <c:forEach var="patientApp" items="${patientApps}" begin="0" end="${patientApps.size()}">
                 <c:if test="${!patientApp.key.confirmed}">
-                    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="notification">
+                    <div class="toast toast-cancelled" role="alert" aria-live="assertive" aria-atomic="true" id="notification">
                         <div class="toast-header" style="display: block">
                             <strong class="mr-auto">Appointment Cancelled!</strong>
                             <small>${patientApp.value.firstName} ${patientApp.value.lastName}</small>
