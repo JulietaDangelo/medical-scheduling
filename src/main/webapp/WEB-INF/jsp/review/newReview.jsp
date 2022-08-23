@@ -5,9 +5,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-<h1>${doctor.firstName} ${doctor.lastName}</h1>
+<h2>Make a review for ${doctor.firstName} ${doctor.lastName}</h2>
 
-<button type="button" class="btn btn-info button-doctor-list" onclick="history.back()">Go Back</button>
+<button type="button" class="btn btn-outline-primary me-2 button-doctor-list" onclick="history.back()">Go Back</button>
 
 <c:url var="formAction" value="/doctor-list/public-profile/review?id=${doctor.doctorId}" />
 <form method="POST" action="${formAction}">
