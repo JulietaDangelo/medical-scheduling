@@ -6,6 +6,9 @@
     --toast: #CBC6E2;
     --toast--hover: #968EC5;
     --toast--bg: #E0DDEE;
+    --toast--cancelled: #da7070;
+    --toast--hover--cancelled: #c82828;
+    --toast--bg--cancelled: #edb7b7;
     --border-radius: 0.5rem;
     --button--border-radius : 0.8rem;
     --titles-color: #001219;
@@ -276,6 +279,21 @@ h4 {
 .toast-body {
     padding: 0.75rem;
     background-color: var(--toast--bg);
+}
+
+.toast-cancelled .toast-header {
+    background-color: var(--toast--cancelled);
+    border-bottom-color: var(--toast--hover--cancelled);
+    color: #ffffff;
+}
+
+.toast-cancelled .toast-header strong,
+.toast-cancelled .toast-header small {
+    color: #ffffff;
+}
+
+.toast-cancelled .toast-body {
+    background-color: var(--toast--bg--cancelled);
 }
 
 /******* upcoming appointments ********/
