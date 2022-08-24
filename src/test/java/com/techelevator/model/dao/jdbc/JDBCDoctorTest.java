@@ -39,7 +39,6 @@ public class JDBCDoctorTest extends DAOIntegrationTest {
 
         // act
         doctorDAO.saveDoctorUser( doctorId,  firstName,  lastName,  email,  hourCost,  address,  phoneNumber,  medicalSpecialty);
-        //appointmentDAO.createNewAppointment(startingTime, endingTime, dayOfWeek, patientId, doctorId);
 
         // assert
         Doctor doctor1  = doctorDAO.getDoctorById(4);
