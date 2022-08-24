@@ -41,18 +41,18 @@ public class JDBCAvailabilityTest extends DAOIntegrationTest  {
     }
 
     @Test
-    public void saveAvailability_should_createAvailability() {
+    public void updateAvailability_should_changeAvailability() {
         // arrange
         LocalTime expected = LocalTime.parse("16:00");
 
         // act
-        /*appointmentDAO.createNewAppointment(startingTime, endingTime, dayOfWeek, patientId, doctorId);
+        availabilityDAO.updateAvailability(2, LocalTime.parse("09:00"), LocalTime.parse("16:00"));
 
         // assert
-        Map<Appointment, Patient> appointments = appointmentDAO.getAppointmentByDoctorId(doctorId);
-        int actual = appointments.size();
-        String message = "Adding one appointment should result in having one appointment assign to that doctor.";
-        assertEquals(message, expected, actual);*/
+        Availability availability =  availabilityDAO.getAvailabilityByDoctorId(2);
+        LocalTime actual = availability.getEndingTime();
+        String message = "Updating an availability should change the availability for that doctor.";
+        assertEquals(message, expected, actual);
 
     }
 
