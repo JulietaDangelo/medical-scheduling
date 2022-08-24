@@ -9,8 +9,8 @@
 <form method="POST" action="${formAction}" modelAttribute="doctor">
     <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
     <div class="row">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
+        <div class="col-xs-4"></div>
+        <div class="col-xs-4 mobile">
             <input type="hidden" id="doctorId" name="doctorId" class="form-control" value="${doctor.doctorId}" />
             <div class="form-group">
                 <label for="email">Email: </label>
@@ -45,7 +45,7 @@
             </div>
                 <button type="submit" class="btn btn-primary">Update Profile</button>
         </div>
-        <div class="col-sm-4"></div>
+        <div class="col-xs-4"></div>
     </div>
 </form>
 

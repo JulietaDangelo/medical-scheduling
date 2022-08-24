@@ -265,6 +265,7 @@ textarea {
 .button-center {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 15px;
 }
 
@@ -483,10 +484,11 @@ textarea {
     display: flex;
     align-items: center;
     flex-direction: column;
+    padding: 0;
 }
 
 .container-reviews--profile ul li {
-    width: 40%;
+    width: 60%;
 }
 
 /*Rating stars*/
@@ -751,3 +753,154 @@ h4 {
 .mb-1, .my-1 {
     margin-bottom: 0.25rem!important;
 }
+
+/* Hamburger menu */
+.hamburger-menu {
+    visibility: hidden;
+    position: absolute;
+}
+
+
+
+
+
+/***** MEDIA QUERIES *****/
+
+@media screen and (max-width: 1024px) {
+
+    /* header.jsp */
+    .nav-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+}
+
+/****** TABLET ******/
+@media screen and (max-width: 768px) {
+
+/*    !* Hamburger menu *!
+    .hamburger-menu {
+        visibility: visible;
+        display: block;
+        position: relative;
+        right: 35%;
+    }
+    .nav-menu-burger {
+        visibility: hidden;
+        position: absolute;
+    }
+
+    .align-items-center {
+        justify-content: space-between!important;
+    }
+
+    !* end Hamburger menu *!*/
+
+    h2 {
+        font-size: 3em;
+    }
+
+    /* home.jsp */
+    .homepage-text h1 {
+        font-size: 4.5rem;
+    }
+
+    .homepage-text p {
+        font-size: 2rem;
+    }
+
+    /* doctorAppointments.jsp - patientAppointments.jsp */
+    .container-upcoming-appointment {
+        width: 95%;
+    }
+
+    /* newPrescription.jsp */
+    .go-back-button {
+        margin-top: 10px;
+    }
+
+    /* doctorPrescriptions.jsp - patientPrescriptions.jsp */
+
+    .div-complete-prescription-list {
+        grid-template-rows: repeat(1, 1fr);
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    /* doctorList.jsp */
+    .div-complete-doctor-list {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        width: 70%;
+    }
+
+    /* doctorPublicProfile.jsp - doctorPersonalProfile.jsp */
+    .container-reviews--profile ul li {
+        width: 80%;
+    }
+
+    .table-profile ul {
+        width: 70%;
+    }
+
+    /* newAppointment.jsp */
+    .custom-control label {
+        font-size: 12px;
+    }
+
+}
+
+
+/****** MOBILE ******/
+@media screen and (max-width: 500px) {
+
+    h2 {
+        font-size: 2em;
+    }
+
+    /* home.jsp */
+    .homepage-text h1 {
+        font-size: 4rem;
+    }
+
+    .homepage-text p {
+        font-size: 2rem;
+    }
+
+    /* login.jsp - updateDoctorInfo.jsp*/
+    .mobile {
+        padding-left: 40px;
+        width: 90%;
+    }
+
+    /* doctorAppointments.jsp - patientAppointments.jsp */
+    .container-upcoming-appointment {
+        width: 95%;
+    }
+
+    .buttons-appointments {
+        flex-wrap: wrap;
+    }
+
+    /* newPrescription.jsp */
+    .go-back-button {
+        margin-top: 10px;
+    }
+
+    /* doctorPrescriptions.jsp - patientPrescriptions.jsp */
+    .div-complete-prescription-list {
+        grid-template-rows: repeat(1, 1fr);
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .table-profile ul {
+        width: 70%;
+    }
+
+    /* newAppointment.jsp */
+    .custom-control label {
+        font-size: 9px;
+    }
+}
+
+
