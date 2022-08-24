@@ -347,7 +347,7 @@ textarea {
 }
 
 
-/*********** patientPrescriptions.jsp ***********/
+/*********** patientPrescriptions.jsp - doctorPrescriptions.jsp ***********/
 
 
 .prescription-list-centre {
@@ -358,6 +358,7 @@ textarea {
 
 .div-complete-prescription-list {
     width: 80%;
+    height: 100%;
     display: grid;
     grid-template-columns: repeat(2, 2fr);
     grid-template-rows: repeat(2, 2fr);
@@ -374,6 +375,7 @@ textarea {
     display: flex;
     flex-direction: column;
     margin: auto;
+    border-left: .5rem solid var(--toast--hover);
 }
 
 .div-prescription-logo {
@@ -406,6 +408,14 @@ textarea {
     flex-shrink: 4;
 }
 
+.div-prescription {
+    display: grid;
+    grid-template-rows: repeat(1, 1fr);
+}
+
+.div-prescription-patient {
+    margin: auto;
+}
 
 
 /******* upcoming appointments ********/

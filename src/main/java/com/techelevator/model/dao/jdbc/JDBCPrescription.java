@@ -73,7 +73,42 @@ public class JDBCPrescription implements PrescriptionDAO {
         return prescriptionByPatient;
     }
 
+    @Override
+    public Map<Prescription, Patient> getPrescriptionByDoctorId(int doctorId) {
+        Map<Prescription, Patient> prescriptionByDoctor = new HashMap<>();
 
+        String query = "SELECT prescription_id, p.patient_id, p.doctor_id, p.prescription_name, p.cost, pa.first_name, pa.last_name, pa.email, pa.gender, pa.age " +
+            "FROM prescription as p " +
+            "INNER JOIN patient pa ON p.patient_id = pa.patient_id " +
+            "WHERE p.doctor_id = ?;";
+
+        SqlRowSet row = jdbcTemplate.queryForRowSet(query, doctorId);
+
+        while (row.next()) {
+            Prescription prescription = new Prescription();
+            Patient patient = new Patient();
+
+            int prescriptionId = row.getInt("prescription_id");
+            int patientID = row.getInt("patient_id");
+            int doctorID = row.getInt("doctor_id");
+            String prescriptionName = row.getString("prescription_name");
+            BigDecimal cost = row.getBigDecimal("cost");
+            prescription.setPrescriptionId(prescriptionId);
+            prescription.setPatientId(patientID);
+            prescription.setDoctorId(doctorID);
+            prescription.setPrescriptionName(prescriptionName);
+            prescription.setCost(cost);
+
+            patient.setFirstName(row.getString("first_name"));
+            patient.setLastName(row.getString("last_name"));
+            patient.setEmail(row.getString("email"));
+            patient.setAge(row.getInt("age"));
+            patient.setGender(row.getString("gender"));
+
+            prescriptionByDoctor.put(prescription, patient);
+        }
+        return prescriptionByDoctor;
+    }
 
 
     private Prescription mapRowToPrescription (SqlRowSet rowSet) {

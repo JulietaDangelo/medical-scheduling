@@ -36,8 +36,6 @@ public class PrescriptionController {
     // Create new prescription
     @RequestMapping(path="/doctor/appointments/prescription/{patientId}", method=RequestMethod.POST)
     public String createAppointment(HttpSession session, @ModelAttribute Prescription prescription, HttpServletRequest request, @PathVariable int patientId) {
-        // Prescription prescription = new Prescription();
-        // int id = Integer.parseInt(request.getParameter("id"));
         User user = (User)session.getAttribute("currentUser");
         request.setAttribute("prescription", prescription);
 
@@ -53,6 +51,19 @@ public class PrescriptionController {
         modelMap.put("prescription", prescription);
 
         return "patient/patientPrescriptions";
+    }
+
+    @RequestMapping("/doctor/prescriptions")
+    public String getAllPrescriptionsForDoctor(ModelMap modelMap, HttpSession session, HttpServletRequest request) {
+        User user = (User)session.getAttribute("currentUser");
+        Map<Prescription, Patient> prescription = prescriptionDAO.getPrescriptionByDoctorId(user.getId());
+        modelMap.put("prescription", prescription);
+
+        Doctor doctor = doctorDAO.getDoctorById(user.getId());
+
+        request.setAttribute("doctor", doctor);
+
+        return "doctor/doctorPrescriptions";
     }
 
 

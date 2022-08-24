@@ -67,7 +67,7 @@
 
 			<ul class="nav justify-content-center d-flex flex-wrap">
 				<c:if test="${not empty currentUser && currentUser.isDoctor()}">
-					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${doctorAppointments}">Prescriptions</a></li>
+					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${doctorPrescriptions}">Prescriptions</a></li>
 					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${doctorAppointments}">Appointments</a></li>
 					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${reviews}">Reviews</a></li>
 					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${doctorProfile}">My profile</a></li>
