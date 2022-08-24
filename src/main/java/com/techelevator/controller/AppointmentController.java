@@ -96,8 +96,6 @@ public class AppointmentController {
                                     HttpSession session) {
         int id = Integer.parseInt(request.getParameter("id"));
 
-
-
         User user = (User)session.getAttribute("currentUser");
         appointmentDAO.cancelAppointment( id);
 
@@ -108,8 +106,6 @@ public class AppointmentController {
     public String cancelAppointmentByPatient(HttpServletRequest request,
                                     HttpSession session) {
         int id = Integer.parseInt(request.getParameter("id"));
-
-
 
         User user = (User)session.getAttribute("currentUser");
         appointmentDAO.cancelAppointment( id);
