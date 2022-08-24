@@ -13,8 +13,8 @@
 <form:form modelAttribute="doctor" method="POST" action="${formAction}" name="doctorForm">
     <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
     <div class="row">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
+        <div class="col-xs-4"></div>
+        <div class="col-xs-4">
             <h2>Sign Up</h2>
             <div class="form-group">
                 <form:label path="firstName">First Name: </form:label>
@@ -36,7 +36,6 @@
                 <form:input path="address" cssClass="form-control" placeHolder="Address" />
                 <form:errors path="address" cssClass="error" />
             </div>
-
             <div class="form-group">
                 <form:label path="phoneNumber">Phone Number: </form:label>
                 <form:input path="phoneNumber" cssClass="form-control" placeHolder="Phone Number" />
@@ -57,9 +56,10 @@
                 <form:input path="hourCost" cssClass="form-control" placeHolder="Cost Per Hour" />
                 <form:errors path="hourCost" cssClass="error" />
             </div>
+
             <button type="submit" id="newUserButton" class="btn btn-primary">Create User</button>
         </div>
-        <div class="col-sm-4"></div>
+        <div class="col-xs-4"></div>
     </div>
 </form:form>
 

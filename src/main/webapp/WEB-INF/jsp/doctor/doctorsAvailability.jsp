@@ -6,15 +6,15 @@
 
 <h2 class="text-center">Indicate your available hours from Monday to Friday </h2>
 
-<p class="text-center">Appointments can only be scheduled on the hour (e.g. 10am)</p>
+<p class="text-center">Appointments can only be scheduled on the hour (e.g. 10am) between 9:00 to 18:00</p>
 
 <div class="div-doctor-hours">
     <c:url var="formAction" value="/users/new/doctor/availability"/>
     <form method="POST" action="${formAction}" modelAttribute="availability" class="form-doctor-hour">
         <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
         <div class="row">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4">
+            <div class="col-xs-4"></div>
+            <div class="col-xs-4">
                 <div class="form-group">
                     <label for="startingTime">From: </label>
                     <input type="time" id="startingTime" name="startingTime"
@@ -27,7 +27,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary button-doctor-hour">Add Hours</button>
             </div>
-            <div class="col-sm-4"></div>
+            <div class="col-xs-4"></div>
         </div>
     </form>
 </div>

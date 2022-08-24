@@ -26,8 +26,8 @@
 </script>
 
 <div class="row">
-	<div class="col-sm-4"></div>
-	<div class="col-sm-4">
+	<div class="col-xs-4"></div>
+	<div class="col-xs-4 mobile">
 		<h1>Log In</h1>
 		<c:url var="formAction" value="/login" />
 		<form method="POST" action="${formAction}">
@@ -45,6 +45,6 @@
 			<button type="submit" class="btn btn-primary">Login</button>
 		</form>
 	</div>
-	<div class="col-sm-4"></div>
+	<div class="col-xs-4"></div>
 </div>
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />

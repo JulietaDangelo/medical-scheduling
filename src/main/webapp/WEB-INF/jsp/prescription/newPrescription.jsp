@@ -10,8 +10,8 @@
 <form method="POST" action="${formAction}" model="prescription" />
   <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
   <div class="row">
-    <div class="col-sm-4"></div>
-    <div class="col-sm-4">
+    <div class="col-xs-4"></div>
+    <div class="col-xs-4">
       <div class="form-group">
         <label for="prescriptionName">Prescription name: </label>
         <input type="text" id="prescriptionName" name="prescriptionName" placeHolder="Name" class="form-control" value="${prescription.prescriptionName}" />
@@ -21,9 +21,9 @@
         <input type="number" id="cost" name="cost" placeHolder="0" class="form-control" value="${prescription.cost}"/>
       </div>
       <button type="submit" class="btn btn-primary">Send prescription</button>
-      <button type="button" class="btn btn-outline-primary me-2" onclick="history.back()">Go Back</button>
+      <button type="button" class="btn btn-outline-primary me-2 go-back-button" onclick="history.back()">Go Back</button>
     </div>
-    <div class="col-sm-4"></div>
+    <div class="col-xs-4"></div>
   </div>
 </form>
 

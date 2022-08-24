@@ -13,8 +13,8 @@
 
     <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
     <div class="row">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
+        <div class="col-xs-4"></div>
+        <div class="col-xs-4 mobile">
 
             <div class="form-group">
                 <form:label path="title">Title: </form:label>
@@ -36,7 +36,7 @@
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
-        <div class="col-sm-4"></div>
+        <div class="col-xs-4"></div>
     </div>
 </form:form>
 

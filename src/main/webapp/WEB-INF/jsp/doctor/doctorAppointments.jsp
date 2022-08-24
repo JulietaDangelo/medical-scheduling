@@ -69,8 +69,8 @@
         <div>
           <p>
             <button class="btn btn-primary" type="button" onclick="toggleContent(this)" aria-expanded="false"
-                    aria-controls="collapseExample">
-              View patient info
+                    aria-controls="collapseExample"><a>View patient info</a>
+
             </button>
           </p>
           <div class="collapse" id="collapseExample">

@@ -17,7 +17,8 @@
         <li class="list-group-item"><strong>Phone Number: </strong> ${doctor.phoneNumber}</li>
         <li class="list-group-item"><strong>Medical Specialty: </strong> ${doctor.medicalSpecialty}</li>
         <li class="list-group-item"><strong>Hourly Cost: </strong>$ ${doctor.hourCost}</li>
-        <li class="list-group-item"><strong>Available Hours: </strong> Monday to Friday, from ${startTime}:00 to ${endTime}:00</li>
+        <li class="list-group-item">
+            <p class="text-center"><strong>Available Hours: </strong> Monday to Friday, from ${startTime}:00 to ${endTime}:00</p></li>
         <li class="list-group-item"><strong>Rating: </strong>
             <c:choose>
                 <c:when test="${rating <= 0}">
