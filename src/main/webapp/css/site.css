@@ -779,12 +779,10 @@ h4 {
 /****** TABLET ******/
 @media screen and (max-width: 768px) {
 
-/*    !* Hamburger menu *!
+    /* Hamburger menu */
     .hamburger-menu {
         visibility: visible;
         display: block;
-        position: relative;
-        right: 35%;
     }
     .nav-menu-burger {
         visibility: hidden;
@@ -794,8 +792,7 @@ h4 {
     .align-items-center {
         justify-content: space-between!important;
     }
-
-    !* end Hamburger menu *!*/
+    /* end Hamburger menu */
 
     h2 {
         font-size: 3em;
