@@ -30,7 +30,7 @@
           <button type="button" class="btn btn-info btn-danger" data-toggle="modal" data-target="#myModal">Cancel
             Appointment
           </button>
-            <!-- Modal -->
+          <!-- Modal -->
             <span id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
               <!-- Modal content-->
@@ -55,7 +55,6 @@
               </div>
             </div>
           </span>
-          </c:if>
         </span>
 
         <span>
@@ -63,7 +62,9 @@
             <a href="${linkPrescription}">
               <button type="button" class="btn btn-primary">Make prescription</button>
             </a>
-          </span>
+        </span>
+
+        </c:if>
 
         <div>
           <p>
