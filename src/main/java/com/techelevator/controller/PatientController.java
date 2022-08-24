@@ -30,6 +30,9 @@ public class PatientController {
     @RequestMapping(path="/users/new/patient", method= RequestMethod.GET)
     public String displayNewPatientForm(ModelMap modelHolder) {
 
+        Patient patient = new Patient();
+        modelHolder.put("patient", patient);
+
         return "patient/newPatient";
     }
 

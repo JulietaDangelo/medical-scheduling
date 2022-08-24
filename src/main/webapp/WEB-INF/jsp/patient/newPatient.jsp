@@ -1,45 +1,54 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<c:url var="validationJs" value="/js/patient-validation.js" />
+<script src="${validationJs}"></script>
+
 
 <c:url var="formAction" value="/users/new/patient" />
-<form method="POST" action="${formAction}">
+<form:form modelAttribute="patient" method="POST" action="${formAction}" name="patientForm">
     <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
     <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
+            <h2>Sign Up</h2>
             <div class="form-group">
-                <label for="firstName">First Name: </label>
-                <input type="text" id="firstName" name="firstName" placeHolder="First Name" class="form-control" />
+                <form:label path="firstName">First Name: </form:label>
+                <form:input path="firstName" cssClass="form-control" placeHolder="First Name" />
+                <form:errors path="firstName" cssClass="error" />
             </div>
             <div class="form-group">
-                <label for="lastName">Last Name: </label>
-                <input type="text" id="lastName" name="lastName" placeHolder="Last Name" class="form-control" />
+                <form:label path="lastName">Last Name: </form:label>
+                <form:input path="lastName" cssClass="form-control" placeHolder="Last Name" />
+                <form:errors path="lastName" cssClass="error" />
             </div>
             <div class="form-group">
-                <label for="email">Email: </label>
-                <input type="text" id="email" name="email" placeHolder="Email" class="form-control" />
+                <form:label path="email">Email: </form:label>
+                <form:input path="email" cssClass="form-control" placeHolder="Email" />
+                <form:errors path="email" cssClass="error" />
             </div>
             <div class="form-group">
-                <label for="age">Age: </label>
-                <input type="number" id="age" name="age" placeHolder="Age" class="form-control" />
+                <form:label path="age">Age: </form:label>
+                <form:input path="age" cssClass="form-control" placeHolder="Age" />
+                <form:errors path="age" cssClass="error" />
             </div>
             <div class="form-group">
-                <label for="gender">Gender:</label>
-                <select name="gender"	id="gender">
-                    <option value="Male">Male </option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
-                </select>
+                <form:label path="gender">Gender: </form:label>
+                <form:select  path="gender">
+                    <form:option value="Male">Male</form:option>
+                    <form:option value="Female">Female</form:option>
+                    <form:option value="Other">Other</form:option>
+                </form:select>
             </div>
-
-            <button type="submit" class="btn btn-primary">Create Patient Profile</button>
+            <button type="submit" id="newUserButton" class="btn btn-primary">Create User</button>
         </div>
         <div class="col-sm-4"></div>
     </div>
-</form>
+</form:form>
+
 
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />
 

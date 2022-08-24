@@ -40,6 +40,8 @@ public class DoctorController {
     // Display form with specific information to new doctors
     @RequestMapping(path="/users/new/doctor", method= RequestMethod.GET)
     public String displayNewDoctorForm(ModelMap modelHolder) {
+        Doctor doctor = new Doctor();
+        modelHolder.put("doctor", doctor);
         List<String> specialtyList = Doctor.getSpecialtyList();
         modelHolder.put("specialtyList", specialtyList);
         return "doctor/newDoctor";
