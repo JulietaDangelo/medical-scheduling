@@ -18,6 +18,21 @@
         <li class="list-group-item"><strong>Medical Specialty: </strong> ${doctor.medicalSpecialty}</li>
         <li class="list-group-item"><strong>Hourly Cost: </strong>$ ${doctor.hourCost}</li>
         <li class="list-group-item"><strong>Available Hours: </strong> Monday to Friday, from ${startTime}:00 to ${endTime}:00</li>
+        <li class="list-group-item"><strong>Rating: </strong>
+            <c:choose>
+                <c:when test="${rating <= 0}">
+                    <span>No rating available yet.</span>
+                </c:when>
+
+                <c:otherwise>
+                    <div>
+                        <c:forEach begin="1" end="5" var="count">
+                            <span class="rating-star-general ${count <= rating? 'filled':'' }">&#9734;</span>
+                        </c:forEach>
+                    </div>
+                </c:otherwise>
+            </c:choose>
+        </li>
     </ul>
 </div>
 <span class="button-center">

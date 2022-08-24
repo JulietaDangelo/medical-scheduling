@@ -54,6 +54,22 @@ public class JDBCReview implements ReviewDAO {
     }
 
     @Override
+    public int getRatingByDoctorId(int doctorId) {
+        Map<Review, Patient> reviews = getReviewsByDoctorId(doctorId);
+        int rating = 0;
+
+        for(Map.Entry<Review, Patient> review : reviews.entrySet()) {
+            rating += review.getKey().getRating();
+        }
+
+        if (rating > 0) {
+            rating = rating / reviews.size();
+        }
+
+        return rating;
+    }
+
+    @Override
     public void createReview(int doctorId, int patientId, String title, String description, int rating) {
         jdbcTemplate.update("INSERT INTO review(doctor_id, patient_id, title, description, rating) " +
                 "VALUES (?, ?, ?, ?, ?)", doctorId, patientId, title, description, rating);

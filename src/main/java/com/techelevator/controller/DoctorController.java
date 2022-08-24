@@ -99,12 +99,14 @@ public class DoctorController {
         Map<Review, Patient> reviews = reviewDAO.getReviewsByDoctorId(id);
         int startingTime = availability.getStartingTimeAsInt();
         int endingTime = availability.getEndingTimeAsInt();
+        int rating = reviewDAO.getRatingByDoctorId(id);
 
         request.setAttribute("doctor", doctor);
         request.setAttribute("availability", availability);
         request.setAttribute("startTime", startingTime);
         request.setAttribute("endTime", endingTime);
         request.setAttribute("reviews", reviews);
+        request.setAttribute("rating", rating);
 
         return "doctor/doctorPublicProfile";
     }
