@@ -20,14 +20,12 @@
                 <form:label path="title">Title: </form:label>
                 <form:input path="title" cssClass="form-control" maxlength="50" />
                 <form:errors path="title" cssClass="error" />
-                <label id="reviewTitleFilledError" class="error">The title is required.</label>
             </div>
 
             <div class="form-group">
                 <form:label path="description">Description: </form:label>
                 <form:textarea path="description" cssClass="form-control" maxlength="100" />
                 <form:errors path="description" cssClass="error" />
-                <label id="reviewDescriptionFilledError" class="error">The description is required.</label>
             </div>
 
             <div class="form-group">
