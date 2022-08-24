@@ -14,4 +14,6 @@ public interface ReviewDAO {
 
     void createReview(int doctorId, int patientId, String title, String description, int rating);
 
+    int getRatingByDoctorId(int doctorId);
+
 }
