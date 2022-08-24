@@ -16,8 +16,6 @@
 			<div class="form-group">
 				<form:label path="userName">User Name: </form:label>
 				<form:input path="userName" cssClass="form-control" />
-				<form:errors path="userName" cssClass="error" />
-				<label id="userNameAvailableError" class="error">The UserName is not available.</label>
 			</div>
 			<div class="form-group">
 				<form:label path="password">Password: </form:label>

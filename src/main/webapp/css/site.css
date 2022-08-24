@@ -551,6 +551,40 @@ input[type=radio] {
     margin-left: .6rem;
 }
 
+/*********** Close button ***********/
+
+button.close {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.close {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+}
+
+/*********** Validator ***********/
+
+.validator-hidden-control {
+    position: absolute;
+    visibility: collapse;
+}
+
+/*********** Error labels ***********/
+
+.error {
+    font-weight: bold;
+    color: var(--toast--hover--cancelled);
+}
+
 /*********** BOOTSTRAP ***********/
 
 :root {
@@ -707,31 +741,9 @@ h4 {
     cursor: pointer;
 }
 
-button.close {
-    padding: 0;
-    background-color: transparent;
-    border: 0;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-}
 .ml-2, .mx-2 {
     margin-left: 0.5rem!important;
 }
 .mb-1, .my-1 {
     margin-bottom: 0.25rem!important;
-}
-.close {
-    float: right;
-    font-size: 1.5rem;
-    font-weight: 700;
-    line-height: 1;
-    color: #000;
-    text-shadow: 0 1px 0 #fff;
-    opacity: .5;
-}
-
-.validator-hidden-control {
-    position: absolute;
-    visibility: collapse;
 }
