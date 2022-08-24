@@ -62,7 +62,38 @@
 			<c:url var="patientPrescriptions" value="/patient/prescriptions" />
 			<c:url var="doctorPrescriptions" value="/doctor/prescriptions" />
 
+			<%--HAMBUERGER MENU--%>
+			<div class="dropdown hamburger-menu">
+				<button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
+					<div class="d-flex align-items-center justify-content-md-between">
+						<ul class="nav justify-content-center d-flex flex-wrap">
+							<c:if test="${not empty currentUser && currentUser.isDoctor()}">
+								<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${doctorPrescriptions}">Prescriptions</a></li>
+								<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${doctorAppointments}">Appointments</a></li>
+								<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${reviews}">Reviews</a></li>
+								<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${doctorProfile}">My profile</a></li>
+							</c:if>
+
+							<c:if test="${not empty currentUser && currentUser.isPatient()}">
+								<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${doctorList}">Doctors List</a></li>
+								<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${patientAppointments}">Appointments</a></li>
+								<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${patientPrescriptions}">Prescriptions</a></li>
+								<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${patientProfile}">My profile</a></li>
+							</c:if>
+
+							<c:if test="${empty currentUser}">
+								<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${doctorList}">Doctors List</a></li>
+							</c:if>
+						</ul>
+					</div>
+				</ul>
+			</div>
+
 			<ul class="nav justify-content-center d-flex flex-wrap nav-menu-burger">
+
 				<c:if test="${not empty currentUser && currentUser.isDoctor()}">
 					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${doctorPrescriptions}">Prescriptions</a></li>
 					<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${doctorAppointments}">Appointments</a></li>
@@ -100,44 +131,5 @@
 				</c:choose>
 			</ul>
 		</div>
-
-<%--		<div class="dropdown hamburger-menu">
-			<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-				<span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
-				<div class="d-flex align-items-center justify-content-md-between">
-					<c:url var="home" value="/" />
-					<c:url var="doctorProfile" value="/doctor/profile" />
-					<c:url var="patientProfile" value="/patient/profile" />
-					<c:url var="doctorList" value="/doctor-list" />
-					<c:url var="doctorAppointments" value="/doctor/appointments" />
-					<c:url var="patientAppointments" value="/patient/appointments" />
-					<c:url var="reviews" value="/doctor/reviews" />
-					<c:url var="patientPrescriptions" value="/patient/prescriptions" />
-					<c:url var="doctorPrescriptions" value="/doctor/prescriptions" />
-
-					<ul class="nav justify-content-center d-flex flex-wrap">
-						<c:if test="${not empty currentUser && currentUser.isDoctor()}">
-							<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${doctorPrescriptions}">Prescriptions</a></li>
-							<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${doctorAppointments}">Appointments</a></li>
-							<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${reviews}">Reviews</a></li>
-							<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${doctorProfile}">My profile</a></li>
-						</c:if>
-
-						<c:if test="${not empty currentUser && currentUser.isPatient()}">
-							<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${doctorList}">Doctors List</a></li>
-							<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${patientAppointments}">Appointments</a></li>
-							<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${patientPrescriptions}">Prescriptions</a></li>
-							<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${patientProfile}">My profile</a></li>
-						</c:if>
-
-						<c:if test="${empty currentUser}">
-							<li class="nav-item"><a class="nav-link px-2 link-secondary text-nowrap" href="${doctorList}">Doctors List</a></li>
-						</c:if>
-					</ul>
-				</div>
-			</ul>
-		</div>--%>
 	</nav>
 	<div class="container">
