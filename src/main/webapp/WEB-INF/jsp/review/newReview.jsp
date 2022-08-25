@@ -30,7 +30,13 @@
 
             <div class="form-group">
                 <form:label path="rating">Rating: </form:label>
-                <form:input path="rating" cssClass="form-control" min="0" max="5" />
+                <form:select path="rating" cssClass="form-control" >
+                    <form:option value="1"> 1 </form:option>
+                    <form:option value="2"> 2 </form:option>
+                    <form:option value="3"> 3 </form:option>
+                    <form:option value="4"> 4 </form:option>
+                    <form:option value="5"> 5 </form:option>
+                </form:select>
                 <form:errors path="rating" cssClass="error" />
             </div>
 

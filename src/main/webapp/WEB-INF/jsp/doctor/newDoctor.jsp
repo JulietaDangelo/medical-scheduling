@@ -43,7 +43,7 @@
             </div>
             <div class="form-group">
                 <form:label path="medicalSpecialty">Medical Specialty: </form:label>
-                <form:select  path="medicalSpecialty">
+                <form:select path="medicalSpecialty">
                     <c:forEach var="specialty" items="${specialtyList}">--%>
                           <c:if test="${!specialty.equals('All')}">--%>
                                  <form:option value="${specialty}">${specialty} </form:option>--%>
