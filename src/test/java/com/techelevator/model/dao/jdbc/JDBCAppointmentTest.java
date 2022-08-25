@@ -97,7 +97,7 @@ public class JDBCAppointmentTest extends DAOIntegrationTest {
     public void getAppointmentsByPatientId_should_returnMap_ofAppointmentsForPatientoctor_andDoctorInfo() {
         // arrange
         int patientId = 1;
-        String expected = "Julieta";
+        String expected = "Meredith";
         String actual = "";
 
         // act

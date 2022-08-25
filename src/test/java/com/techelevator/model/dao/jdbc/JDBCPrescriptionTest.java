@@ -46,7 +46,7 @@ public class JDBCPrescriptionTest extends DAOIntegrationTest  {
         // arrange
         int doctorId = 3;
         int patientId = 1;
-        String expected = "Sofia";
+        String expected = "Derek";
         String actual = "";
 
         prescriptionDAO.createNewPrescription("Ibuprofeno", BigDecimal.valueOf(50), patientId, doctorId);
